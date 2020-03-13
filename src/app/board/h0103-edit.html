@@ -1,0 +1,1190 @@
+<!-- Html Editor -->
+<script type="text/javascript" src="assets/app/SE2.9/js/service/HuskyEZCreator.js" charset="utf-8"></script>
+<div class="page page-footable" ng-controller="H0103EditCtrl as vc">
+  <!-- page header -->
+  <div class="row" ng-if="vc.layout == 'N'">
+    <div class="col-lg-12">
+      <div class="page-header">고객등록</div>
+    </div>
+    <!-- /.col-lg-12 -->
+  </div>
+  <!-- /page header -->
+  <!-- page content -->
+  <div class="pagecontent" file-dropzone>
+    <!-- Action Buttons -->
+    <div class="row">
+      <div class="col-lg-12 col-lg-12 col-sm-12 col-xs-12 btn-group">
+        <div class="pull-right">
+          <button class="btn btn-primary" activate-button ng-click="vc.setData()">
+            <i class="fa  fa-save"></i> {{ 'Menu.SAVE' | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- /row -->
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-default tile">
+          <div class="panel-heading tile-header">
+            <strong style="letter-spacing: 0.5px;" class="ng-binding">Clause | 회원약관</strong>
+            <div class="pull-right">
+              <a href="" tile-control-toggle=""> <i class="fa fa-minus fa-lg"></i></a>
+            </div>
+          </div>
+          <!-- /panel header -->
+
+          <!-- panel body -->
+          <div class="panel-body collapse in">
+            <form class="ng-pristine ng-valid" role="form">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="bs-callout bs-callout-info" id="callout-navs-tabs-plugin">
+                    <div class="member-comment-box">
+                      <ul class="comment">
+                        <li>시바산 제품은 시바산 아카데미의 교육을 이수 받은 전문가가 직접 관리/적용 하는 제품입니다. 시바산의 모든 제품은 문제성 피부의 개선을 목적으로 하는 코스메슈티컬
+                          제품으로
+                          안전성이 비교적 낮습니다.</li>
+                        <li>따라서 본인의 컨디션 및 피부상태, 잘못된 사후 관리 등으로 여러 현상이 발생 할 수 있기 때문에 시바산 트리트먼트를 받는 기간 동안 전문가의 지시사항을 100%
+                          이행하셔야 합니다.</li>
+                      </ul>
+                    </div>
+                    <div class="member-comment-box--red">
+                      <ul class="comment">
+                        <li>시바산 트리트먼트는 관리 기간 동안 고영양 현상으로 인한 트러블과 같은 반응이 언제든 발생 할 수 있습니다. 이는 치료를 목적으로 하는 고영양성분의
+                          약용 화장품이 갖는 특징으로 전문가의 적절한 피드백으로 피부의 개선을 보장하는 내용 외 별도의 법적 물적 보상은 없습니다.</li>
+                        <li>당일 예약 취소, 변경 시 타겟팅 관리 횟수에서 1회가 차감됩니다.</li>
+                        <li>불가피한 사유로 관리를 받을 수 없을 시 관리권, 제품의 환불 요청 시에는 타겟팅금액/관리횟수를 차감한 금액을 정산합니다.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-12 col-sm-offset-3 col-md-12 col-md-offset-0 col-lg-12">
+                  <div class="col-sm-3 col-md-4 col-lg-3 pl-0">
+                    <div class="checkbox">
+                      <label class="ng-binding">
+                        <input class="ng-pristine ng-untouched ng-valid ng-empty" aria-invalid="false" type="checkbox">위
+                        약관에 동의합니다.
+                      </label>
+                    </div>
+                  </div>
+                  <!-- /col -->
+                  <div class="col-sm-2 col-md-4 col-lg-3 pr-0 pl-0">
+                    <div class="form-group form-inner-label">
+                      <div class="input-group" ng-controller="DatepickerDemoCtrl">
+                        <input type="text" class="form-control" uib-datepicker-popup="{{ :: format}}"
+                          ng-model="vc.RegDateFrom" ng-change="vc.srch.RegDateFrom = (objDate | date: 'yyyy-MM-dd')"
+                          is-open="opened" datepicker-options="dateOptions" ng-required="false" current-text="오늘"
+                          clear-text="취소" close-text="닫기" placeholder="2019-00-00" /> <span class="input-group-btn">
+                          <button type="button" class="btn btn-default" ng-click="open($event)">
+                            <i class="fa fa-calendar"></i>
+                          </button>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /col -->
+                  <div class="col-sm-2 col-md-4 col-lg-3 pr-0">
+                    <div class="form-group form-inner-label">
+                      <label class="ng-binding">이름</label>
+                      <input type="text" class="form-control form-right ng-pristine ng-valid ng-empty ng-touched"
+                        ng-model="vc.srch.Title" aria-invalid="false" placeholder="">
+                    </div>
+                  </div>
+                  <!-- /col -->
+                  <div class="col-sm-2 col-md-4 col-lg-3">
+                    <div class="form-group form-inner-label">
+                      <label class="ng-binding">서명</label>
+                      <input type="text" class="form-control form-right ng-pristine ng-valid ng-empty ng-touched"
+                        ng-model="vc.srch.Title" aria-invalid="false" placeholder="">
+                    </div>
+                  </div>
+                  <!-- /col -->
+                </div>
+              </div>
+              <!-- /row -->
+
+              <div class="row">
+                <div class="form-group" ng-show="vc.srch.editColumns.Contents">
+                  <div class="col-sm-12">
+                    <textarea id="strHtml" rows="10" style="width: 100%; height: 600px; display: 'none';"
+                      ng-model="vc.data.Contents"></textarea>
+                  </div>
+                </div>
+              </div>
+              <!-- /col -->
+            </form>
+          </div>
+          <!-- /tile body -->
+        </div>
+        <!-- /tile -->
+      </div>
+      <!-- /col -->
+    </div>
+    <!-- /row -->
+
+    <!-- row 개인정보 -->
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-default tile">
+          <div class="panel-heading tile-header">
+            <strong style="letter-spacing: 0.5px;" class="ng-binding">Step1 | 개인 정보</strong>
+            <div class="pull-right">
+              <a href="" tile-control-toggle=""> <i class="fa fa-minus fa-lg"></i></a>
+            </div>
+          </div>
+          <!-- /tile header -->
+          <div class="panel-body collapse in">
+            <div class="row">
+              <div class="col-sm-12 col-md-12 col-lg-6 xs-mb10">
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <div class="form-group form-inline xs-mb0">
+                      <label>이름</label>
+                      <input name="" type="text" maxlength="25" id="" class="form-control">
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <div class="form-group sm-mt3 sm-mb0">
+                      <label class="radio-inline">
+                        <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" class="mr-5">남
+                      </label>
+                      <label class="radio-inline"><input type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                          value="option2" class="">여
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /col -->
+              <div class="col-sm-12 col-md-12 col-lg-6 xs-mb10">
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <div class="form-group form-inline xs-mb0">
+                      <label>연락처</label>
+                      <input name="" type="text" maxlength="25" id="" class="form-control">
+                    </div>
+                  </div>
+                  <!-- /col -->
+                  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <div class="form-group sm-mt3 sm-mb0">
+                      <label class="radio-inline">
+                        <input type="radio" name="sms" id="option1" value="option1" class="mr-5">SMS 수신동의
+                      </label>
+                      <label class="radio-inline"><input type="radio" name="sms" id="option2" value="option2" class="">
+                        SMS 수신거부
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /col -->
+            </div>
+            <!-- /row -->
+
+            <div class="row">
+              <div class="col-sm-12 col-md-12 col-lg-6">
+                <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="form-group form-inline sm-mb0">
+                      <label>주소</label>
+                      <div class="input-group">
+                        <input name="ctl00$ContentPage$FLD_ZIPCODE" type="text" maxlength="7"
+                          id="ContentPage_FLD_ZIPCODE" class="form-control" readonly="readonly">
+                        <span class="input-group-btn">
+                          <button class="btn btn-default" type="button"
+                            onclick="return fnSearchZipcode('FLD_ZIPCODE', 'FLD_ADDRESS1');">
+                            <i class="fa fa-search"></i>
+                          </button>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /col -->
+                  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6  wd85">
+                    <div class="form-group">
+                      <input name="ctl00$ContentPage$FLD_ZIPCODE" type="text" maxlength="7" id="ContentPage_FLD_ZIPCODE"
+                        class="form-control">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /col -->
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <div class="form-group form-inline">
+                      <label>생년월일</label>
+                      <div class="input-group" ng-controller="DatepickerDemoCtrl">
+                        <input type="text" class="form-control" uib-datepicker-popup="{{ :: format}}"
+                          ng-model="vc.RegDateFrom" ng-change="vc.srch.RegDateFrom = (objDate | date: 'yyyy-MM-dd')"
+                          is-open="opened" datepicker-options="dateOptions" ng-required="false" current-text="오늘"
+                          clear-text="취소" close-text="닫기" placeholder="생년월일 선택" /> <span class="input-group-btn">
+                          <button type="button" class="btn btn-default" ng-click="open($event)">
+                            <i class="fa fa-calendar"></i>
+                          </button>
+                        </span>
+                      </div>
+                      <!-- /input-group -->
+                    </div>
+                  </div>
+                  <!-- /col -->
+                  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <div class="form-group sm-mt3 xs-mb10 ">
+                      <label class="radio-inline">
+                        <input type="radio" name="sms" id="option1" value="option1" class="mr-5">음
+                      </label>
+                      <label class="radio-inline"><input type="radio" name="sms" id="option2" value="option2" class="">양
+                      </label>
+                    </div>
+                  </div>
+                  <!-- /col -->
+                </div>
+                <!-- /row   -->
+              </div>
+              <!-- /col -->
+            </div>
+            <!-- /row -->
+
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <div class="form-group form-inline xs-mb10">
+                      <label>등록일</label>
+                      <div class="input-group" ng-controller="DatepickerDemoCtrl">
+                        <input type="text" class="form-control" uib-datepicker-popup="{{ :: format}}"
+                          ng-model="vc.RegDateFrom" ng-change="vc.srch.RegDateFrom = (objDate | date: 'yyyy-MM-dd')"
+                          is-open="opened" datepicker-options="dateOptions" ng-required="false" current-text="오늘"
+                          clear-text="취소" close-text="닫기" placeholder="등록일 선택" /> <span class="input-group-btn">
+                          <button type="button" class="btn btn-default" ng-click="open($event)">
+                            <i class="fa fa-calendar"></i>
+                          </button>
+                        </span>
+                      </div>
+                      <!-- /input-group -->
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 pl-0 pr-0">
+                    <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12">
+                      <div class="form-group form-inline xs-mb10">
+                        <label>직업</label>
+                        <input name="" type="text" maxlength="25" id="" class="form-control">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /col -->
+            </div>
+            <!-- /row -->
+
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                    <div class="form-group form-inline xs-mb10">
+                      <label>방문경로</label>
+                      <div class="inline-box brd1 p-10 bd-rd4">
+                        <div class="col-xs-12 col-sm-3 col-md-4 col-lg-3">
+                          <label class="radio-inline">
+                            <input type="radio" name="inlineRadioOptions">블로그
+                          </label>
+                        </div>
+                        <div class="col-xs-12 col-sm-3 col-md-4 col-lg-3">
+                          <label class="radio-inline">
+                            <input type="radio" name="inlineRadioOptions">카페
+                          </label>
+                        </div>
+                        <div class="col-xs-12 col-sm-3 col-md-4 col-lg-3">
+                          <label class="radio-inline">
+                            <input type="radio" name="inlineRadioOptions">인스타그램
+                          </label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                          <label class="radio-inline">
+                            <input type="radio" name="inlineRadioOptions">소개
+                            <input name="" type="text" maxlength="25" id="" class="form-control wd181"
+                              placeholder="소개인 ID">
+                          </label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                          <label class="radio-inline">
+                            <input type="radio" name="inlineRadioOptions">기타
+                            <input name="" type="text" maxlength="25" id="" class="form-control wd181"
+                              placeholder="과거 이용 경험있음">
+                          </label>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                          <div class="sz-custom-select-tenant">
+                            <section class="tile" fullscreen="isFullscreen06">
+                              <!-- ngIf: header.checkUse -->
+                              <div class="form-group ng-scope" ng-if="header.checkUse" >
+                                <div class="input-group custom-search-form">
+                                  <input type="text" readonly="readonly"
+                                    class="form-control ng-pristine ng-valid ng-not-empty ng-touched"
+                                    ng-model="header.TENANTNAME" ng-click="header.srchTenantModal();"
+                                    aria-invalid="false" >
+                                  <input type="hidden" ng-model="header.TENANTID" autocomplete="off"
+                                    class="ng-pristine ng-untouched ng-valid ng-not-empty" aria-invalid="false">
+                                  <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button" ng-click="header.srchTenantModal();">
+                                      <i class="fa fa-search"></i>
+                                    </button>
+                                    <button class="btn btn-default" type="button" ng-click="header.eraseTenant();">
+                                      <i class="fa fa-eraser"></i>
+                                    </button>
+                                  </span>
+                                </div>
+                              </div><!-- end ngIf: header.checkUse -->
+                            </section>
+                          </div>
+                        </div>
+                        <!-- /col -->
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /col -->
+                  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="form-group form-inline  xs-mb10">
+                      <label>특이사항</label>
+                      <input name="" type="text" maxlength="25" id="" class="form-control"
+                        placeholder="ex/ 알러지성 질환, 복용중인 약물, 신체질환">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /col -->
+            </div>
+            <!-- /row -->
+
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="form-group form-inline">
+                      <label>E-mail</label>
+                      <input name="" type="text" maxlength="25" id="" class="form-control"
+                        placeholder="adcde@mail.co.kr">
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <div class="form-group form-inline">
+                      <label>고객등급</label>
+                      <select name="ctl00$ContentPage$FLD_BRANCHCODE" id="ContentPage_FLD_BRANCHCODE"
+                        class="form-control">
+                        <option value="010">A</option>
+                        <option value="020">B</option>
+                        <option value="030">C</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /row -->
+
+            <div class="row">
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group form-inline sm-mb0">
+                  <label>담당자</label>
+                  <div class="input-group">
+                    <input name="ctl00$ContentPage$FLD_ZIPCODE" type="text" maxlength="7" id="ContentPage_FLD_ZIPCODE"
+                      class="form-control" readonly="readonly">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button"
+                        onclick="return fnSearchPopup('U','FLD_ASSIGNUSERID_','FLD_ASSIGNUSERID','');">
+                        <i class="fa fa-search"></i>
+                      </button>
+                      <button class="btn btn-default" type="button"
+                        onclick="fnResetVal('FLD_ASSIGNUSERID_','FLD_ASSIGNUSERID');">
+                        <i class="fa fa-eraser"></i>
+                      </button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /row -->
+          </div>
+        </div>
+
+
+
+        <!-- row 과거 관리 및 시술이력 / 홈케어정보-->
+        <div class="row">
+          <!-- col 과거관리 및 시술 이력-->
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="panel panel-default tile">
+              <div class="panel-heading tile-header">
+                <strong style="letter-spacing: 0.5px;" class="ng-binding">Step2 | 과거 관리 및 시술 이력</strong>
+                <div class="pull-right">
+                  <a href="" tile-control-toggle=""> <i class="fa fa-minus fa-lg"></i></a>
+                </div>
+              </div>
+              <!-- /tile header -->
+              <div class="panel-body collapse in">
+                <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="col-xs-12 col-sm-5 col-md-12 col-lg-6 plr-0">
+                      <div class="form-group sm-mb0">
+                        <label class="ng-binding"></label>
+                        <div class="checkbox ">
+                          <label class="ng-binding"><input type="checkbox">보습, 미백, 여드름,노화관리</label>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- /col -->
+                    <div class="col-xs-12 col-sm-7 col-md-12 col-lg-6">
+                      <div class="row">
+                        <div class="col-xs-12 col-sm-2 col-md-3 col-lg-3 plr-0">
+                          <div class="form-group sm-mb0">
+                            <div class="checkbox ">
+                              <label class="ng-binding"><input type="checkbox">부작용</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-10 col-md-9 col-lg-9 plr-0">
+                          <input name="" type="text" maxlength="25" class="form-control" placeholder="부작용 상세 내용">
+                        </div>
+                      </div>
+                    </div>
+                    <!-- /col -->
+                  </div>
+                </div>
+                <!-- /row -->
+
+                <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="col-xs-12 col-sm-5 col-md-6 col-lg-6 plr-0">
+                      <div class="form-group sm-mb0">
+                        <label class="ng-binding"></label>
+                        <div class="checkbox ">
+                          <label class="ng-binding"><input type="checkbox">MTS, 필링</label>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- /col -->
+                    <div class="col-xs-12 col-sm-7 col-md-12 col-lg-6">
+                      <div class="row">
+                        <div class="col-xs-12 col-sm-2 col-md-3 col-lg-3 plr-0">
+                          <div class="form-group sm-mb0">
+                            <div class="checkbox ">
+                              <label class="ng-binding"><input type="checkbox">부작용</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-10 col-md-9 col-lg-9 plr-0">
+                          <input name="" type="text" maxlength="25" class="form-control" placeholder="부작용 상세 내용">
+                        </div>
+                      </div>
+                    </div>
+                    <!-- /col -->
+                  </div>
+                </div>
+                <!-- /row -->
+
+                <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="col-xs-12 col-sm-5 col-md-6 col-lg-6 plr-0">
+                      <div class="form-group sm-mb0">
+                        <label class="ng-binding"></label>
+                        <div class="checkbox ">
+                          <label class="ng-binding"><input type="checkbox">레이저 시술</label>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- /col -->
+                    <div class="col-xs-12 col-sm-7 col-md-12 col-lg-6">
+                      <div class="row">
+                        <div class="col-xs-12 col-sm-2 col-md-3 col-lg-3 plr-0">
+                          <div class="form-group sm-mb0">
+                            <div class="checkbox ">
+                              <label class="ng-binding"><input type="checkbox">부작용</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-10 col-md-9 col-lg-9 plr-0">
+                          <input name="" type="text" maxlength="25" class="form-control" placeholder="부작용 상세 내용">
+                        </div>
+                      </div>
+                    </div>
+                    <!-- /col -->
+                  </div>
+                </div>
+                <!-- /row -->
+
+                <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="col-xs-12 col-sm-5 col-md-6 col-lg-6 plr-0">
+                      <div class="form-group sm-mb0">
+                        <label class="ng-binding"></label>
+                        <div class="checkbox ">
+                          <label class="ng-binding"><input type="checkbox">보톡스, 필러, 실리프팅</label>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- /col -->
+                    <div class="col-xs-12 col-sm-7 col-md-12 col-lg-6">
+                      <div class="row">
+                        <div class="col-xs-12 col-sm-2 col-md-3 col-lg-3 plr-0">
+                          <div class="form-group sm-mb0">
+                            <div class="checkbox ">
+                              <label class="ng-binding"><input type="checkbox">부작용</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-10 col-md-9 col-lg-9 plr-0">
+                          <input name="" type="text" maxlength="25" class="form-control" placeholder="부작용 상세 내용">
+                        </div>
+                      </div>
+                    </div>
+                    <!-- /col -->
+                  </div>
+                </div>
+                <!-- /row -->
+
+                <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="col-xs-12 col-sm-5 col-md-12 col-lg-6 plr-0">
+                      <div class="form-group sm-mb0">
+                        <label class="ng-binding"></label>
+                        <div class="checkbox sm-mb0">
+                          <label class="ng-binding"><input type="checkbox">지방이식, 보형물 등의 삽입 성형 수술</label>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- /col -->
+                    <div class="col-xs-12 col-sm-7 col-md-12 col-lg-6">
+                      <div class="row">
+                        <div class="col-xs-12 col-sm-2 col-md-3 col-lg-3 plr-0">
+                          <div class="form-group">
+                            <div class="checkbox sm-mb0">
+                              <label class="ng-binding"><input type="checkbox">부작용</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-10 col-md-9 col-lg-9 plr-0">
+                          <input name="" type="text" maxlength="25" class="form-control" placeholder="부작용 상세 내용">
+                        </div>
+                      </div>
+                    </div>
+                    <!-- /col -->
+                  </div>
+                </div>
+                <!-- /row -->
+              </div>
+              <!-- /tile body -->
+            </div>
+          </div>
+          <!-- /col 과거관리 및 시술 이력 -->
+
+          <!-- col 홈케어 정보-->
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="panel panel-default tile">
+              <div class="panel-heading tile-header">
+                <strong class="ng-binding">홈 케어 정보</strong>
+                <div class="pull-right">
+                  <a href="" tile-control-toggle=""> <i class="fa fa-minus fa-lg"></i></a>
+                </div>
+              </div>
+              <!-- /tile header -->
+              <div class="panel-body collapse in">
+                <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="col-xs-12 col-sm-2 col-md-12 col-lg-2 plr-0">
+                      <div class="checkbox mt-5">
+                        <label class="ng-binding"><input type="checkbox">클렌징</label>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-5 col-md-6 col-lg-5 xs-mb5 pr-0 pl-0 sm-mb5">
+                      <input name="" type="text" maxlength="25" id="" class="form-control" placeholder="제품명">
+                    </div>
+                    <div class="col-xs-12 col-sm-5 col-md-6 col-lg-5 pr-0 xs-pl0">
+                      <input name="" type="text" maxlength="" id="" class="form-control" placeholder="사용방법">
+                    </div>
+                  </div>
+                </div>
+                <!-- /row -->
+
+                <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="col-xs-12 col-sm-2 col-md-12 col-lg-2 plr-0">
+                      <div class="checkbox mt-5">
+                        <label class="ng-binding"><input type="checkbox">데이</label>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-5 col-md-6 col-lg-5 xs-mb5 pr-0 pl-0 sm-mb5">
+                      <input name="" type="text" maxlength="25" id="" class="form-control" placeholder="제품명">
+                    </div>
+                    <div class="col-xs-12 col-sm-5 col-md-6 col-lg-5 pr-0 xs-pl0">
+                      <input name="" type="text" maxlength="" id="" class="form-control" placeholder="사용방법">
+                    </div>
+                  </div>
+                </div>
+                <!-- /row -->
+
+                <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="col-xs-12 col-sm-2 col-md-12 col-lg-2 plr-0">
+                      <div class="checkbox mt-5 sm-mb5 xs-mt10">
+                        <label class="ng-binding"><input type="checkbox">나이트</label>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-5 col-md-6 col-lg-5 xs-mb5 pr-0 pl-0 sm-mb5">
+                      <input name="" type="text" maxlength="25" id="" class="form-control" placeholder="제품명">
+                    </div>
+                    <div class="col-xs-12 col-sm-5 col-md-6 col-lg-5 pr-0 xs-pl0">
+                      <input name="" type="text" maxlength="" id="" class="form-control" placeholder="사용방법">
+                    </div>
+                  </div>
+                </div>
+                <!-- /row -->
+
+                <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="col-xs-12 col-sm-2 col-md-12 col-lg-2 plr-0">
+                      <div class="checkbox mt-5 sm-mb5 xs-mt10">
+                        <label class="ng-binding"><input type="checkbox">각질제거</label>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-5 col-md-6 col-lg-5 xs-mb5 pr-0 pl-0 sm-mb5">
+                      <input name="" type="text" maxlength="25" id="" class="form-control" placeholder="제품명">
+                    </div>
+                    <div class="col-xs-12 col-sm-5 col-md-6 col-lg-5 pr-0 xs-pl0">
+                      <input name="" type="text" maxlength="" id="" class="form-control" placeholder="사용방법">
+                    </div>
+                  </div>
+                </div>
+                <!-- /row -->
+
+                <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="col-xs-12 col-sm-2 col-md-12 col-lg-2 plr-0">
+                      <div class="checkbox mt-5 sm-mb0 xs-mt10">
+                        <label class="ng-binding"><input type="checkbox">기타(팩)</label>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-5 col-md-6 col-lg-5 xs-mb5 pr-0 pl-0">
+                      <input name="" type="text" maxlength="25" id="" class="form-control" placeholder="제품명">
+                    </div>
+                    <div class="col-xs-12 col-sm-5 col-md-6 col-lg-5 pr-0 xs-pl0">
+                      <input name="" type="text" maxlength="" id="" class="form-control" placeholder="사용방법">
+                    </div>
+                  </div>
+                </div>
+                <!-- /row -->
+                <!-- /row -->
+
+              </div>
+              <!-- /tile body -->
+            </div>
+          </div>
+          <!-- /col 홈케어 정보-->
+        </div>
+        <!-- row 과거 관리 및 시술이력 / 홈케어정보-->
+
+        <!-- row 섹터별 특징 -->
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+            <div class="panel panel-default tile">
+              <div class="panel-heading tile-header">
+                <strong style="letter-spacing: 0.5px;" class="ng-binding">Step3 | 섹터별 특징</strong>
+                <div class="pull-right">
+                  <a href="" tile-control-toggle=""> <i class="fa fa-minus fa-lg"></i></a>
+                </div>
+              </div>
+              <!-- /tile header -->
+              <div class="panel-body collapse in">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 plr-0">
+                  <div class="form-group">
+                    <label class="ng-binding"></label>
+                    <div class="checkbox ">
+                      <label class="ng-binding"><input type="checkbox">Sebum Area / 피지분포 부위</label>
+                    </div>
+                  </div>
+                  <!-- /col -->
+                  <div class="form-group">
+                    <label class="ng-binding"></label>
+                    <div class="checkbox ">
+                      <label class="ng-binding"><input type="checkbox">White Acne Area / 좁쌀 여드름
+                        부위</label>
+                    </div>
+                  </div>
+                  <!-- /col -->
+                  <div class="form-group">
+                    <label class="ng-binding"></label>
+                    <div class="checkbox ">
+                      <label class="ng-binding"><input type="checkbox">Anti Acne Area / 염즘성
+                        여드름</label>
+                    </div>
+                  </div>
+                  <!-- /col -->
+                  <div class="form-group">
+                    <label class="ng-binding"></label>
+                    <div class="checkbox ">
+                      <label class="ng-binding"><input type="checkbox">Pore Area / 모공 확장 부위</label>
+                    </div>
+                  </div>
+                  <!-- /col -->
+                  <div class="form-group">
+                    <label class="ng-binding"></label>
+                    <div class="checkbox ">
+                      <label class="ng-binding"><input type="checkbox">Scar Area / 상처 부위</label>
+                    </div>
+                  </div>
+                  <!-- /col -->
+                  <div class="form-group">
+                    <label class="ng-binding"></label>
+                    <div class="checkbox ">
+                      <label class="ng-binding"><input type="checkbox">Melano Area / 색소 부위</label>
+                    </div>
+                  </div>
+                  <!-- /col -->
+                  <div class="form-group">
+                    <label class="ng-binding"></label>
+                    <div class="checkbox ">
+                      <label class="ng-binding"><input type="checkbox">Dry Area / 건조 부위</label>
+                    </div>
+                  </div>
+                  <!-- /col -->
+                  <div class="form-group">
+                    <label class="ng-binding"></label>
+                    <div class="checkbox ">
+                      <label class="ng-binding"><input type="checkbox">Wrinkle Area / 옅은 주름
+                        부위</label>
+                    </div>
+                  </div>
+                  <!-- /col -->
+                  <div class="form-group">
+                    <label class="ng-binding"></label>
+                    <div class="checkbox ">
+                      <label class="ng-binding"><input type="checkbox">Deep Wrinkle Area / 깊은 주름
+                        부위</label>
+                    </div>
+                  </div>
+                  <!-- /col -->
+                  <div class="form-group">
+                    <label class="ng-binding"></label>
+                    <div class="checkbox ">
+                      <label class="ng-binding"><input type="checkbox">Fush Area / 홍조 부위</label>
+                    </div>
+                  </div>
+                  <!-- /col -->
+                  <div class="form-group">
+                    <label class="ng-binding"></label>
+                    <div class="checkbox ">
+                      <label class="ng-binding"><input type="checkbox">Telangiectasia Area / 모세혈관
+                        확장</label>
+                    </div>
+                  </div>
+                  <!-- /col -->
+                </div>
+              </div>
+            </div>
+            <!-- /tile body -->
+          </div>
+          <!-- /panel -->
+
+          <!-- row 섹터별 특징 / 얼굴이미지-->
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+            <div class="panel panel-default tile">
+              <div class="panel-heading tile-header">
+                <strong style="letter-spacing: 0.5px;" class="ng-binding">얼굴이미지</strong>
+                <div class="pull-right">
+                  <a href="" tile-control-toggle=""> <i class="fa fa-minus fa-lg"></i></a>
+                </div>
+              </div>
+              <!-- /tile header -->
+              <div class="panel-body collapse in">
+                <div class="text-center pt-10 min-h312">
+                  <img src="/assets/images/face-image.png" alt="" class="sector-img">
+                </div>
+              </div>
+            </div>
+            <!-- /tile body -->
+          </div>
+          <!-- /panel -->
+        </div>
+        <!-- /col 섹터별 특징 -->
+
+        <!-- row 현재의피부 상황 이야기-->
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="panel panel-default tile">
+              <div class="panel-heading tile-header">
+                <strong style="letter-spacing: 0.5px;" class="ng-binding">Step4 | 현재의 피부 상황 이야기</strong>
+                <div class="pull-right">
+                  <a href="" tile-control-toggle=""> <i class="fa fa-minus fa-lg"></i></a>
+                </div>
+              </div>
+              <!-- /tile header -->
+              <div class="panel-body collapse in">
+                <div class="row">
+                  <div class="col-xs-12 col-md-12 col-lg-6 col-xl-6">
+                    <textarea class="form-control" rows="5"></textarea>
+                  </div>
+                  <div class="col-xs-12 col-md-12 col-lg-6 col-xl-6 col-md-12-mt10 col-lg-12-mt0 pl-0 pr-0">
+                    <div class="col-xs-12 col-sm-12 col-md-1 col-lg-12 col-xl-12 text-warning pr-0">
+                      <strong><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> TIP</strong>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-11 col-md-12 col-lg-12 col-xl-12 text-warning">
+                      - 현재 피부 상태는 어떠한지에 대해서 고객이 직접 이야기하는 내용을 입력
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /panel-body -->
+            </div>
+            <!-- /panel -->
+          </div>
+          <!-- /col -->
+        </div>
+        <!-- /row /현재의피부 상황 이야기-->
+
+        <!-- row 과거의 이야기-->
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="panel panel-default tile">
+              <div class="panel-heading tile-header">
+                <strong style="letter-spacing: 0.5px;" class="ng-binding">Step5 | 과거의 이야기</strong>
+                <div class="pull-right">
+                  <a href="" tile-control-toggle=""> <i class="fa fa-minus fa-lg"></i></a>
+                </div>
+              </div>
+              <!-- /tile header -->
+              <div class="panel-body collapse in">
+                <div class="row">
+                  <div class="col-xs-12 col-md-12 col-lg-6 col-xl-6">
+                    <textarea class="form-control" rows="5"></textarea>
+                  </div>
+                  <div class="col-xs-12 col-md-12 col-lg-6 col-xl-6 col-md-12-mt10 col-lg-12-mt0 pl-0 pr-0">
+                    <div class="col-xs-12 col-sm-12 col-md-1 col-lg-12 col-xl-12 text-warning pr-0">
+                      <strong><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> TIP</strong>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-11 col-md-12 col-lg-12 col-xl-12 text-warning">
+                      -현재피부가 과거에도 그랬는지 과거에는 피부가 어땠는지 입력 <br>
+                      -과거에 피부가 좋았다면 그때는 어떤 이로운점이 있었는지 입력 <br>
+                      -과거에 피부가 안좋았다면 그때는 어떤 점이 불편했는지 입력
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /panel-body -->
+            </div>
+            <!-- /panel -->
+          </div>
+          <!-- /col -->
+        </div>
+        <!-- /row /과거의 이야기-->
+
+        <!-- row 현재의 결심 그리고 미래에 대한 이야기-->
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="panel panel-default tile">
+              <div class="panel-heading tile-header">
+                <strong style="letter-spacing: 0.5px;" class="ng-binding">Step6 | 현재의 결심 그리고 미래에 대한 이야기</strong>
+                <div class="pull-right">
+                  <a href="" tile-control-toggle=""> <i class="fa fa-minus fa-lg"></i></a>
+                </div>
+              </div>
+              <!-- /tile header -->
+              <div class="panel-body collapse in">
+                <div class="row">
+                  <div class="col-xs-12 col-md-12 col-lg-6 col-xl-6">
+                    <textarea class="form-control" rows="5"></textarea>
+                  </div>
+                  <div class="col-xs-12 col-md-12 col-lg-6 col-xl-6 col-md-12-mt10 col-lg-12-mt0 pl-0 pr-0">
+                    <div class="col-xs-12 col-sm-12 col-md-1 col-lg-12 col-xl-12 text-warning pr-0">
+                      <strong><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> TIP</strong>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-11 col-md-12 col-lg-12 col-xl-12 text-warning">
+                      -현재의 피부를 만약 고치지 않고 그대로 방치했을때 현재와 미래에 어떤 불이익, 안좋은상황이 올것인지에 대해 발설유도 하며 최악의 상황을 세세히 그려줌 <br>
+                      -현재 피부는 어떤상태이니 어느정도의 노력과, 시간이 투자된다면, 어떤피부상태가 될것인지에 대해서 예상시켜줌<br>
+                      -그리고 피부가 그렇게 좋아졌을때 기분이 어떨것같은지, 현재 어떻게 바뀔것 같은지, 너의 미래는 어떻게 될것같은지에 대해 발설유도.<br>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /panel-body -->
+            </div>
+            <!-- /panel -->
+          </div>
+          <!-- /col -->
+        </div>
+        <!-- /row /현재의 결심 그리고 미래에 대한 이야기-->
+
+        <!-- row 관리 처방-->
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="panel panel-default tile">
+              <div class="panel-heading tile-header">
+                <strong style="letter-spacing: 0.5px;" class="ng-binding">Step7 | 관리처방</strong>
+                <div class="pull-right">
+                  <a href="" tile-control-toggle=""> <i class="fa fa-minus fa-lg"></i></a>
+                </div>
+              </div>
+              <!-- /tile header -->
+              <div class="panel-body collapse in">
+                <div class="row">
+                  <div class="col-xs-6 col-md-6 col-lg-6 col-xl-6">
+                    <label class="ng-binding">전체품목</label>
+                    <table class="table table-condensed table-typeA mt-5">
+                      <colgroup>
+                        <col style="width: 55%">
+                        <col style="width: 35%">
+                        <col style="width: 8%">
+                      </colgroup>
+                      <thead>
+                        <tr>
+                          <td>품목명</td>
+                          <td>금액</td>
+                          <td>선택</td>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>여드름 (재생크림 35ml 120,000 / 클렌징파우더 100ml 66,000)</td>
+                          <td>5회 550,000 / 1회 150,000</td>
+                          <td><button class="btn btn-default btn-default-sm ng-binding ng-scope" activate-button=""
+                              ng-click="">
+                              <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> 선택
+                            </button></td>
+                        </tr>
+                        <tr>
+                          <td>여드름 (재생크림 35ml 120,000 / 클렌징파우더 100ml 66,000)</td>
+                          <td>5회 550,000 / 1회 150,000</td>
+                          <td><button class="btn btn-default btn-default-sm ng-binding ng-scope" activate-button=""
+                              ng-click="">
+                              <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> 선택
+                            </button></td>
+                        </tr>
+                        <tr>
+                          <td>여드름 (재생크림 35ml 120,000 / 클렌징파우더 100ml 66,000)</td>
+                          <td>5회 550,000 / 1회 150,000</td>
+                          <td><button class="btn btn-default btn-default-sm ng-binding ng-scope" activate-button=""
+                              ng-click="">
+                              <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> 선택
+                            </button></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!-- /col -->
+                  <div class="col-xs-6 col-md-6 col-lg-6 col-xl-6 mt-10">
+                    <label class="ng-binding">선택 품목</label>
+                    <table class="table table-condensed table-typeA mt-5">
+                      <colgroup>
+                        <col style="width: 45%">
+                        <col style="width: 24%">
+                        <col style="width: 15%">
+                        <col style="width: auto">
+                      </colgroup>
+                      <thead>
+                        <tr>
+                          <td>품목명</td>
+                          <td>금액</td>
+                          <td>횟수</td>
+                          <td>삭제</td>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>여드름 (재생크림 35ml 120,000 / 클렌징파우더 100ml 66,000)</td>
+                          <td>5회 550,000 / 1회 150,000</td>
+                          <td><input name="" type="text" maxlength="" id="" class="form-control" placeholder=""></td>
+                          <td><button class="btn btn-default btn-default-sm ng-binding ng-scope" activate-button=""
+                              ng-click="">
+                              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 삭제
+                            </button></td>
+                        </tr>
+                        <tr>
+                          <td>여드름 (재생크림 35ml 120,000 / 클렌징파우더 100ml 66,000)</td>
+                          <td>5회 550,000 / 1회 150,000</td>
+                          <td><input name="" type="text" maxlength="" id="" class="form-control" placeholder=""></td>
+                          <td><button class="btn btn-default btn-default-sm ng-binding ng-scope" activate-button=""
+                              ng-click="">
+                              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 삭제
+                            </button></td>
+                        </tr>
+                        <tr>
+                          <td>여드름 (재생크림 35ml 120,000 / 클렌징파우더 100ml 66,000)</td>
+                          <td>5회 550,000 / 1회 150,000</td>
+                          <td><input name="" type="text" maxlength="" id="" class="form-control" placeholder=""></td>
+                          <td><button class="btn btn-default btn-default-sm ng-binding ng-scope" activate-button=""
+                              ng-click="">
+                              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 삭제
+                            </button></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!-- /col -->
+                </div>
+                <!-- /row -->
+              </div>
+              <!-- /panel-body -->
+            </div>
+            <!-- /panel -->
+          </div>
+          <!-- /col -->
+        </div>
+        <!-- /row /관리 처방-->
+
+        <!-- row 복용약-->
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="panel panel-default tile">
+              <div class="panel-heading tile-header">
+                <strong style="letter-spacing: 0.5px;" class="ng-binding">Step8 | 복용약</strong>
+                <div class="pull-right">
+                  <a href="" tile-control-toggle=""> <i class="fa fa-minus fa-lg"></i></a>
+                </div>
+              </div>
+              <!-- /tile header -->
+              <div class="panel-body collapse in">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <textarea class="form-control" rows="5"></textarea>
+                  </div>
+                </div>
+              </div>
+              <!-- /panel-body -->
+            </div>
+            <!-- /panel -->
+          </div>
+          <!-- /col -->
+        </div>
+        <!-- /row /복용약-->
+
+        <!-- row 고객관리 사진-->
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="panel panel-default tile">
+              <div class="panel-heading tile-header">
+                <strong style="letter-spacing: 0.5px;" class="ng-binding">Step9 | 고객관리 사진</strong>
+                <div class="pull-right">
+                  <a href="" tile-control-toggle=""> <i class="fa fa-minus fa-lg"></i></a>
+                </div>
+              </div>
+              <!-- /tile header -->
+              <div class="panel-body collapse in">
+                <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <file-attach file-data="vc.uploadFileList" callback="vc.onFileCallback"></file-attach>
+                  </div>
+                </div>
+              </div>
+              <!-- /panel-body -->
+            </div>
+            <!-- /panel -->
+          </div>
+          <!-- /col -->
+        </div>
+        <!-- /row /고객관리 사진-->
+
+        <!-- row 상담-->
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="panel panel-default tile mb-10">
+              <div class="panel-heading tile-header">
+                <strong style="letter-spacing: 0.5px;" class="ng-binding">Step10 | 상담</strong>
+                <div class="pull-right">
+                  <a href="" tile-control-toggle=""> <i class="fa fa-minus fa-lg"></i></a>
+                </div>
+              </div>
+              <!-- /tile header -->
+              <div class="panel-body collapse in">
+                <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-12">
+                    <div class="col-xs-12 col-sm-4 col-md-6 col-lg-6">
+                      <div class="form-group form-inline xs-mb10">
+                        <label>상담일</label>
+                        <div class="input-group" ng-controller="DatepickerDemoCtrl">
+                          <input type="text" class="form-control" uib-datepicker-popup="{{ :: format}}"
+                            ng-model="vc.RegDateFrom" ng-change="vc.srch.RegDateFrom = (objDate | date: 'yyyy-MM-dd')"
+                            is-open="opened" datepicker-options="dateOptions" ng-required="false" current-text="오늘"
+                            clear-text="취소" close-text="닫기" placeholder="상담일 선택" /> <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="open($event)">
+                              <i class="fa fa-calendar"></i>
+                            </button>
+                          </span>
+                        </div>
+                        <!-- /input-group -->
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                      <div class="form-group form-inline">
+                        <label>상담내용</label>
+                        <textarea class="form-control" rows="5"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="form-group form-inline">
+                      <label>관련사진</label>
+                      <div class="inline-box">
+                        <file-attach file-data="vc.uploadFileList" callback="vc.onFileCallback"></file-attach>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- /panel-body -->
+              </div>
+              <!-- /panel -->
+            </div>
+            <!-- /col -->
+          </div>
+          <!-- /row /상담-->
+        </div>
+        <!-- /pagecontent -->
+
+        <!-- Action Buttons -->
+        <div class="row">
+          <div class="col-lg-12 col-lg-12 col-sm-12 col-xs-12 btn-group">
+            <div class="pull-right">
+              <button class="btn btn-primary" activate-button ng-click="vc.setData()">
+                <i class="fa  fa-save"></i> {{ 'Menu.SAVE' | translate }}
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- /row -->
+
+
+      </div>
+      <!-- /page -->
+
+      <script type="text/javascript">
+        var oEditors = [];
+
+        var sLang = "ko_KR"; // 언어 (ko_KR/ en_US/ ja_JP/ zh_CN/ zh_TW), default = ko_KR
+
+        // 추가 글꼴 목록
+        //var aAdditionalFontSet = [["MS UI Gothic", "MS UI Gothic"], ["Comic Sans MS", "Comic Sans MS"],["TEST","TEST"]];
+        nhn.husky.EZCreator.createInIFrame({
+          oAppRef: oEditors,
+          elPlaceHolder: "strHtml",
+          sSkinURI: "assets/app/SE2.9/SmartEditor2Skin.html",
+          htParams: {
+            bUseToolbar: true, // 툴바 사용 여부 (true:사용/ false:사용하지 않음)
+            bUseVerticalResizer: false, // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
+            bUseModeChanger: true, // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
+            //bSkipXssFilter : true,		// client-side xss filter 무시 여부 (true:사용하지 않음 / 그외:사용)
+            //aAdditionalFontList : aAdditionalFontSet,		// 추가 글꼴 목록
+            fOnBeforeUnload: function () {
+              //alert("완료!");
+            },
+            I18N_LOCALE: sLang
+          }, //boolean
+          fOnAppLoad: function () {
+            //예제 코드
+            //oEditors.getById["ir1"].exec("PASTE_HTML", ["로딩이 완료된 후에 본문에 삽입되는 text입니다."]);
+          },
+          fCreator: "createSEditor2"
+        });
+      </script>
+

@@ -1,0 +1,91 @@
+<div class="modal-content">
+  <div class="modal-header ng-scope">
+    <h3 class="page-header">설문 다중 선택</h3>
+  </div>
+
+  <div class="modal-body ng-scope">
+    <form ui-keypress="{13:'modalCtrl.getList()'}">
+      <div class="row">
+        <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">
+          <div class="form-group form-inline">
+            <label>설문제목</label>
+            <input type="text" class="form-control" ng-model="modalCtrl.SvyNm"
+            placeholder="{{modalCtrl.columnMap['SvyNm'].ColumnLogicalNm | translate}}" />
+          </div>
+        </div>
+        <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">
+          <div class="form-group form-inline">
+            <label>서식</label>
+            <div class="input-group custom-search-form">
+              <input class="form-control" ng-model="modalCtrl.FormNm" placeholder="" readonly type="text"/>
+              <span class="input-group-btn">
+                <button class="btn btn-default" ng-click="modalCtrl.srchFormModal()" type="button">
+                  <i class="fa fa-search"></i>
+                </button>
+                <button class="btn btn-default" ng-click="modalCtrl.eraseForm()" type="button">
+                  <i class="fa fa-eraser"></i>
+                </button>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+          <div class="form-group pull-right">
+            <button class="btn btn-default btn-ef btn-ef-1 btn-ef-1a" ng-click="modalCtrl.getList()">
+              <i class="fa fa-search"></i> 검색
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <table id="searchTextResults" data-filter="#filter" data-page-size="10" class="table table-hover">
+            <!-- Header -->
+            <thead>
+              <tr>
+                <th class="text-center" style="vertical-align:middle; width: 1%;">
+                  <input ng-change="chkHeadChg()" ng-model="modalCtrl.chkHead" type="checkbox">
+                </th>
+                <th data-toggle="true" class="text-center">설문제목</th>
+                <th data-toggle="true" class="text-center">설문시작일</th>
+                <th data-toggle="true" class="text-center">설문종료일</th>
+                <th data-toggle="true" class="text-center">상태</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Result Rows -->
+              <tr ng-repeat="li in modalCtrl.lists" style="cursor: pointer;">
+                <td class="text-center" style="vertical-align:middle;">
+                  <input ng-change="chkRowChg()" ng-model="li.chkRow" type="checkbox">
+                </td>
+                <td class="text-center" ng-click="chkRowChg(li);"><span ng-bind="li.SvyNm"></span></td>
+                <td class="text-center"><span ng-bind="li.SvyBeginDate | utcToLocal:'yyyy-MM-dd'"></span></td>
+                <td class="text-center"><span ng-bind="li.SvyEndDate | utcToLocal:'yyyy-MM-dd'"></span></td>
+                <td class="text-center"><span ng-bind="li.SvyStatus"></span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- /row -->
+        <div class="paging">
+          <ul uib-pagination data-ng-if="modalCtrl.totalCount" total-items="modalCtrl.totalCount" items-per-page="modalCtrl.viewSizePerPage"
+            ng-model="modalCtrl.currentPageNum" ng-change="modalCtrl.getList()" max-size="modalCtrl.maxSize" boundary-links="true"
+            num-pages="modalCtrl.numPages" template-url="app/template/pagination.html"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- //modal-body -->
+
+  <div class="modal-footer ng-scope">
+    <button class="btn btn-primary mb-10" ng-click="modalCtrl.ok()">
+      <i class="fa fa-check"></i>{{ 'Menu.CHOOSE' | translate }}
+    </button>
+    <button class="btn btn-default mb-10" ng-click="modalCtrl.cancel()">
+      <i class="fa fa-times"></i>{{ 'Menu.CANCEL' | translate }}
+    </button>
+  </div>
+</div>

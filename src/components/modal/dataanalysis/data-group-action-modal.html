@@ -1,0 +1,24 @@
+<div class="modal-content">
+  <div class="modal-header ng-scope">
+    <h3 class="modal-title custom-font"> {{ 'Menu.TASK' | translate }} 변경</h3>
+  </div>
+
+  <div class="modal-body ng-scope">
+    <div class="row">
+      <div class="col-lg-12">
+        <common-code-tree code-list="vc.dagrouplists" reload-seq="vc.reloadSeq" code-model="vc.GroupAndAction" prevent-changing="true"></common-code-tree>
+      </div>
+    </div>
+    <!-- //row -->
+  </div>
+  <!-- //modal-body -->
+
+  <div class="modal-footer ng-scope">
+    <button class="btn btn-primary mb-10" ng-click="vc.ok()">
+      <i class="fa fa-check"></i>{{ 'Menu.CHOOSE' | translate }}
+    </button>
+    <button class="btn btn-default btn-ef btn-ef-6 btn-ef-6a mb-10" ng-click="vc.cancel()">
+      <i class="fa fa-times"></i>{{ 'Menu.CANCEL' | translate }}
+    </button>
+  </div>
+</div>

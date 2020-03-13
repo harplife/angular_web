@@ -1,0 +1,84 @@
+<div class="modal-content">
+  <div class="modal-header ng-scope">
+    <div class="page-header">설문문제 등록/수정</div>
+  </div>
+
+  <div class="modal-body ng-scope">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="form-group form-inline">
+          <label>No</label>
+          <input type="text" class="form-control" ng-model="vc.data.QstNo" maxlength="3" numbers-hyphen>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="form-group form-inline">
+          <label>유형</label>
+          <common-code-custom code-list="vc.QstTypeCodeList" code-model="vc.data.QstType" is-disabled="true"></common-code-custom>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="form-group form-inline">
+          <label>제목</label>
+          <input type="text" class="form-control" ng-model="vc.data.QstSubject" maxlength="50">
+        </div>
+      </div>
+    </div>
+    <div class="row" ng-show="vc.data.QstType == '300'">
+      <div class="col-lg-6">
+        <div class="form-group form-inline">
+          <label>배점</label>
+          <input type="text" class="form-control" ng-model="vc.data.QstItemScore" maxlength="3" numbers-hyphen>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" ng-show="vc.data.QstType != '300'">
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <table data-filter="#filter" data-page-size="100" class="table table-hover">
+            <colgroup>
+              <col width="10%">
+              <col width="*">
+              <col width="10%">
+              <col width="10%">
+            </colgroup>
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>내용</th>
+                <th>배점</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="li in vc.qstItemLists">
+                <td><input type="text" class="form-control" ng-model="li.QstItemNo" maxlength="3" numbers-hyphen></td>
+                <td><input type="text" class="form-control" ng-model="li.QstItemContents" maxlength="100"></td>
+                <td><input type="text" class="form-control" ng-model="li.QstItemScore" maxlength="3" numbers-hyphen></td>
+                <td><button class="btn btn-default" ng-click="vc.setDelQstItemData(li.KeyId3)">삭제</button></td>
+              </tr>
+              <tr>
+                <td><input type="text" class="form-control" ng-model="vc.data.NewQstItemNo" maxlength="3" numbers-hyphen></td>
+                <td><input type="text" class="form-control" ng-model="vc.data.NewQstItemContents" maxlength="100"></td>
+                <td><input type="text" class="form-control" ng-model="vc.data.NewQstItemScore" maxlength="3" numbers-hyphen></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer ng-scope">
+    <button class="btn btn-primary mb-10" ng-click="vc.setQstData()">
+      <i class="fa fa-save"></i> {{ 'Menu.SAVE' | translate }}/행추가
+    </button>
+    <button class="btn btn-default btn-ef btn-ef-6 btn-ef-6a mb-10" ng-click="vc.close()"><i
+        class="fa fa-times"></i>{{ 'Menu.CLOSE' | translate }}
+    </button>
+  </div>
+</div>

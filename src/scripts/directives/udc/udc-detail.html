@@ -1,0 +1,8 @@
+<div ng-repeat="li in vc.metaList" class="{{li.EditColumnWidth}}" ng-if="li.CustomColumnYN == 'Y'">
+  <div class="form-group form-inline">
+    <label title="{{ li.ColumnLogicalNm }}">{{ li.ColumnLogicalNm }}</label>
+    <div ng-if="li.ColumnLogicalDataType != '40'" class="form-control txt_view" ng-bind="vc.metaModel[li.ColumnPhysicalNm]"></div>
+    <div class="form-control txt_view" ng-bind="vc.metaModel[li.ColumnPhysicalNm] | utcToLocal:'yyyy-MM-dd'"
+         ng-if="li.ColumnLogicalDataType == '40'"></div>
+  </div>
+</div>

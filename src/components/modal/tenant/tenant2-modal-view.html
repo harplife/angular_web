@@ -1,0 +1,79 @@
+<div class="modal-content">
+  <div class="modal-header ng-scope">
+    <h3 class="page-header">{{ 'Menu.MEMBERCOMPANY' | translate }}{{ 'Menu.SEARCH' | translate }}</h3>
+  </div>
+
+  <div class="modal-body ng-scope">
+    <div class="row">
+      <div class="col-lg-7">
+        <div class="form-group form-inline">
+          <label>{{ 'Menu.MEMBERCOMPANYNAME' | translate }}</label>
+          <input type="text" class="form-control" ng-model="vc.srch.TenantNm"
+            placeholder="{{ 'Menu.MEMBERCOMPANYNAME' | translate }}">
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="form-group">
+          <label>&nbsp;</label>
+          <button class="btn btn-default btn-ef btn-ef-1 btn-ef-1a" style="margin-left:-24px;"
+            ng-click="vc.getList()"><i class="fa fa-search"></i> 조회</button>
+        </div>
+      </div>
+    </div><!-- //row -->
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <table data-filter="#filter" data-page-size="10" class="table table-hover">
+            <!-- Header -->
+            <colgroup>
+              <col width="">
+              <col width="">
+              <col width="">
+              <col width="">
+              <col width="">
+              <col width="">
+              <col width="">
+            </colgroup>
+            <thead>
+              <tr>
+                <th>{{ 'Menu.MEMBERCOMPANYNAME' | translate }}</th>
+                <th>{{ 'Menu.PERSONINCHARGE' | translate }}</th>
+                <th>{{ 'Menu.TEL' | translate }}</th>
+                <th>{{ 'Menu.EMAIL' | translate }}</th>
+                <th>{{ 'Menu.COMPANYSTATUS' | translate }}</th>
+                <th>{{ 'Menu.JOINDATE' | translate }}</th>
+                <th>{{ 'Menu.WITHDRAWALDATE' | translate }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Result Rows -->
+              <tr ng-repeat="li in vc.tenantlists" ng-click="vc.ok(li);" style="cursor: pointer;">
+                <td><span ng-bind="li.TenantNm"></span></td>
+                <td><span ng-bind="li.Contact"></span></td>
+                <td><span ng-bind="li.TelNo"></span></td>
+                <td><span ng-bind="li.Email"></span></td>
+                <td><span ng-bind="li.TenantStatus"></span></td>
+                <td><span ng-bind="li.JoinDate"></span></td>
+                <td><span ng-bind="li.ExitDate"></span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div><!-- /row -->
+
+    <div class="paging">
+      <ul uib-pagination data-ng-if="vc.totalItems" total-items="vc.totalItems" items-per-page="vc.srch.viewSize"
+        ng-model="vc.currentPage" ng-change="vc.pageChanged()" max-size="vc.maxSize" boundary-links="true"
+        num-pages="vc.numPages" template-url="app/template/pagination.html"></ul>
+    </div>
+  </div><!-- //modal-body -->
+
+  <div class="modal-footer ng-scope">
+    <button class="btn btn-primary mb-10" ng-click="vc.ok()"><i
+        class="fa fa-check"></i>{{ 'Menu.CHOOSE' | translate }}</button>
+    <button class="btn btn-default btn-ef btn-ef-6 btn-ef-6a mb-10" ng-click="vc.cancel()"><i
+        class="fa fa-times"></i>{{ 'Menu.CANCEL' | translate }}</button>
+  </div>
+</div>

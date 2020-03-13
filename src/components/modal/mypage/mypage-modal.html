@@ -1,0 +1,173 @@
+<div class="modal-content wd80p">
+  <div class="modal-header ng-scope">
+    <h3 class="page-header">내정보 수정</h3>
+  </div>
+
+  <div class="modal-body ng-scope">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+        <div class="form-group form-inline">
+          <label>{{modalCtrl.columnMap['LoginId'].ColumnLogicalNm | translate}}</label>
+          <input ng-if="modalCtrl.data.KeyId!= null && modalCtrl.data.KeyId != ''" type="text" class="form-control form-right" ng-model="modalCtrl.data.LoginId" readonly>
+          <input ng-if="modalCtrl.data.KeyId== null || modalCtrl.data.KeyId == ''" type="text" class="form-control form-right" ng-model="modalCtrl.data.LoginId" maxlength="20" ng-blur="modalCtrl.chkDupLoginId()">
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+        <div class="form-group form-inline">
+          <label>{{modalCtrl.columnMap['UserNm'].ColumnLogicalNm | translate}}</label>
+          <input type="text" class="form-control form-right" maxlength="100" ng-model="modalCtrl.data.UserNm">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+        <div class="form-group form-inline">
+          <label>비밀번호</label>
+          <input type="password" class="form-control form-right" minlength="8" maxlength="14" ng-model="modalCtrl.data.Password">
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+        <div class="form-group form-inline">
+          <label>비밀번호확인</label>
+          <input type="password" class="form-control form-right" minlength="8" maxlength="14" ng-model="modalCtrl.data.Password2">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+        <div class="form-group form-inline">
+          <label>{{modalCtrl.columnMap['TenantNm'].ColumnLogicalNm | translate}}</label>
+          <div class="input-group">
+            <input type="text" class="form-control form-right" ng-model="modalCtrl.data.TenantNm" readonly>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+        <div class="form-group form-inline">
+          <label> {{ modalCtrl.columnMap['Email'].ColumnLogicalNm | translate }}</label>
+          <input type="text" class="form-control form-right" maxlength="255" ng-model="modalCtrl.data.Email">
+        </div>
+      </div>
+    </div>
+    <!-- /row -->
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+        <div class="form-group form-inline xs-mb10">
+          <label>{{modalCtrl.columnMap['TelNo'].ColumnLogicalNm | translate }}</label>
+          <div class="input-group">
+            <input type="text" class="form-control form-right" maxlength="255" numbers-hyphen ng-model="modalCtrl.data.TelNo">
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+        <div class="form-group form-inline xs-mb10">
+          <label>{{modalCtrl.columnMap['Mobile'].ColumnLogicalNm | translate }}</label>
+          <div class="input-group">
+            <input type="text" class="form-control form-right" maxlength="255" numbers-hyphen ng-model="modalCtrl.data.Mobile">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
+          <div class="form-group form-inline">
+            <label>{{modalCtrl.columnMap['BirthDay'].ColumnLogicalNm | translate }}</label>
+            <div class="input-group" ng-controller="DatepickerDemoCtrl">
+              <input class="form-control" clear-text="취소" close-text="닫기"
+                      current-text="오늘"
+                      datepicker-options="dateOptions"
+                      is-open="opened"
+                      ng-change="modalCtrl.data.BirthDay = (modalCtrl.BirthDay | date: 'yyyy-MM-dd')"
+                      ng-model="modalCtrl.BirthDay"
+                      ng-required="false" placeholder="yyyy-mm-dd" type="text"
+                      uib-datepicker-popup="{{ :: format}}"/>
+              <span class="input-group-btn">
+                <button class="btn btn-default" ng-click="open($event)" type="button">
+                  <i class="glyphicon glyphicon-calendar"></i>
+                </button>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+          <div class="form-group">
+              <label class="radio-inline" ng-repeat="li in modalCtrl.columnMap['LnrSlrType'].CodeList"><input type="radio" ng-model="modalCtrl.data.LnrSlrType" value="{{li.Code}}">{{li.CodeValue}}</label>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+        <div class="form-group form-inline xs-mb10">
+          <label>{{modalCtrl.columnMap['EmgCntct'].ColumnLogicalNm | translate }}</label>
+          <div class="input-group">
+            <input type="text" class="form-control form-right" maxlength="255" numbers-hyphen ng-model="modalCtrl.data.EmgCntct">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+        <div class="form-group form-inline">
+          <label>{{modalCtrl.columnMap['BankNm'].ColumnLogicalNm | translate }}</label>
+          <input type="text" class="form-control form-right" maxlength="20" ng-model="modalCtrl.data.BankNm">
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+        <div class="form-group form-inline">
+          <label>{{modalCtrl.columnMap['AcctNo'].ColumnLogicalNm | translate }}</label>
+          <input type="text" class="form-control form-right" maxlength="20" numbers-hyphen ng-model="modalCtrl.data.AcctNo">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+        <div class="form-group form-inline">
+          <label>{{modalCtrl.columnMap['AttendTime'].ColumnLogicalNm | translate }}</label>
+          <common-code-custom code-list="modalCtrl.columnMap['AttendTime'].CodeList" code-model="modalCtrl.data.AttendTime"></common-code-custom>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+        <div class="form-group form-inline">
+          <label>{{modalCtrl.columnMap['OffWorkTime'].ColumnLogicalNm | translate }}</label>
+          <common-code-custom code-list="modalCtrl.columnMap['OffWorkTime'].CodeList" code-model="modalCtrl.data.OffWorkTime"></common-code-custom>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="form-group">
+          <label class="">근무요일</label>
+          <div style="padding-left: 20%; position: absolute; display: inline-block;">
+            <label class="ng-binding radio-inline"><input type="checkbox" ng-model="modalCtrl.data.MonWorkYN" ng-checked="modalCtrl.data.MonWorkYN =='Y' ? true:false" ng-true-value="'Y'" ng-false-value="'N'">{{modalCtrl.columnMap['MonWorkYN'].ColumnLogicalNm | translate }}</label>
+            <label class="ng-binding radio-inline"><input type="checkbox" ng-model="modalCtrl.data.TueWorkYN" ng-checked="modalCtrl.data.TueWorkYN =='Y' ? true:false" ng-true-value="'Y'" ng-false-value="'N'">{{modalCtrl.columnMap['TueWorkYN'].ColumnLogicalNm | translate }}</label>
+            <label class="ng-binding radio-inline"><input type="checkbox" ng-model="modalCtrl.data.WedWorkYN" ng-checked="modalCtrl.data.WedWorkYN =='Y' ? true:false" ng-true-value="'Y'" ng-false-value="'N'">{{modalCtrl.columnMap['WedWorkYN'].ColumnLogicalNm | translate }}</label>
+            <label class="ng-binding radio-inline"><input type="checkbox" ng-model="modalCtrl.data.ThuWorkYN" ng-checked="modalCtrl.data.ThuWorkYN =='Y' ? true:false" ng-true-value="'Y'" ng-false-value="'N'">{{modalCtrl.columnMap['ThuWorkYN'].ColumnLogicalNm | translate }}</label>
+            <label class="ng-binding radio-inline"><input type="checkbox" ng-model="modalCtrl.data.FriWorkYN" ng-checked="modalCtrl.data.FriWorkYN =='Y' ? true:false" ng-true-value="'Y'" ng-false-value="'N'">{{modalCtrl.columnMap['FriWorkYN'].ColumnLogicalNm | translate }}</label>
+            <label class="ng-binding radio-inline"><input type="checkbox" ng-model="modalCtrl.data.SatWorkYN" ng-checked="modalCtrl.data.SatWorkYN =='Y' ? true:false" ng-true-value="'Y'" ng-false-value="'N'">{{modalCtrl.columnMap['SatWorkYN'].ColumnLogicalNm | translate }}</label>
+            <label class="ng-binding radio-inline"><input type="checkbox" ng-model="modalCtrl.data.SunWorkYN" ng-checked="modalCtrl.data.SunWorkYN =='Y' ? true:false" ng-true-value="'Y'" ng-false-value="'N'">{{modalCtrl.columnMap['SunWorkYN'].ColumnLogicalNm | translate }}</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="form-group">
+          <span style="color : red;">영문자, 숫자, 특수문자 중 3가지 조합(대소문자 구분함)<br>
+            최소 8자 ~ 최대 14자 (띄어쓰기 제외) / 특수문자 !@#$%^&*()-_;:&lt;&gt;,.[]{} 사용 가능<br>
+            동일한 문자(숫자 포함) 3자 이상 연속 금지 ex) aaa, 111 / 연속적으로 증감되는 숫자, 문자 금지 Ex) abc, 123<br>
+            생년월일 숫자와 4자 이상 중복되는 경우 사용불가</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- //modal-body -->
+
+  <div class="modal-footer ng-scope">
+    <button class="btn btn-primary mb-10" ng-click="modalCtrl.setData()">
+      <i class="fa fa-check"></i> 수정
+    </button>
+    <button class="btn btn-default mb-10" ng-click="modalCtrl.cancel()">
+      <i class="fa fa-times"></i> 닫기
+    </button>
+  </div>
+</div>

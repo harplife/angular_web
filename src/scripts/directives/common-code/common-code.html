@@ -1,0 +1,4 @@
+<select class="form-control" id="selectCombo" ng-change="ccCtrl.onChangeHandler()" name="selectCombo" ng-model="ccCtrl.data"
+  ng-options="opt.CodeValue for opt in ccCtrl.list track by opt.Code" ng-disabled="ccCtrl.isDisabled" style="min-width:100px;">
+  <option value="">--{{ ccCtrl.chooseMessage | translate }}--</option>
+</select>

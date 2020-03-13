@@ -1,0 +1,194 @@
+<!--
+style="width:956px; height:693px;"
+-->
+<div class="modal-content">
+  <div class="modal-header ng-scope">
+    <div class="page-header">미리보기</div>
+  </div>
+
+  <div class="modal-body ng-scope">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-default tile">
+          <div class="panel-heading tile-header">
+            <strong style="letter-spacing: 0.5px;" class="ng-binding">
+              [{{vc.svyPagesTypeTxt}}]
+              <span ng-if="vc.svyInfo.SvyNm != ''">{{vc.svyInfo.SvyNm}}</span>
+              <span ng-if="vc.svyInfo.SvyNm == null || vc.svyInfo.SvyNm == ''">설문제목을 입력해주세요.</span>
+            </strong>
+            <div class="pull-right">
+              {{vc.svyPagesTxt}}&nbsp;&nbsp;&nbsp;&nbsp;
+              <a href="" tile-control-toggle=""> <i class="fa fa-minus fa-lg"></i></a>
+            </div>
+          </div>
+          <div class="panel-body collapse in">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="row" ng-if="vc.svyPagesType == '1'">
+                  <div class="col-lg-12">
+                    <span ng-bind-html="vc.svyInfo.TopCont|htmlString"></span>
+                  </div>
+                </div>
+                <div class="row" ng-if="vc.svyPagesType == '2'">
+                  <div class="col-lg-12" style="padding:20px; max-width: 900px;">
+                    <!--<div class="row" ng-repeat="qt in vc.svyQsts | filter : {PageNo: vc.svyPagesCur} : true">-->
+                    <div class="row" ng-repeat="qt in vc.svyQstsCur">
+                      <!-- 선택형 -->
+                      <div class="col-lg-12" style="padding-bottom:50px;" ng-if="qt.QstType == '1'">
+                        <div class="row" style="height:40px; padding:10px 0 10px 0; background-color: #f4f4f4;">
+                          <div class="col-lg-12"><span ng-bind-html="wjmSurvey.getQstStyle(qt.QstNo, vc.svyInfo.QstIconType, vc.svyInfo.QstNumYN)|htmlString"></span>{{qt.QstSubject}}</div>
+                        </div>
+                        <p ng-repeat="it in vc.svyQstItems | filter : {qtId: qt.qtId} : true" style="padding-top:10px;">
+                          <input type="radio" ng-model="vc.svyResps[qt.qtId][0]" ng-value="it.itId" style="margin-top:-3px;" ng-click="vc.setBeginQtId(qt, it)"> <!--{{it.QstItemNo}}. -->{{it.QstItemContents}}
+                        </p>
+                      </div>
+
+                      <!-- 입력형 -->
+                      <div class="col-lg-12" style="padding-bottom:50px;" ng-if="qt.QstType == '2'">
+                        <div class="row" style="height:40px; padding:10px 0 10px 0; background-color: #f4f4f4;">
+                          <div class="col-lg-12"><span ng-bind-html="wjmSurvey.getQstStyle(qt.QstNo, vc.svyInfo.QstIconType, vc.svyInfo.QstNumYN)|htmlString"></span>{{qt.QstSubject}}</div>
+                        </div>
+                        <div style="padding-top:10px;">
+                          <textarea ng-model="vc.svyResps[qt.qtId][0]" class="form-control" style="height:100px;" maxlength="500"></textarea>
+                        </div>
+                      </div>
+
+                      <!-- 우선순위형 -->
+                      <div class="col-lg-12" style="padding-bottom:50px;" ng-if="qt.QstType == '3'">
+                        <div class="row" style="height:40px; padding:10px 0 10px 0; background-color: #f4f4f4;">
+                          <div class="col-lg-12"><span ng-bind-html="wjmSurvey.getQstStyle(qt.QstNo, vc.svyInfo.QstIconType, vc.svyInfo.QstNumYN)|htmlString"></span>{{qt.QstSubject}}</div>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-6" style="padding-bottom:10px;">
+                            <p ng-repeat="it in vc.svyQstItems | filter : {qtId: qt.qtId} : true" style="padding-top:10px;">{{it.QstItemNo}}. {{it.QstItemContents}}</p>
+                          </div>
+                          <div class="col-sm-6">
+                            <p ng-repeat="n in [].constructor(qt.QstTopCnt) track by $index" style="padding-top:10px;">
+                              <select class="form-control" ng-model="vc.svyResps[qt.qtId][$index]" ng-options="li.itId as li.QstItemContents for li in vc.svyQstItems | filter : {qtId: qt.qtId} : true">
+                                <option value="">--{{$index + 1}}순위 선택--</option>
+                              </select>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- 이미지형 -->
+                      <div class="col-lg-12" style="padding-bottom:50px;" ng-if="qt.QstType == '4'">
+                        <div class="row" style="height:40px; padding:10px 0 10px 0; background-color: #f4f4f4;">
+                          <div class="col-lg-12"><span ng-bind-html="wjmSurvey.getQstStyle(qt.QstNo, vc.svyInfo.QstIconType, vc.svyInfo.QstNumYN)|htmlString"></span>{{qt.QstSubject}}</div>
+                        </div>
+                        <p style="padding-top:10px;" ng-show="qt.qtImgSrc != null && qt.qtImgSrc != ''"><img ng-src="{{qt.qtImgSrc}}" style="width:140px; height:140px;" /></p>
+                        <p ng-repeat="it in vc.svyQstItems | filter : {qtId: qt.qtId} : true" style="padding-top:5px;">
+                          <input type="radio" ng-model="vc.svyResps[qt.qtId][0]" ng-value="it.itId" style="margin-top:-3px;" ng-click="vc.setBeginQtId(qt, it)"><span ng-show="it.itImgSrc != null && it.itImgSrc != ''">&nbsp;&nbsp;&nbsp;<img ng-src="{{it.itImgSrc}}" style="width:70px; height:70px;" />&nbsp;&nbsp;</span> <!--{{it.QstItemNo}}. -->{{it.QstItemContents}}
+                        </p>
+                      </div>
+
+                      <!-- 분류정보 -->
+                      <div class="col-lg-12" style="padding-bottom:50px;" ng-if="qt.QstType == 'C'">
+                        <div class="row" style="height:40px; padding:10px 0 10px 0; background-color: #f4f4f4;">
+                          <div class="col-lg-12"><span ng-bind-html="wjmSurvey.getQstStyle(qt.QstNo, vc.svyInfo.QstIconType, vc.svyInfo.QstNumYN)|htmlString"></span>{{qt.QstSubject}}</div>
+                        </div>
+                        <div ng-if="qt.ClassfyCd == 'MB'" style="padding-top:10px;">
+                          <div class="form-inline">
+                            <div class="form-group">
+                              <select ng-model="vc.svyResps[qt.qtId][0]" class="form-control" style="margin-left:0 !Important; width:100% !Important;">
+                                <option value="">-선택-</option>
+                                <option value="010">010</option>
+                                <option value="011">011</option>
+                              </select>
+                            </div>
+                            <div class="form-group">
+                              <input type="text" ng-model="vc.svyResps[qt.qtId][1]" class="form-control" maxlength="4" number-only="" style="margin-left:0 !Important; width:100% !Important;">
+                            </div>
+                            <div class="form-group">
+                              <input type="text" ng-model="vc.svyResps[qt.qtId][2]" class="form-control" maxlength="4" number-only="" style="margin-left:0 !Important; width:100% !Important;">
+                            </div>
+                          </div>
+                        </div>
+                        <div ng-if="qt.ClassfyCd == 'EM'" style="padding-top:10px;">
+                          <div class="form-inline">
+                            <div class="form-group">
+                              <input type="text" ng-model="vc.svyResps[qt.qtId][0]" class="form-control" maxlength="30" style="margin-left:0 !Important; width:100% !Important;">
+                            </div>
+                            <div class="form-group">
+                              @
+                            </div>
+                            <div class="form-group">
+                              <select ng-model="vc.svyResps[qt.qtId][1]" class="form-control" style="margin-left:0 !Important; width:100% !Important;">
+                                <option value="">-선택-</option>
+                                <option value="gmail.com">gmail.com</option>
+                                <option value="naver.com">naver.com</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                        <div ng-if="qt.ClassfyCd == 'GD'">
+                          <p style="padding-top:10px;"><input type="radio" ng-model="vc.svyResps[qt.qtId][0]" ng-value="'M'" style="margin-top:-3px;"> <!--{{it.QstItemNo}}. -->남</p>
+                          <p style="padding-top:10px;"><input type="radio" ng-model="vc.svyResps[qt.qtId][0]" ng-value="'F'" style="margin-top:-3px;"> <!--{{it.QstItemNo}}. -->여</p>
+                        </div>
+                        <div ng-if="qt.ClassfyCd != 'MB' && qt.ClassfyCd != 'EM' && qt.ClassfyCd != 'GD'">
+                          <!--
+                          <select class="form-control" ng-model="vc.tempB" ng-options="li.ClassfyId as li.ClassfyNm for li in vc.classfyListLev2 | filter : {ClassfyCd: qt.ClassfyCd} : true">
+                            <option value="">--선택--</option>
+                          </select>
+                          -->
+                          <p ng-repeat="it in vc.svyQstItems | filter : {qtId: qt.qtId} : true" style="padding-top:10px;">
+                            <input type="radio" ng-model="vc.svyResps[qt.qtId][0]" ng-value="it.itId" ng-click="vc.setBeginQtId(qt, it)" style="margin-top:-3px;"> <!--{{it.QstItemNo}}. -->{{it.QstItemContents}}
+                          </p>
+                        </div>
+                      </div>
+
+                      <!-- 설명글 -->
+                      <div style="padding:10px 0 50px 0;" ng-if="qt.QstType == 'R'">
+                        <pre class="txt-pre">{{qt.QstSubject}}</pre>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row" ng-if="vc.svyPagesType == '3'">
+                  <div class="col-lg-12" ng-show="vc.svyInfo.BtmType == '100'">
+                    <span ng-bind-html="vc.svyInfo.BtmCont|htmlString"></span>
+                  </div>
+                  <div class="col-lg-12" ng-show="vc.svyInfo.BtmType == '200'">
+                    - 미니결과 예시 -<br />
+                    이 내용은 기본으로 세팅되는 값입니다.<br />
+                    <br />
+                    귀하의 점수는 000입니다.<br />
+                    <br />
+                    상담신청 추후 링크 연결하기<br />
+                    상담전화걸기<br />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row" style="padding-top:10px;">
+              <div class="col-lg-12 text-center">
+              <!--<div class="col-lg-12 btn-bottom text-center">-->
+                  <button class="btn btn-default" ng-click="vc.setSvyPagesType('PREV')" ng-if="vc.showSvyBtn('PREV')">
+                    <i class="fa fa-arrow-left"></i> 이전
+                  </button>
+                  <button class="btn btn-default" ng-click="vc.setSvyPagesType('NEXT')" ng-if="vc.showSvyBtn('NEXT')">
+                    <i class="fa fa-arrow-right"></i> 다음
+                  </button>
+                  <button class="btn btn-default" ng-click="vc.setSvyPagesType('END')" ng-if="vc.showSvyBtn('END')">
+                    <i class="fa fa-save"></i> 완료
+                  </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer ng-scope">
+    <!--
+    <button class="btn btn-primary mb-10" ng-click="vc.apply()">
+      <i class="fa fa-save"></i> 적용
+    </button>
+    -->
+    <button class="btn btn-default btn-ef btn-ef-6 btn-ef-6a mb-10" ng-click="vc.close()"><i
+      class="fa fa-times"></i>{{ 'Menu.CLOSE' | translate }}
+    </button>
+  </div>
+</div>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	if you will get the error that is  "Can't find Python executable "python", you can set the PYTHON env variable.",
+	you execute the command which is "npm config set python {python v2.7 path}/python.exe"
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.hs.blockchain.vote</groupId>
+	<artifactId>salevis4-home</artifactId>
+	<version>0.0.1</version>
+	<packaging>pom</packaging>
+	<url>https://salevis.net</url>
+	<properties>
+		<repo>https://repo1.maven.org/</repo>
+		<!-- Windows를 사용할 경우 Python과 같은 모듈이 설치되지 않아 "npm i -g -p windows-build-tools"를 실행해 설치해야할 경우 가 있다.-->
+		<python>C:/Users/rohbi/.windows-build-tools/python27/python.exe</python>
+	</properties>
+	<profiles>
+		<profile>
+			<id>release</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<env>release</env>
+			</properties>
+		</profile>
+		<profile>
+			<id>local</id>
+			<properties>
+				<env>local</env>
+			</properties>
+		</profile>
+	</profiles>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.github.eirslett</groupId>
+				<artifactId>frontend-maven-plugin</artifactId>
+				<!-- NB! Set <version> to the latest released version of frontend-maven-plugin, 
+					like in README.md -->
+				<version>1.6</version>
+				<executions>
+					<execution>
+						<id>install node and npm</id>
+						<goals>
+							<goal>install-node-and-npm</goal>
+						</goals>
+						<configuration>
+							<nodeVersion>v8.9.4</nodeVersion>
+							<npmVersion>6.1.0</npmVersion>
+						</configuration>
+					</execution>
+					<!-- https://docs.npmjs.com/cli/prune 미사용 모듈 삭제 -->
+					<!-- <execution>
+						<id>npm-prune</id>
+						<goals>
+							<goal>npm</goal>
+						</goals>
+						<configuration>
+							<arguments>prune</arguments>
+						</configuration>
+					</execution> -->
+					<execution>
+						<id>npm install</id>
+						<goals>
+							<goal>npm</goal>
+						</goals>
+						<!-- Optional configuration which provides for running any npm command -->
+						<configuration>
+							<arguments>install</arguments>
+						</configuration>
+					</execution>
+					<!-- node-gyp 실행을 위해서는 Python 2.X 버전이 설치되어야 함 -->
+					<execution>
+						<id>npm config</id>
+						<goals>
+							<goal>npm</goal>
+						</goals>
+						<!-- Optional configuration which provides for running any npm command -->
+						<configuration>
+							<arguments>config set pythone ${python}</arguments>
+						</configuration>
+					</execution>
+					<!-- Git 설치되어야 함 -->
+					<!-- <execution>
+						<id>bower cache</id>
+						<goals>
+							<goal>bower</goal>
+						</goals>
+						<configuration>
+							<arguments>cache clean</arguments>
+						</configuration>
+					</execution> -->
+					<execution>
+						<id>bower install</id>
+						<goals>
+							<goal>bower</goal>
+						</goals>
+						<configuration>
+							<arguments>install</arguments>
+						</configuration>
+					</execution>
+					<execution>
+						<id>gulp-build</id>
+						<goals>
+							<goal>gulp</goal>
+						</goals>
+						<!-- <configuration>
+							<arguments>${env}</arguments>
+						</configuration> -->
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>anonymous</id>
+			<url>${repo}/maven2/</url>
+		</pluginRepository>
+	</pluginRepositories>
+</project>

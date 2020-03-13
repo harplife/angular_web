@@ -1,0 +1,269 @@
+<!doctype html>
+<html ng-app="salevis4-web">
+
+<head>
+  <title ng-bind="$root.title">Softzion Inc | Softzion</title>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="Expires" content="-1">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-Control" content="No-Cache">
+
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+  <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
+  <!-- bower:css -->
+  <!-- run `gulp inject` to automatically populate bower styles dependencies -->
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:css({.tmp/serve,src}) styles/app.css -->
+  <!-- inject:css -->
+  <!-- css files will be automatically insert here -->
+  <!-- endinject -->
+  <!-- endbuild -->
+
+  <!-- build:js(src) scripts/vendor.js -->
+  <!-- bower:js -->
+  <!-- run `gulp inject` to automatically populate bower script dependencies -->
+  <!-- endbower -->
+  <!-- endbuild -->
+
+  <!-- build:js({.tmp/serve,.tmp/partials,src}) scripts/app.js -->
+  <!-- inject:js -->
+  <!-- js files will be automatically insert here -->
+  <!-- endinject -->
+
+  <!-- inject:partials -->
+  <!-- angular templates will be automatically converted in js and inserted here -->
+  <!-- endinject -->
+  <!-- endbuild -->
+
+  <link rel="stylesheet" href="assets/css/common.css">
+  <link rel="stylesheet" href="assets/css/custom-media-width-size.css">
+  <link rel="stylesheet" href="assets/css/fullcalendar.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+
+  <script src="assets/global-constant.js"></script>
+  <script src="assets/app/common/common.js"></script>
+  <!--<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>-->
+  <!-- SSL 적용시 호출 -->
+  <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+  <script src="assets/app/common/FileSaver.min.js"></script>
+  <script src="assets/app/common/xlsx.full.min.js"></script>
+  <script src="assets/app/common/fullcalendar.min.js"></script>
+  <script src="assets/app/common/locale-all.js"></script>
+
+  <script crossorigin="anonymous" integrity="sha384-/x1aHz0nKRd6zVUazsV6CbQvjJvr6zQL2CHbQZf3yoLkezyEtZUpqUNnOLW9Nt3v"
+    src="https://browser.sentry-cdn.com/5.9.1/bundle.min.js"></script>
+
+  <script crossorigin="anonymous" src="https://browser.sentry-cdn.com/5.9.1/angular.min.js"></script>
+</head>
+
+<body class="service--point_mobile page--main">
+  <!--[if lt IE 10]>
+  <p class="browsehappy">최신 웹 브라우저로 업그레이드 하시기 바랍니다. (권장: Internet Explorer 11 이상, Google Chrome 76 이상). <a
+    href="http://browsehappy.com/">최신 웹 브라우저 다운로드</a></p>
+  <![endif]-->
+  <!-- 헤더 -->
+  <!-- for pc .section--module_header__on -->
+  <div id="section--module_header" class="" ng-controller="HeaderCtrl as vc">
+    <div class="section--module_inner">
+      <div class="section--header_top">
+        <!-- for mobile .on -->
+        <div class="section--header_content">
+          <button type="button" class="button--toggle_gnb">
+            <span class="icon"></span>
+          </button>
+
+          <a href="/#/{{currentLanguage}}/home/main" class="link--header_logo" target="_parent"> <img
+              src="assets/images/image--header_logo.png" alt="Salevis4" class="image--header_logo" />
+          </a>
+          <!-- 모바일 gnb -->
+          <div class="section--mobile_gnb">
+            <div class="section--mobile_gnb_header">
+              <p class="text--mobile_gnb_header_title">
+                Salevis4 <span><a href="https://www.linkedin.com/company/point-mobile-co-ltd-korea-/"
+                    target="_blank"><img src="assets/images/icon--sns_linkedin_red.png" alt="" /></a><a
+                    href="https://www.youtube.com/channel/UCmDuGO_lsI0yKI30zFOo_Tw?view_as=subscriber"
+                    target="_blank"><img src="assets/images/icon--sns_youtube_red.png" alt="" /></a><a
+                    href="https://twitter.com/PointMobileKR" target="_blank"><img
+                      src="assets/images/icon--sns_twiter_red.png" alt="" /></a></span>
+              </p>
+
+              <button type="button" class="button--close_mobile_gnb">
+                <span class="icon"></span>
+              </button>
+            </div>
+
+            <ul class="list--gnb">
+              <li class="item--gnb item--gnb_products"><a ui-sref="app.products.products" class="link--gnb"><span ng-bind-html="'Menu.MENU_PRODUCTS' | translate"></span></a>
+                <ul class="list--depth_1">
+                  <li class="item--depth_1"><a ui-sref="app.products.products-page1" class="link--depth_1"><span ng-bind-html="'Menu.MENU_MOBILECOMPUTERS' | translate"></span></a></li>
+                  <li class="item--depth_1"><a ui-sref="app.products.products-page2" class="link--depth_1"><span ng-bind-html="'Menu.MENU_RUGGEDSMARTPHONE' | translate"></span></a></li>
+                </ul>
+              </li>
+
+              <li class="item--gnb item--gnb_solutions"><a ui-sref="app.products.products" class="link--gnb"><span ng-bind-html="'Menu.MENU_SOLUTIONS' | translate"></span></a>
+                <ul class="list--depth_1">
+                  <li class="item--depth_1"><a ui-sref="app.products.products-page1" class="link--depth_1"><span ng-bind-html="'Menu.MENU_RETAIL' | translate"></span></a></li>
+                  <li class="item--depth_1"><a ui-sref="app.products.products-page2" class="link--depth_1"><span ng-bind-html="'Menu.MENU_MANUFACTURINGWMS' | translate"></span></a></li>
+                </ul>
+              </li>
+
+              <li class="item--gnb item--gnb_partners"><a ui-sref="app.products.products" class="link--gnb"><span ng-bind-html="'Menu.MENU_PARTNERS' | translate"></span></a>
+                <ul class="list--depth_1">
+                  <li class="item--depth_1"><a ui-sref="app.products.products-page1" class="link--depth_1"><span ng-bind-html="'Menu.MENU_ALLIANCE' | translate"></span></a></li>
+                </ul>
+              </li>
+
+              <li class="item--gnb item--gnb_abouts_us"><a href="/#/{{currentLanguage}}/home/aboutus-pointmobile" class="link--gnb"><span ng-bind-html="'Menu.MENU_ABOUTUS' | translate"></span></a>
+                <ul class="list--depth_1">
+                  <li class="item--depth_1"><a ui-sref="app.products.products-page1" class="link--depth_1"><span ng-bind-html="'Menu.MENU_POINTMOBILE' | translate"></span></a></li>
+                </ul>
+              </li>
+
+              <li class="item--gnb item--contact_us"><a href="/#/{{currentLanguage}}/home/contactus" class="link--gnb non-child" data-link="link"><span ng-bind-html="'Menu.MENU_CONTACTUS' | translate"></span></a>
+                <ul class="list--depth_1 social-icon">
+                  <li class="item--depth_1"><a ui-sref="app.products.products-page1" target="_blank"><img src="assets/images/icon--sns_linkedin_org.png" alt="" /></a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+
+          <div class="section--search" ng-controller="ProductSearchCtrl as vc">
+            <form ng-submit="vc.doSearch(form)">
+              <input type="text" class="input--search_keyword" name="SearchKey" ng-model="vc.srch.SearchKey" />
+              <button type="button" class="button--search_keyword"></button>
+            </form>
+          </div>
+
+
+          <ul class="lang_list lang_list_on">
+            <li class="on lang_on"><a href="javascript:void(0);"><span class="mainOn">{{vc.getCurrentLanguage()}}</span></a></li>
+            <li class="lang_list_sub"><a href="javascript:void(0);" ng-click="vc.changefn('ko')">KOR</a></li>
+            <li class="lang_list_sub"><a href="javascript:void(0);" ng-click="vc.changefn('en')">ENG</a></li>
+          </ul>
+          <div class="dimmed"></div>
+        </div>
+      </div>
+
+      <div class="section--header_bottom"></div>
+    </div>
+  </div>
+  <ui-view></ui-view>
+  <!-- 스크립트 -->
+
+  <!-- 푸터 -->
+  <div id="section--module_footer">
+    <div class="section--module_inner" style="padding: 27px 20px 27px;">
+      <img src="assets/images/image--footer_logo.png" alt="point mobile" class="image--footer_logo" />
+
+      <div class="section--footer_information" ng-controller="HeaderCtrl as vc">
+        <p class="text--footer_information" style="margin-bottom: 0;">
+          <span>{{ 'Menu.ADDR_KO' | translate }}</span>
+          <span><a href="javascript:void(0);" ng-click="vc.privateModal()"
+              ng-show="currentLanguage == 'ko'">개인정보처리방침</a></span>
+          <span>Copyright(c) by Point Mobile, All Rights Reserved.</span>
+        </p>
+
+        <ul class="list--sns">
+          <li class="item--sns item--sns_linkedin"><a href="https://www.linkedin.com/company/pointmobilekr"
+              target="_blank" class="link--sns"> <span class="image--sns_icon"></span>
+            </a></li>
+          <li class="item--sns item--sns_youtube"><a
+              href="https://www.youtube.com/channel/UCmDuGO_lsI0yKI30zFOo_Tw?view_as=subscriber" target="_blank"
+              class="link--sns"> <span class="image--sns_icon"></span>
+            </a></li>
+          <li class="item--sns item--sns_twiter rel_top" style="margin-left: -1px; padding-left: -1px;"><a
+              href="https://twitter.com/PointMobileKR" target="_blank" class="link--sns"> <img
+                src="assets/images/icon_social_twiter.png" alt="" />
+            </a></li>
+        </ul>
+      </div>
+
+      <a href="#" class="link--goto_top"> <span class="image--top_arrow"></span>
+      </a>
+    </div>
+  </div>
+
+
+  <!-- document end -->
+</body>
+<script>
+  $('.lang_list_sub').on({
+    'touchend': function () {
+      $('.lang_list_on').removeClass('lang_list');
+    }
+  });
+
+
+  $('.lang_list_on').on({
+    'touchstart': function () {
+      if ($("#lang_list_on").hasClass("lang_list") === false)
+        $('.lang_list_on').addClass('lang_list');
+    },
+  });
+
+  $("a.link--gnb").on({
+    click: function (event) {
+      //PC용이거나. 하위메뉴가 없으면.
+      if ($('.button--toggle_gnb').css('display') == 'none' || $(this).hasClass('non-child')) {
+        event.stopImmediatepropagation();
+        event.preventDefault();
+        location.href = $(this).attr('href');
+        $('#section--module_header').removeClass('section--module_header__on');
+      }
+    }
+  });
+
+  $(".section--header_content").hover(
+    function () {
+      $('#section--module_header').addClass('section--module_header__on');
+    },
+    function () {
+      $('#section--module_header').removeClass('section--module_header__on');
+    }
+  );
+
+  $('a.link--goto_top').click(function (e) {
+    event.preventDefault();
+    $('html, body').animate({ scrollTop: $('#section--module_header').offset().top }, 500);
+  });
+
+
+  $('.button--search_keyword').on('click', function (b) {
+    var c = $('.section--search'), d = $('.input--search_keyword'), e = c.hasClass('on'), f = d.val();
+
+    if (e) {
+      c.removeClass('on');
+      d.blur();
+    } else {
+      c.addClass('on');
+      d.focus();
+    }
+
+    if (($('.button--toggle_gnb').css('display') == 'none' || e) && f != '') {
+      if ($('.mainOn').text() == 'KOR') {
+        location.href = '/#/ko/home/search-result/' + f;
+      } else if ($('.mainOn').text() == 'ENG') {
+        location.href = '/#/en/home/search-result/' + f;
+      }
+
+    } else {
+      event.preventDefault();
+      return false;
+    }
+  });
+
+</script>
+<script>
+  (function (i, s, o, g, r, a, m) {
+  i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date();
+    a = s.createElement(o), m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+  ga('create', 'UA-139526261-1', 'auto'); ga('send', 'pageview');
+</script>
+
+</html>

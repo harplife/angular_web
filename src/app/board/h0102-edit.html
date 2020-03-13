@@ -1,0 +1,223 @@
+<!-- Html Editor -->
+<script type="text/javascript" src="assets/app/SE2.9/js/service/HuskyEZCreator.js" charset="utf-8"></script>
+<div class="page page-footable" ng-controller="H0102EditCtrl as vc" >
+  <div class="dataloader" ng-show="vc.dataloader"></div>
+  <!-- page header -->
+  <div class="row" ng-if="vc.layout == 'N'">
+    <div class="col-lg-12"><h3 class="page-header">{{ 'Menu.h0102' | translate }}</h3></div>
+    <!-- /.col-lg-12 -->
+  </div>
+  <!-- /page header -->
+  <!-- page content -->
+  <div class="pagecontent" file-dropzone>
+    <!-- Action Buttons -->
+    <div class = "row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 btn-group">
+        <div class="pull-right">
+          <button class="btn btn-default" ng-click="vc.goList()" ng-if="vc.layout == 'N'">
+            <i class="fa fa-list"></i> {{ 'Menu.LIST' | translate }}
+          </button>
+          <button class="btn btn-primary" ng-click="vc.uploadFile()">
+            <i class="fa fa-save"></i> {{ 'Menu.SAVE' | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- row -->
+    <div class="row">
+      <!-- col -->
+      <div class="col-md-12">
+
+        <!-- tile -->
+        <div class="panel panel-default tile" >
+
+          <!-- tile header -->
+          <div class="panel-heading tile-header">
+              <strong style="letter-spacing: 0.5px;" class="ng-binding">{{ 'Menu.EDITDETAILINFORMATION' | translate }}</strong>
+            <div class="pull-right">
+              <a href="" tile-control-toggle=""> <i class="fa fa-minus fa-lg"></i></a>
+            </div>
+          </div>
+          <!-- /tile header -->
+
+          <!-- tile body -->
+          <div class="panel-body collapse in">
+            <form class="ng-pristine ng-valid" role="form">
+              <div class="row">
+                <div class="col-lg-12" ng-if="vc.columnMap['Title']">
+                  <div class="form-group form-inline">
+                    <label>{{ vc.columnMap['Title'].ColumnLogicalNm | translate }}</label>
+                    <input type="text" class="form-control form-right" ng-model="vc.data.Title">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-4 col-md-6" ng-if="vc.columnMap['BbsPostId']">
+                  <div class="form-group form-inline">
+                    <label>{{ vc.columnMap['BbsPostId'].ColumnLogicalNm | translate }}</label>
+                    <div class="form-control txt_view" ng-bind="vc.data.BbsPostId"></div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-6" ng-if="vc.columnMap['RegDate']">
+                  <div class="form-group form-inline">
+                    <label>{{ vc.columnMap['RegDate'].ColumnLogicalNm | translate }}</label>
+                    <div class="form-control txt_view">{{vc.data.RegDate | date:'yyyy-MM-dd h:mm a':'UTC'}}</div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-6" ng-if="vc.columnMap['RegUserNm']">
+                  <div class="form-group form-inline">
+                    <label>{{ vc.columnMap['RegUserNm'].ColumnLogicalNm | translate }}</label>
+                    <div class="form-control txt_view" ng-bind="vc.data.RegUserNm"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-4 col-md-6" ng-if="vc.columnMap['ReadCnt']">
+                  <div class="form-group form-inline">
+                    <label>{{ vc.columnMap['ReadCnt'].ColumnLogicalNm | translate }}</label>
+                    <div class="form-control txt_view" ng-bind="vc.data.ReadCnt"></div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-6" ng-if="vc.columnMap['PublicYN']">
+                  <div class="form-group form-inline">
+                    <label>{{ vc.columnMap['PublicYN'].ColumnLogicalNm | translate }}</label>
+                    <common-code-custom code-list="vc.columnMap['PublicYN'].CodeList" code-model="vc.data.PublicYN"></common-code-custom>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-6" ng-if="vc.columnMap['NoticeYN']">
+                  <div class="form-group form-inline">
+                    <label>{{ vc.columnMap['NoticeYN'].ColumnLogicalNm | translate }}</label>
+                    <common-code-custom code-list="vc.columnMap['NoticeYN'].CodeList" code-model="vc.data.NoticeYN"></common-code-custom>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12 col-md-12" ng-if="vc.columnMap['Tags']">
+                  <div class="form-group form-inline">
+                    <label>{{ vc.columnMap['Tags'].ColumnLogicalNm | translate }}</label>
+                    <input type="text" class="form-control form-right" ng-model="vc.data.Tags">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="form-group form-inline" ng-if="!vc.showUploader">
+                    <label> {{ 'Menu.ATTACHEDFILE' | translate }}</label>
+                    <file-attach file-data="vc.uploadFileList" callback="vc.onFileCallback"></file-attach>
+                  </div>
+                  <div class="form-group form-inline" ng-if="vc.showUploader">
+                    <form id="form1" runat="server" method="post"  enctype="Multipart/Form-Data">
+                      <label> {{ 'Menu.ATTACHEDFILE' | translate }}</label>
+                      <div style="margin-left: 85px;" id="vault" class="vault-block" vault-company></div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="form-group form-inline">
+                    <label>{{ 'Menu.ATTACHMENT' | translate }}</label>
+                    <div style="margin-left: 85px;">
+                      <table class="table table-hover table-striped invoice-list no-footer" width="100%">
+                        <colgroup>
+                          <col style="width: *">
+                          <col style="width: 140px;">
+                          <col style="width: 140px;">
+                          <col style="width: 50px;">
+                        </colgroup>
+                        <thead>
+                          <tr>
+                            <th><span>{{ 'Menu.FILENAME' | translate }}</span></th>
+                            <th><span>{{ 'Menu.FILESIZE' | translate }}</span></th>
+                            <th><span>{{ 'Menu.NUMBERDOWNLOADS' | translate }}</span></th>
+                            <th><span>{{ 'Menu.DELETE' | translate }}</span></th>
+                          </tr>
+                        </thead>
+                        <tbody ng-repeat="fli in vc.uploadFileList">
+                          <tr id="filectl_{{fli.id}}">
+                            <td><span class="file_list"><a href="{{fli.link}}" target="attach">{{fli.fileName}}</a></span></td>
+                            <td align=right><span class="file_size" ng-bind="fli.size|filesize"></span></td>
+                            <td align=right><span class="file_size" ng-bind="fli.downloadCnt|number"></span></td>
+                            <td><div class="form-group" style="margin:0px;"><md-checkbox md-no-ink="" ng-model="fli.delState" ng-true-value="'delete'" ng-false-value="''" class="md-warn ng-untouched ng-valid ng-dirty ng-valid-parse ng-empty" role="checkbox"></md-checkbox></div></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group">
+                  <div class="col-sm-12">
+                    <textarea id="strHtml" rows="10" style="width: 100%; height: 300px; display: 'none';" ng-model="vc.data.Contents"></textarea>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <div class="row">
+              <!-- 사용자정의 컬럼 등록/수정 -->
+              <div class="form-group form-inline">
+                <form class="ng-pristine ng-valid" ng-submit="" name="vc.udcForm" novalidate>
+                  <formly-form model="vc.udcModel" fields="vc.udcColumns" options="vc.udcOptions" form="vc.udcForm"> </formly-form>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- /tile body -->
+
+        </div>
+        <!-- /tile -->
+
+      </div>
+      <!-- /col -->
+    </div>
+    <!-- /row -->
+    <!-- Action Buttons -->
+    <div class = "row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 btn-bottom btn-group">
+          <div class="pull-right">
+            <button class="btn btn-default" ng-click="vc.goList()" ng-if="vc.layout == 'N'">
+              <i class="fa fa-list"></i> {{ 'Menu.LIST' | translate }}
+            </button>
+            <button class="btn btn-primary" ng-click="vc.uploadFile()">
+              <i class="fa fa-save"></i> {{ 'Menu.SAVE' | translate }}
+            </button>
+          </div>
+        </div>
+      </div>
+
+  </div>
+  <!-- /page content -->
+
+</div>
+
+<script type="text/javascript">
+  var oEditors = [];
+
+  var sLang = "ko_KR"; // 언어 (ko_KR/ en_US/ ja_JP/ zh_CN/ zh_TW), default = ko_KR
+
+  // 추가 글꼴 목록
+  //var aAdditionalFontSet = [["MS UI Gothic", "MS UI Gothic"], ["Comic Sans MS", "Comic Sans MS"],["TEST","TEST"]];
+  nhn.husky.EZCreator.createInIFrame({
+    oAppRef : oEditors,
+    elPlaceHolder : "strHtml",
+    sSkinURI : "assets/app/SE2.9/SmartEditor2Skin.html",
+    htParams : {
+      bUseToolbar : true, // 툴바 사용 여부 (true:사용/ false:사용하지 않음)
+      bUseVerticalResizer : false, // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
+      bUseModeChanger : true, // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
+      //bSkipXssFilter : true,		// client-side xss filter 무시 여부 (true:사용하지 않음 / 그외:사용)
+      //aAdditionalFontList : aAdditionalFontSet,		// 추가 글꼴 목록
+      fOnBeforeUnload : function() {
+        //alert("완료!");
+      },
+      I18N_LOCALE : sLang
+    }, //boolean
+    fOnAppLoad : function() {
+      //예제 코드
+      //oEditors.getById["ir1"].exec("PASTE_HTML", ["로딩이 완료된 후에 본문에 삽입되는 text입니다."]);
+    },
+    fCreator : "createSEditor2"
+  });
+</script>

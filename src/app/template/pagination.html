@@ -1,0 +1,7 @@
+<ul class="pagination">
+  <li ng-if="::boundaryLinks" ng-class="{disabled: noPrevious()||ngDisabled}"><a href class="spr first" ng-click="selectPage(1, $event)"><span class="hide">맨앞으로</span></a></li>
+  <li ng-if="::directionLinks" ng-class="{disabled: noPrevious()||ngDisabled}" ><a href class="spr prev" ng-click="selectPage(page - 1, $event)"><span class="hide">이전</span></a></li>
+  <li ng-repeat="page in pages track by $index" ng-class="{active: page.active,disabled: ngDisabled&&!page.active}" class="pagination-page"><a href ng-click="selectPage(page.number, $event)">{{page.text}}</a></li>
+  <li ng-if="::directionLinks" ng-class="{disabled: noNext()||ngDisabled}" ><a href class="spr next" ng-click="selectPage(page + 1, $event)"><span class="hide">다음</span></a></li>
+  <li ng-if="::boundaryLinks" ng-class="{disabled: noNext()||ngDisabled}" ><a href class="spr last" ng-click="selectPage(totalPages, $event)"><span class="hide">맨뒤로</span></a></li>
+</ul>

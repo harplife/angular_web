@@ -1,0 +1,98 @@
+<div class="page page-footable" ng-controller="BbsMasterDetailCtrl as vc">
+  <div class="dataloader" ng-show="vc.dataloader"></div>
+  <!-- page header -->
+  <div class="row" ng-if="vc.layout == 'N'">
+    <div class="col-lg-12"><h3 class="page-header">{{ 'Menu.EM630' | translate }}</h3></div>
+    <!-- /.col-lg-12 -->
+  </div>
+  <!-- /page header -->
+  <!-- page content -->
+  <div class="pagecontent">
+    <div class="row">
+      <!-- Action Buttons -->
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 btn-group">
+        <div class="pull-right">
+          <button class="btn btn-default"  ng-click="vc.goList()" ng-if="vc.layout == 'N'">
+            <i class="fa fa-list"></i> {{ 'Menu.LIST' | translate }}
+          </button>
+          <button class="btn btn-default" ng-click="vc.goEdit()">
+            <i class="fa fa-edit"></i> {{ 'Menu.MODIFY' | translate }}
+          </button>
+          <button class="btn btn-danger" ng-click="vc.deleteDetail()">
+            <i class="fa fa-trash-o"></i> {{ 'Menu.DELETE' | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- row -->
+    <div class="row">
+      <!-- col -->
+      <div class="col-md-12">
+        <div class="panel panel-default tile">
+          <!-- tile header -->
+          <div class="panel-heading tile-header">
+            <strong style="letter-spacing: 0.5px;" class="ng-binding">{{ 'Menu.DETAILINFORMATION' | translate }}</strong>
+            <div class="pull-right">
+              <a href="" tile-control-toggle=""> <i class="fa fa-minus fa-lg"></i></a>
+            </div>
+          </div>
+          <!-- /tile header -->
+
+          <!-- tile body -->
+          <div class="panel-body collapse in">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group form-inline">
+                  <label>마스터아이디</label>
+                  <div class="form-control txt_view " ng-bind="vc.data.BbsMasterId"></div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6">
+                <div class="form-group form-inline">
+                  <label>게시판명</label>
+                  <div class="form-control txt_view" ng-bind="vc.data.BbsNm"></div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6">
+                <div class="form-group form-inline">
+                  <label>{{ 'Menu.EM630DC03' | translate }}</label>
+                  <div class="form-control txt_view" ng-bind="vc.data.RegUserNm"></div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6">
+                <div class="form-group form-inline">
+                  <label>{{ 'Menu.EM630DC04' | translate }}</label>
+                  <div class="form-control txt_view">{{vc.data.RegDate | date:'yyyy-MM-dd'}}</div>
+                </div>
+              </div>
+              <div class="col-lg-12 col-md-6">
+                <div class="form-group form-inline">
+                  <label>{{ 'Menu.REMARKS' | translate }}</label>
+                  <div class="form-control txt_view" ng-bind="vc.data.Remark"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <!-- Action Buttons -->
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 btn-bottom btn-group">
+        <div class="pull-right">
+          <button class="btn btn-outline btn-default" ng-click="vc.goList()" ng-if="vc.layout == 'N'">
+            <i class="fa fa-list"></i> {{ 'Menu.LIST' | translate }}
+          </button>
+          <button class="btn btn-outline btn-default" ng-click="vc.goEdit()">
+            <i class="fa fa-edit"></i> {{ 'Menu.MODIFY' | translate }}
+          </button>
+          <button class="btn btn-danger" ng-click="vc.deleteData()">
+            <i class="fa fa-trash-o"></i> {{ 'Menu.DELETE' | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- /row -->
+  </div>
+  <!-- /page content -->
+</div>

@@ -1,0 +1,93 @@
+<style>
+.btn_order_box {
+  position: relative;
+  height: 17px;
+  width: 100%;
+  padding: 0 30px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.btn_order {
+  position: absolute;
+  height: 17px;
+  width: 80px;
+  right: 30px;
+  z-index: 9;
+}
+
+.btn_order .change_order {
+  width: 17px;
+  height: 17px;
+  display: block;
+  float: left;
+  background: url('/assets/images/icon/btn_change_order.png') 0 0 no-repeat;
+  font-size: 0;
+  margin-right: 3px;
+  cursor: pointer;
+}
+
+.btn_order .go_first {
+  background-position: 0 0;
+  cursor: pointer;
+}
+
+.btn_order .go_pre {
+  background-position: 0 -17px;
+  cursor: pointer;
+}
+
+.btn_order .go_next {
+  background-position: 0 -34px;
+  cursor: pointer;
+}
+
+.btn_order .go_last {
+  background-position: 0 -51px;
+  cursor: pointer;
+}
+
+li.selected {
+  background: #f5f6f7;
+}
+</style>
+
+
+<div class="modal-content">
+  <div class="modal-header ng-scope">
+    <h1 class="modal-title page-header" ng-bind="reorderCtrl.title"></h1>
+  </div>
+  <div class="modal-body ng-scope">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card_cont list_area">
+          <div class="b-a bg-default lter">
+            <ul>
+              <li data-ng-repeat="row in reorderCtrl.objModel" ng-class="{selected:(reorderCtrl.selectedIdx == $index)}" ng-click="reorderCtrl.onSelect($index)">
+                <span ng-bind="row.columnLogicalNm" ng-if="row.dirty!='D'"></span>(<span ng-bind="row.columnPhysicalNm" ng-if="row.dirty!='D'"></span>)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="btn_order_box">
+          <div class="btn_order">
+            <span class="change_order go_first" ng-click="reorderCtrl.moveTop()" translate>BTN.PAGINATION.FIRST</span> <span class="change_order go_pre" ng-click="reorderCtrl.moveUp()"
+              translate>BTN.PAGINATION.PREV</span> <span class="change_order go_next" ng-click="reorderCtrl.moveDown()" translate>BTN.PAGINATION.NEXT</span> <span
+              class="change_order go_last" ng-click="reorderCtrl.moveBottom()" translate>BTN.PAGINATION.LAST</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer ng-scope">
+    <button class="btn btn-default" ng-click="reorderCtrl.onClose()">
+      <i class="fa fa-shield"></i> {{ 'Menu.CANCEL' | translate }}
+    </button>
+    <button class="btn btn-primary" ng-click="reorderCtrl.onSave()">
+      <i class="fa fa-save"></i> {{ 'Menu.APPLY' | translate }}
+    </button>
+  </div>
+</div>

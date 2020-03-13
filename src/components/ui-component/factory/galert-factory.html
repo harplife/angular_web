@@ -1,0 +1,17 @@
+<md-dialog md-theme="default" ng-class="dialog.css" class="md-default-theme md-transition-in" role="alertdialog" tabindex="-1"
+  aria-describedby="dialogContent_8" style="min-width: 350px;">
+  <md-dialog-content class="md-dialog-content" role="document" tabindex="-1"
+  id="dialogContent_8" style="text-align:center;">
+
+  <img ng-src="assets/images/{{alertIco}}.png">
+  <div class="md-dialog-content-body ng-scope mt-10" style="text-align: center;">
+    <p class="ng-binding" ng-bind-html="alertMessage"></p>
+  </div>
+  </md-dialog-content>
+  <md-dialog-actions style="text-align: center; border-top:solid 1px #DDD;">
+    <button class="md-primary md-button md-default-theme md-ink-ripple md-autofocus" type="button"
+      ng-click="onClose()" md-autofocus="true" aria-label="Got it!" style="margin: 0 auto; width:100%;">
+      <span ng-bind="closeBtn" style="color:#{{alertColor}}; font-size:15px; font-weight:800;"></span>
+    </button>
+  </md-dialog-actions>
+</md-dialog>

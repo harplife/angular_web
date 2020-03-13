@@ -1,0 +1,116 @@
+<div class="modal-content">
+  <div class="modal-header ng-scope">
+    <h3 class="page-header" ng-if="modalCtrl.find == 'id'">아이디 찾기</h3>
+    <h3 class="page-header" ng-if="modalCtrl.find == 'pwd'">비밀번호 찾기</h3>
+  </div>
+
+  <div class="modal-body ng-scope" ng-if="!modalCtrl.success">
+    <div class="row" ng-if="modalCtrl.find == 'id'">
+      <div class="col-lg-12">
+        <div class="form-group form-inline">
+          <label>사용자명</label>
+          <input type="text" class="form-control" ng-model="modalCtrl.UserNm" placeholder="사용자명" />
+        </div>
+      </div>
+    </div>
+    <div class="row" ng-if="modalCtrl.find == 'pwd'">
+      <div class="col-lg-12">
+        <div class="form-group form-inline">
+          <label>아이디</label>
+          <input type="text" class="form-control" ng-model="modalCtrl.LoginId" placeholder="아이디" />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+        <div class="form-group form-inline">
+          <label>이메일</label>
+          <input type="text" class="form-control" ng-model="modalCtrl.Email" placeholder="이메일" />
+        </div>
+      </div>
+    </div>
+
+  <!-- //modal-body -->
+
+  <div class="modal-footer ng-scope">
+    <button class="btn btn-primary mb-10" ng-click="modalCtrl.sendMail()">
+      <i class="fa fa-check"></i> 아이디/비밀번호 찾기
+    </button>
+    <button class="btn btn-default mb-10" ng-click="modalCtrl.cancel()">
+      <i class="fa fa-times"></i> 닫기
+    </button>
+  </div>
+</div>
+
+<div class="modal-body ng-scope" ng-if="modalCtrl.success && modalCtrl.find == 'pwd' && !modalCtrl.setPass">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+      <div class="form-group form-inline">
+        <label>인증번호</label>
+        <input type="text" class="form-control" ng-model="modalCtrl.crtfcNo" placeholder="인증번호" />
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+      <button class="btn btn-primary mb-10" ng-click="modalCtrl.getCrtfcNo()">
+        <i class="fa fa-check"></i>인증하기
+      </button>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3" ng-if="modalCtrl.success && modalCtrl.pass">
+      <span style="color:red"> 인증되었습니다.</span>
+    </div>
+  </div>
+  <div class="row" ng-if="modalCtrl.success && modalCtrl.pass">
+    <div class="col-lg-12">
+      <div class="form-group form-inline">
+        <label>비밀번호</label>
+        <input type="password" class="form-control form-right" maxlength="20" ng-model="modalCtrl.data.Password" required>
+      </div>
+    </div>
+  </div>
+  <div class="row" ng-if="modalCtrl.success && modalCtrl.pass">
+    <div class="col-lg-12">
+      <div class="form-group form-inline">
+        <label>PW확인</label>
+        <input type="password" class="form-control form-right" maxlength="20" ng-model="modalCtrl.data.Password2" required>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer ng-scope">
+    <button class="btn btn-primary mb-10" ng-click="modalCtrl.setData()">
+      <i class="fa fa-check"></i>비밀번호변경
+    </button>
+    <button class="btn btn-default mb-10" ng-click="modalCtrl.cancel()">
+      <i class="fa fa-times"></i> 닫기
+    </button>
+  </div>
+</div>
+
+<div class="modal-body ng-scope" ng-if="modalCtrl.success && modalCtrl.find =='id'">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="form-group form-inline">
+        <h3 style="text-align: center">{{modalCtrl.data.UserNm}}님의 아이디는 {{modalCtrl.data.LoginId}} 입니다.</h3>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer ng-scope">
+    <button class="btn btn-primary mb-10" ng-click="modalCtrl.ok()">
+      <i class="fa fa-check"></i>확인
+    </button>
+  </div>
+</div>
+
+<div class="modal-body ng-scope" ng-if="modalCtrl.success && modalCtrl.setPass">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="form-group form-inline">
+        <h3 style="text-align: center">비밀번호가 변경되었습니다.</h3>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer ng-scope">
+    <button class="btn btn-primary mb-10" ng-click="modalCtrl.ok()">
+      <i class="fa fa-check"></i>확인
+    </button>
+  </div>
+</div>

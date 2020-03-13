@@ -1,0 +1,286 @@
+<div class="page page-footable" ng-controller="H0102DetailCtrl as vc">
+  <div class="dataloader" ng-show="vc.dataloader"></div>
+  <!-- page header -->
+  <div class="row" ng-if="vc.layout == 'N'">
+    <div class="col-lg-12"><h3 class="page-header">{{ 'Menu.h0102' | translate }}</h3></div>
+    <!-- /.col-lg-12 -->
+  </div>
+  <!-- /page header -->
+  <!-- page content -->
+  <div class="pagecontent">
+    <div class="row">
+      <!-- Action Buttons -->
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 btn-group">
+        <div class="pull-right">
+          <button class="btn btn-default"  ng-click="vc.goList()" ng-if="vc.layout == 'N'">
+            <i class="fa fa-list"></i> {{ 'Menu.LIST' | translate }}
+          </button>
+          <button class="btn btn-default" ng-click="vc.goEdit()" ng-show="$root.gVariable.UserId == vc.data.RegUser || $root.gVariable.SysAdminYN == 'Y'">
+            <i class="fa fa-edit"></i> {{ 'Menu.MODIFY' | translate }}
+          </button>
+          <button class="btn btn-danger" ng-click="vc.deleteData()" ng-show="$root.gVariable.UserId == vc.data.RegUser || $root.gVariable.SysAdminYN == 'Y'">
+            <i class="fa fa-trash-o"></i> {{ 'Menu.DELETE' | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- row -->
+    <div class="row">
+      <!-- col -->
+      <div class="col-md-12">
+        <div class="panel panel-default tile">
+          <!-- tile header -->
+          <div class="panel-heading tile-header">
+            <strong style="letter-spacing: 0.5px;" class="ng-binding">{{ 'Menu.DETAILINFORMATION' | translate }}</strong>
+            <div class="pull-right">
+              <a href="" tile-control-toggle=""> <i class="fa fa-minus fa-lg"></i></a>
+            </div>
+          </div>
+          <!-- /tile header -->
+
+          <!-- tile body -->
+          <div class="panel-body collapse in">
+            <div class="row">
+              <div class="col-lg-12" ng-if="vc.columnMap['Title']">
+                <div class="form-group form-inline">
+                  <label>{{ vc.columnMap['Title'].ColumnLogicalNm | translate }}</label>
+                  <div class="form-control txt_view " ng-bind="vc.data.Title"></div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-4 col-md-6" ng-if="vc.columnMap['BbsPostId']">
+                <div class="form-group form-inline">
+                  <label>{{ vc.columnMap['BbsPostId'].ColumnLogicalNm | translate }}</label>
+                  <div class="form-control txt_view" ng-bind="vc.data.BbsPostId"></div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6" ng-if="vc.columnMap['RegDate']">
+                <div class="form-group form-inline">
+                  <label>{{ vc.columnMap['RegDate'].ColumnLogicalNm | translate }}</label>
+                  <div class="form-control txt_view">{{vc.data.RegDate | utcToLocal:'yyyy-MM-dd h:mm a'}}</div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6" ng-if="vc.columnMap['RegUserNm']">
+                <div class="form-group form-inline">
+                  <label>{{ vc.columnMap['RegUserNm'].ColumnLogicalNm | translate }}</label>
+                  <div class="form-control txt_view" ng-bind="vc.data.RegUserNm"></div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6" ng-if="vc.columnMap['EdtDate']">
+                <div class="form-group form-inline">
+                  <label>{{ vc.columnMap['EdtDate'].ColumnLogicalNm | translate }}</label>
+                  <div class="form-control txt_view">{{vc.data.EdtDate | utcToLocal:'yyyy-MM-dd h:mm a'}}</div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6" ng-if="vc.columnMap['EdtUserNm']">
+                <div class="form-group form-inline">
+                  <label>{{ vc.columnMap['EdtUserNm'].ColumnLogicalNm | translate }}</label>
+                  <div class="form-control txt_view" ng-bind="vc.data.EdtUserNm"></div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-4 col-md-6" ng-if="vc.columnMap['ReadCnt']">
+                <div class="form-group form-inline">
+                  <label>{{ vc.columnMap['ReadCnt'].ColumnLogicalNm | translate }}</label>
+                  <div class="form-control txt_view" ng-bind="vc.data.ReadCnt"></div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6" ng-if="vc.columnMap['PublicYN']">
+                <div class="form-group form-inline">
+                  <label>{{ vc.columnMap['PublicYN'].ColumnLogicalNm | translate }}</label>
+                  <div class="form-control txt_view" ng-bind="vc.data.PublicYNNm"></div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6" ng-if="vc.columnMap['NoticeYN']">
+                <div class="form-group form-inline">
+                  <label>{{ vc.columnMap['NoticeYN'].ColumnLogicalNm | translate }}</label>
+                  <div class="form-control txt_view" ng-bind="vc.data.NoticeYNNm"></div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12 col-md-12" ng-if="vc.columnMap['Tags']">
+                <div class="form-group form-inline">
+                  <label>{{ vc.columnMap['Tags'].ColumnLogicalNm | translate }}</label>
+                  <div class="form-control txt_view" ng-bind="vc.data.Tags"></div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="form-group form-inline">
+                  <label>{{ 'Menu.ATTACHMENT' | translate }}</label>
+                  <div style="margin-left: 85px;">
+                    <table class="table table-hover table-striped invoice-list no-footer" width="100%">
+                      <colgroup>
+                        <col style="width: 50%">
+                        <col style="width: 25%">
+                        <col style="width: 25%">
+                      </colgroup>
+                      <thead>
+                        <tr>
+                          <th><span>{{ 'Menu.FILENAME' | translate }}</span></th>
+                          <th><span>{{ 'Menu.FILESIZE' | translate }}</span></th>
+                          <th><span>{{ 'Menu.NUMBERDOWNLOADS' | translate }}</span></th>
+                        </tr>
+                      </thead>
+                      <tbody ng-repeat="fli in vc.uploadFileList">
+                        <tr id="filectl_{{obj.id}}" ng-if="obj.dirtyFlag!='D'">
+                          <td><span style="align:left;" ng-show="fli.isLoaded" class="file_list"><a href="{{fli.link}}" target="attach">{{fli.fileName}}</a></span></td>
+                          <td><span class="file_size" ng-bind="fli.size|filesize"></span></td>
+                          <td><span class="file_size" ng-bind="fli.downloadCnt|number"></span></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12" ng-if="vc.columnMap['Contents']">
+                <div class="form-group form-inline">
+                  <label>{{ vc.columnMap['Contents'].ColumnLogicalNm | translate }}</label>
+                  <span class="txt_view" ng-bind-html="vc.data.Contents|htmlString"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <!-- Action Buttons -->
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 btn-bottom btn-group">
+        <div class="pull-right">
+          <button class="btn btn-outline btn-default" ng-click="vc.goList()" ng-if="vc.layout == 'N'">
+            <i class="fa fa-list"></i> {{ 'Menu.LIST' | translate }}
+          </button>
+          <button class="btn btn-outline btn-default" ng-click="vc.goEdit()" ng-show="$root.gVariable.UserId == vc.data.RegUser || $root.gVariable.SysAdminYN == 'Y'">
+            <i class="fa fa-edit"></i> {{ 'Menu.MODIFY' | translate }}
+          </button>
+          <button class="btn btn-danger" ng-click="vc.deleteData()" ng-show="$root.gVariable.UserId == vc.data.RegUser || $root.gVariable.SysAdminYN == 'Y'">
+            <i class="fa fa-trash-o"></i> {{ 'Menu.DELETE' | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- row -->
+    <div class="row">
+      <!-- col -->
+      <div class="col-md-12">
+        <div class="panel panel-default tile">
+          <!-- tile header -->
+          <div class="panel-heading tile-header">
+            <strong style="letter-spacing: 0.5px;" class="ng-binding">{{ 'Menu.COMMENT' | translate }}</strong>
+            <div class="pull-right">
+              <a href="" tile-control-toggle=""> <i class="fa fa-minus fa-lg"></i>
+              </a>
+            </div>
+          </div>
+          <!-- /tile header -->
+
+          <!-- tile body -->
+          <div class="panel-body collapse in">
+            <article class="streamline-post" ng-repeat="li in vc.comment.lists">
+              <div class="post-container">
+                <div class="panel panel-default">
+                  <div class="panel-heading bg-white">
+                    {{li.RegUserNm}}
+                    <span><i class="fa fa-clock-o mr-5"></i> {{li.RegDate | utcToLocal:'yyyy-MM-dd h:mm a'}}</span>
+                    <span class="text-muted pull-right" ng-hide="li.BbsPostCommId == vc.comment.editid">
+                      <button class="btn-min btn btn-default" ng-click="vc.editComment(li.BbsPostCommId)">
+                        <i class="glyphicon glyphicon-edit"></i> {{ 'Menu.MODIFY' | translate }}
+                      </button>
+                      <button class="btn-min btn btn-default" ng-click="vc.deleteComment(li)">
+                        <i class="glyphicon glyphicon-trash"></i> {{ 'Menu.DELETE' | translate }}
+                      </button>
+                    </span>
+                    <span class="text-muted pull-right" ng-show="li.BbsPostCommId == vc.comment.editid">
+                      <button class="btn-min btn btn-default" ng-click="vc.editCommentAction(li)">
+                        <i class="glyphicon glyphicon-ok"></i> {{ 'Menu.SAVE' | translate }}
+                      </button>
+                      <button href="" class="btn-min btn btn-default" ng-click="vc.editCommentCancel()">
+                        <i class="glyphicon glyphicon-remove"></i> {{ 'Menu.CANCEL' | translate }}
+                      </button>
+                    </span>
+                  </div>
+                  <div class="panel-body" ng-hide="li.BbsPostCommId == vc.comment.editid">
+                    {{li.Contents}}
+                    <table class="table table-hover table-striped invoice-list no-footer" style="width:100%;" ng-if="li.LogicalFileNm">
+                      <colgroup>
+                        <col style="width: 30%">
+                        <col style="width: 140px;">
+                      </colgroup>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <a href="" ng-click="vc.openAttachment(li)">{{li.LogicalFileNm}}</a>
+                          </td>
+                          <td align=right><span class="file_size" ng-bind="li.FileSize|filesize"></span></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="panel-body" ng-show="li.BbsPostCommId == vc.comment.editid">
+                    <textarea class="form-control" id="strReply" rows="10" style="width:100%; height:40px; resize:none;" ng-model="vc.comment.editContents"></textarea>
+                    <span ng-show="li.AttachmentId != null && li.AttachmentId != ''"><br>{{li.LogicalFileNm}}&nbsp;&nbsp;&nbsp;&nbsp;<a href=""
+                      ng-click="vc.setDeleteFileToggle(li)"><span ng-show="li.delState == '' "><i class="icon-trash">{{ 'Menu.DELETE' | translate }}</i></span><span ng-show="li.delState != ''"><i
+                          class="icon-refresh"></i> {{ 'Menu.CANCEL' | translate }}</span></a></span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <div class="streamline-form">
+              <form class="ng-pristine ng-valid">
+                <div class="form-group form-inner-label" style="height:40px;">
+                  <div class="input-group">
+                    <textarea class="form-control" id="strReply" placeholder="댓글 작성..." rows="10" style="width:100%; height:40px; resize:none;" ng-model="vc.srchReply.Contents"></textarea>
+                    <span class="input-group-btn" style="vertical-align: top;">
+                      <button class="btn btn-default" type="button" ng-click="vc.saveComment()">{{ 'Menu.SAVE' | translate }}</button>
+                      <button class="btn btn-default" type="button" ng-click="vc.openDilalog()">{{ 'Menu.ATTACHMENT' | translate }}</button>
+                    </span>
+                    <input id="file-5" style="display: none;" class="file" type="file" data-preview-file-type="any">
+                  </div>
+                </div>
+                <table class="table table-hover table-striped invoice-list no-footer" style="width:100%;">
+                  <colgroup>
+                    <col style="width: 30%">
+                    <col style="width: 140px;">
+                    <col style="width: 140px;">
+                    <col style="width: 140px;">
+                    <col style="width: 140px;">
+                  </colgroup>
+                  <tbody>
+                    <tr id="filectl" ng-repeat="obj in vc.uploadFileListReply">
+                      <td>
+                        <div ng-show="!obj.isLoaded" class="file_list" ng-bind="obj.fileName"></div>
+                        <a href="{{obj.link}}" target="attach" ng-show="obj.isLoaded">{{obj.fileName}}</a>
+                      </td>
+                      <td align=right><span class="file_size" ng-bind="obj.size|filesize"></span></td>
+                      <td>
+                        <div class="progress progress-xs" style="margin-bottom: 0px;height:10px;">
+                          <div class="progress-bar progress-bar-primary" style="width: 0%;"></div>
+                        </div>
+                      </td>
+                      <td></td>
+                      <td align=center><a ng-show="obj.delState == ''" href="" ng-click="vc.onDelete(obj)"><i class="icon-trash"></i></a> <a ng-show="obj.delState != '' "
+                        href="" ng-click="vc.onDeleteCancel(obj)"><i class="icon-cancel-square"></i> {{ 'Menu.DELETE' | translate }}</a></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </form>
+              <div>&nbsp;</div>
+            </div>
+          </div>
+          <!-- /tile body -->
+        </div>
+        <!-- /tile -->
+      </div>
+      <!-- /col -->
+    </div>
+    <!-- /row -->
+  </div>
+  <!-- /page content -->
+</div>

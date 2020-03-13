@@ -1,0 +1,116 @@
+<div class="modal-content">
+  <div class="modal-header ng-scope">
+    <div class="modal-title page-header">{{ modalCtrl.title | translate }}</div>
+  </div>
+
+  <div class="modal-body ng-scope">
+    <div class="row">
+      <div class="col-lg-12">
+        <form name="metaColumn" novalidate>
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label>컬럼표시섹션</label> <input type="text" class="form-control pre" ng-model="modalCtrl.column.columnSection">
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label> <input type="checkbox" ng-checked-="modalCtrl.column.customColumnYN == 'Y'" ng-model="modalCtrl.column.customColumnYN" ng-true-value="'Y'"
+                               disabled ng-false-value="'N'"> 사용자정의 컬럼 여부
+                </label> <label> <input type="checkbox" ng-checked-="modalCtrl.column.KeyColumnYN == 'Y'" ng-model="modalCtrl.column.keyColumnYN" ng-true-value="'Y'"
+                                        disabled ng-false-value="'N'"> 정렬가능 여부
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label>물리컬럼이름</label>
+                <div class="form-control-static txt_view" ng-bind="modalCtrl.column.columnPhysicalNm"></div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label>물리컬럼데이터크기</label>
+                <div class="form-control-static txt_view" ng-bind="modalCtrl.column.columnPhysicalDataSize"></div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label>*물리컬럼데이터유형</label> <select class="form-control" ng-model="modalCtrl.selectedPhysicalDataType"
+                  ng-options="code as code.codeValue for code in modalCtrl.codeList track by code.code" disabled></select>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label>*논리컬럼데이터유형</label> <select class="form-control" ng-model="modalCtrl.selectedLogicalDataType"
+                  ng-options="code as code.codeValue for code in modalCtrl.codeList track by code.code" disabled></select>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label>목록화면 텍스트 정렬</label> <input type="text" class="form-control" ng-model="modalCtrl.column.listColumnTextAlign" disabled>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4">
+                <div class="form-group">
+                  <label>목록화면 표시여부</label> <select class="form-control" ng-model="modalCtrl.column.listColumnShowYN" disabled>
+                    <option value="Y">표시</option>
+                    <option value="N">표시안함</option>
+                  </select>
+                </div>
+              </div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label>목록화면 표시 Level</label> <select class="form-control" ng-model="modalCtrl.column.listColumnShowLevel" disabled>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+              </div>
+            </div>
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label>상세화면 컬럼 폭</label>
+                <div class="form-control-static txt_view" ng-bind="modalCtrl.column.editColumnWidth"></div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label>상세화면 컬럼 높이</label>
+                <div class="form-control-static txt_view" ng-bind="modalCtrl.column.editColumnHeight"></div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label>상세화면 표시여부</label> <select class="form-control" ng-model="modalCtrl.column.editColumnShowYN" disabled>
+                  <option value="Y">표시</option>
+                  <option value="N">표시안함</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="form-group">
+                <label>속성 설명</label>
+                <div class="form-control-static txt_view" ng-bind="modalCtrl.column.columnDesc"></div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer ng-scope">
+    <button class="btn btn-default" ng-click="modalCtrl.onCancelClick()">
+      <i class="fa fa-close"></i> 닫기
+    </button>
+  </div>
+</div>

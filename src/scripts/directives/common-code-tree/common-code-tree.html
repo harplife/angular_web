@@ -1,0 +1,8 @@
+<div class="form-group form-inner-label">
+  <span style="float:left;" ng-repeat="li in ccCtrl.CodeLevel">
+    <select ng-disabled="ccCtrl.list[$index].length == 0" class="form-control" id="selectCombo" ng-change="ccCtrl.onChangeHandler($index)" name="selectCombo" ng-model="ccCtrl.CommonCode[$index]"
+      ng-options="opt.CodeValue for opt in ccCtrl.list[$index] track by opt.Code" ng-disabled="ccCtrl.isDisabled" style="min-width:150px;">
+      <option value="">--{{ ccCtrl.chooseMessage | translate }}--</option>
+    </select>
+  </span>
+</div>

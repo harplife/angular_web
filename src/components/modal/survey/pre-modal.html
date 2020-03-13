@@ -1,0 +1,40 @@
+<div class="modal-content">
+  <div class="modal-header ng-scope">
+    <div class="page-header">설문 미리보기</div>
+  </div>
+
+  <div class="modal-body ng-scope">
+    <div class="row" ng-repeat="li in vc.qstLists">
+        <div class="col-lg-12">
+          <div class="row" style="padding-bottom:5px;">
+            <div class="col-lg-12">
+              <strong>{{li.QstNo}}. {{li.QstSubject}}</strong>
+            </div>
+          </div>
+          <div class="row" style="padding-bottom:20px;">
+            <div class="col-lg-12">
+              <div ng-show="li.QstType == '100'">
+                <ul>
+                  <li ng-repeat="li2 in vc.qstItemLists[$index]"><input type="radio" ng-model="vc['rdo_' + $parent.$index]" value="{{$index}}" ng-checked="false" style="margin-top:-3px"> {{li2.QstItemNo}}. {{li2.QstItemContents}}</li>
+                </ul>
+              </div>
+              <div ng-show="li.QstType == '300'">
+                <textarea rows="3" class="form-control form-right" maxlength="100"></textarea>
+              </div>
+              <div ng-show="li.QstType == '200'">
+                <ul>
+                  <li ng-repeat="li2 in vc.qstItemLists[$index]"><input type="checkbox" ng-model="vc['rdo_' + $parent.$index + '_' + $index]" value="{{$index}}" style="margin-top:-3px"> {{li2.QstItemNo}}. {{li2.QstItemContents}}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  <div class="modal-footer ng-scope">
+    <button class="btn btn-default btn-ef btn-ef-6 btn-ef-6a mb-10" ng-click="vc.close()"><i
+      class="fa fa-times"></i>{{ 'Menu.CLOSE' | translate }}
+    </button>
+  </div>
+</div>

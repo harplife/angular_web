@@ -1,0 +1,23 @@
+# log files
+*.log
+
+# .settings
+./settings
+
+# bower_components folder
+bower_components/
+
+# dist folder
+dist/
+
+#tmp folder
+.tmp/
+
+# node module folder
+node_modules/
+
+# intellij Idea files
+.idea/
+
+*.war
+/salevis4-web.web.war

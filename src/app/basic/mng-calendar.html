@@ -1,0 +1,125 @@
+<div class="page page-footable" ng-controller="MngCalendarCtrl as vc">
+  <!-- page header -->
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="page-header">영업일관리</div>
+    </div>
+    <!-- /.col-lg-12 -->
+  </div>
+  <!-- /page header -->
+  <!-- page content -->
+  <div class="pagecontent">
+    <!-- row -->
+    <div class="dataloader" ng-show="vc.dataloader"></div>
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 btn-group">
+        <div class="pull-right">
+          <button class="btn btn-primary" ng-click="vc.saveData()">
+            <i class="fa fa-save"></i> 저장
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-default tile">
+          <div class="panel-heading tile-header">
+            <strong style="letter-spacing: 0.5px;">{{ 'Menu.SEARCH' | translate }} {{ 'Menu.CONDITION' | translate }}</strong>
+          </div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
+                <label>년도</label>
+                <div class="btn-group">
+                  <select ng-model="vc.srch.TargetYear" ng-options="data.TargetYear as data.TargetYear for data in vc.yearsList" class="form-control" ng-change="vc.getList()">
+                  </select>
+                </div>
+              </div>
+              <div class="col-lg-10 col-md-10 col-sm-4 col-xs-4">
+                <label>월</label>
+                <div class="btn-group">
+                  <label class="btn btn-sm btn-default" ng-model="TargetMonth" uib-btn-radio="'01'">1</label>
+                  <label class="btn btn-sm btn-default" ng-model="TargetMonth" uib-btn-radio="'02'">2</label>
+                  <label class="btn btn-sm btn-default" ng-model="TargetMonth" uib-btn-radio="'03'">3</label>
+                  <label class="btn btn-sm btn-default" ng-model="TargetMonth" uib-btn-radio="'04'">4</label>
+                  <label class="btn btn-sm btn-default" ng-model="TargetMonth" uib-btn-radio="'05'">5</label>
+                  <label class="btn btn-sm btn-default" ng-model="TargetMonth" uib-btn-radio="'06'">6</label>
+                  <label class="btn btn-sm btn-default" ng-model="TargetMonth" uib-btn-radio="'07'">7</label>
+                  <label class="btn btn-sm btn-default" ng-model="TargetMonth" uib-btn-radio="'08'">8</label>
+                  <label class="btn btn-sm btn-default" ng-model="TargetMonth" uib-btn-radio="'09'">9</label>
+                  <label class="btn btn-sm btn-default" ng-model="TargetMonth" uib-btn-radio="'10'">10</label>
+                  <label class="btn btn-sm btn-default" ng-model="TargetMonth" uib-btn-radio="'11'">11</label>
+                  <label class="btn btn-sm btn-default" ng-model="TargetMonth" uib-btn-radio="'12'">12</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <div class="row">
+      <!-- col -->
+      <div class="col-md-12">
+        <div class="panel panel-default tile">
+          <div class="panel-heading tile-header">
+            <strong style="letter-spacing: 0.5px;">캘린더</strong>
+          </div>
+          <div class="panel-body">
+            <div class="fc-toolbar fc-header-toolbar">
+              <div class="fc-left">
+                <div class="fc-button-group">
+                  <button type="button" class="fc-today-button fc-button fc-state-default fc-corner-left fc-state-disabled">오늘</button>
+                  <button type="button" class="fc-prev-button fc-button fc-state-default" aria-label="prev" style="margin-left: -4px;">
+                    <span class="fc-icon fc-icon-left-single-arrow"></span>
+                  </button>
+                  <button type="button" class="fc-next-button fc-button fc-state-default fc-corner-right" aria-label="next" style="margin-left: -4px;">
+                    <span class="fc-icon fc-icon-right-single-arrow"></span>
+                  </button>
+                </div>
+              </div>
+              <div class="fc-center">
+                <h2>{{vc.yearMonth}}</h2>
+              </div>
+            </div>
+            <div class="mng_cal_tble">
+              <table class="table table-responsive table_blue reserve" cellspacing="0" rules="all" border="1" id="mytable">
+                <colgroup>
+                  <col width="*">
+                  <col width="*">
+                  <col width="*">
+                  <col width="*">
+                  <col width="*">
+                  <col width="*">
+                  <col width="*">
+                </colgroup>
+                <thead>
+                  <tr>
+                    <th class="active text-center th-new">일</th>
+                    <th class="active text-center th-new">월</th>
+                    <th class="active text-center th-new">화</th>
+                    <th class="active text-center th-new">수</th>
+                    <th class="active text-center th-new">목</th>
+                    <th class="active text-center th-new">금</th>
+                    <th class="active text-center th-new">토</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="li in vc.lists2">
+                    <td><span ng-class="vc.getDateClass(li.SunIndex)" ng-bind="li.Sun"></span><span class="pull-right"><md-checkbox role="checkbox" aria-label="{{li.Sun}}" ng-show="li.SunIndex != null" ng-model="vc.data.lists[li.SunIndex].HolidayYN" ng-true-value="'Y'" ng-false-value="'N'" /></span><span><input type="text" class="form-control title-form-control" ng-show="li.SunIndex != null" ng-model="vc.data.lists[li.SunIndex].Description"></span></td>
+                    <td><span ng-class="vc.getDateClass(li.MonIndex)" ng-bind="li.Mon"></span><span class="pull-right"><md-checkbox role="checkbox" aria-label="{{li.Sun}}" ng-show="li.MonIndex != null" ng-model="vc.data.lists[li.MonIndex].HolidayYN" ng-true-value="'Y'" ng-false-value="'N'" /></span><span><input type="text" class="form-control title-form-control" ng-show="li.MonIndex != null" ng-model="vc.data.lists[li.MonIndex].Description"></span></td>
+                    <td><span ng-class="vc.getDateClass(li.TueIndex)" ng-bind="li.Tue"></span><span class="pull-right"><md-checkbox role="checkbox" aria-label="{{li.Sun}}" ng-show="li.TueIndex != null" ng-model="vc.data.lists[li.TueIndex].HolidayYN" ng-true-value="'Y'" ng-false-value="'N'" /></span><span><input type="text" class="form-control title-form-control" ng-show="li.TueIndex != null" ng-model="vc.data.lists[li.TueIndex].Description"></span></td>
+                    <td><span ng-class="vc.getDateClass(li.WedIndex)" ng-bind="li.Wed"></span><span class="pull-right"><md-checkbox role="checkbox" aria-label="{{li.Sun}}" ng-show="li.WedIndex != null" ng-model="vc.data.lists[li.WedIndex].HolidayYN" ng-true-value="'Y'" ng-false-value="'N'" /></span><span><input type="text" class="form-control title-form-control" ng-show="li.WedIndex != null" ng-model="vc.data.lists[li.WedIndex].Description"></span></td>
+                    <td><span ng-class="vc.getDateClass(li.ThuIndex)" ng-bind="li.Thu"></span><span class="pull-right"><md-checkbox role="checkbox" aria-label="{{li.Sun}}" ng-show="li.ThuIndex != null" ng-model="vc.data.lists[li.ThuIndex].HolidayYN" ng-true-value="'Y'" ng-false-value="'N'" /></span><span><input type="text" class="form-control title-form-control" ng-show="li.ThuIndex != null" ng-model="vc.data.lists[li.ThuIndex].Description"></span></td>
+                    <td><span ng-class="vc.getDateClass(li.FriIndex)" ng-bind="li.Fri"></span><span class="pull-right"><md-checkbox role="checkbox" aria-label="{{li.Sun}}" ng-show="li.FriIndex != null" ng-model="vc.data.lists[li.FriIndex].HolidayYN" ng-true-value="'Y'" ng-false-value="'N'" /></span><span><input type="text" class="form-control title-form-control" ng-show="li.FriIndex != null" ng-model="vc.data.lists[li.FriIndex].Description"></span></td>
+                    <td><span ng-class="vc.getDateClass(li.SatIndex)" ng-bind="li.Sat"></span><span class="pull-right"><md-checkbox role="checkbox" aria-label="{{li.Sun}}" ng-show="li.SatIndex != null" ng-model="vc.data.lists[li.SatIndex].HolidayYN" ng-true-value="'Y'" ng-false-value="'N'" /></span><span><input type="text" class="form-control title-form-control" ng-show="li.SatIndex != null" ng-model="vc.data.lists[li.SatIndex].Description"></span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!-- // table  -->
+      </div>
+    </div>
+  </div>
+</div>

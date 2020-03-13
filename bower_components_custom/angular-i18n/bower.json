@@ -1,0 +1,12 @@
+{
+  "name": "angular-i18n",
+  "version": "1.5.11",
+  "license": "MIT",
+  "main": "./angular-locale_ko-kr.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components",
+    "precommit.sh"
+  ]
+}

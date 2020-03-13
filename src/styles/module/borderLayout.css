@@ -1,0 +1,90 @@
+.fa-pane {
+  overflow: visible;
+}
+[fa-pane] {padding: 10px;}
+.fa-pane-wrap {
+  position: relative;
+  width:100%;
+  height:100%
+}
+.fa-pane,
+.fa-pane-overlay,
+.fa-pane-handle,
+.fa-pane-scroller {
+  display: block;
+  position: absolute;
+  box-sizing: border-box;
+}
+.fa-pane,
+.fa-pane-overlay,
+.fa-pane-scroller {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.fa-pane-scroller {
+  overflow: auto;
+  padding-right:10px;
+}
+.fa-pane-scroller:nth-child(3) {
+  padding-top:0px;
+}
+
+.fa-pane.fa-pane-closed > .fa-pane-scroller {
+  display: none;
+}
+.fa-pane-overlay {
+  display: none;
+  z-index: 9999;
+}
+.fa-pane-resizing > .fa-pane-overlay {
+  display: block;
+}
+.fa-pane-orientation-vertical > .fa-pane-handle {
+  cursor: row-resize;
+}
+.fa-pane-orientation-horizontal > .fa-pane-handle {
+  cursor: col-resize;
+}
+.fa-pane-orientation-horizontal > .fa-pane-handle > .fa-pane-toggle {
+  margin: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100px;
+  max-height: 20%;
+  cursor: pointer;
+}
+.fa-pane-orientation-vertical > .fa-pane-handle > .fa-pane-toggle {
+  margin: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100px;
+  max-width: 20%;
+  cursor: pointer;
+}
+.fa-pane-closed > .fa-pane-scroller {
+  display: none;
+}
+.fa-pane-handle {
+  background: #ccc;
+}
+.fa-pane:hover > .fa-pane-handle > .fa-pane-toggle {
+  background: #666;
+}
+.fa-pane-resizing > .fa-pane-handle,
+.fa-pane-handle:hover {
+  background-color: #C4E1A4;
+}
+.fa-pane-parent > .fa-pane-scroller {
+  border: none;
+}
+.fa-pane-constrained.fa-pane-resizing > .fa-pane-overlay {
+  background-color: rgba(255, 0, 0, 0.2);
+}

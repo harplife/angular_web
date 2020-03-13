@@ -1,0 +1,80 @@
+<div class="modal-content">
+  <div class="modal-header ng-scope">
+    <h3 class="page-header">데이터 미리보기</h3>
+  </div>
+
+  <div class="modal-body ng-scope">
+
+    <div class="row pb-10">
+      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" ng-repeat="cht in vc.chtList" ng-if="cht.cntTot > 0">
+        <div ng-if="vc.dataType.chtType != ''" >
+          <canvas class="chart-base"
+            chart-type="cht.type"
+            chart-data="cht.data"
+            chart-series="cht.series"
+            chart-labels="cht.labels"
+            chart-colors="cht.colors"
+            chart-options="cht.options">
+          </canvas>
+        </div>
+      </div>
+      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" ng-if="vc.chtList.length == 1">
+        <table id="dtTable"class="table table-striped table-bordered table-hover data_table table-custom">
+          <tr><th  class="text-center">구분</th><th  class="text-center">대상수(명)</th></tr>
+          <tr ng-repeat="li in vc.chtList[0].dataList">
+            <td  class="text-center"><span ng-bind="li.Type"></span></td>
+            <td  class="text-center"><span ng-bind="li.Rate"></span></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="row pt-10" ng-if="vc.chtList.length > 1">
+      <div>
+        <table id="dtTable"class="table table-striped table-bordered table-hover data_table table-custom">
+          <tr>
+            <th  class="text-center">구분</th>
+            <th  class="text-center" ng-repeat="cht in vc.chtList"><span ng-bind="cht.title"></span></th>
+          </tr>
+          <tr ng-repeat="li in vc.chtList[0].dataList">
+            <td  class="text-center"><span ng-bind="li.Type"></span></td>
+            <td  class="text-center" ng-repeat="cht in vc.chtList"><span ng-bind="(cht.dataList | filter: {Type: li.Type} : true)[0].Rate"></span></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="row pt-10">
+      <table id="dtList"class="table table-striped table-bordered table-hover data_table table-custom">
+        <tr>
+          <th  class="text-center">대상자</th>
+          <th  class="text-center" ng-if="vc.tgtList[0].GdNm != null">성별</th>
+          <th  class="text-center" ng-if="vc.tgtList[0].AgNm != null">연령대</th>
+          <th  class="text-center" ng-if="vc.tgtList[0].PsNm != null">직급</th>
+          <th  class="text-center" ng-if="vc.tgtList[0].Gr1Nm != null">그룹1</th>
+          <th  class="text-center" ng-if="vc.tgtList[0].Gr2Nm != null">그룹2</th>
+          <th  class="text-center" ng-if="vc.tgtList[0].Gr3Nm != null">그룹3</th>
+          <th  class="text-center" ng-if="vc.tgtList[0].Gr4Nm != null">그룹4</th>
+          <th  class="text-center">진단결과</th>
+        </tr>
+        <tr ng-repeat="li in vc.tgtList">
+          <td  class="text-center"><span ng-bind="li.Name"></span></td>
+          <td  class="text-center" ng-if="li.GdNm != null"><span ng-bind="li.GdNm"></span></td>
+          <td  class="text-center" ng-if="li.AgNm != null"><span ng-bind="li.AgNm"></span></td>
+          <td  class="text-center" ng-if="li.PsNm != null"><span ng-bind="li.PsNm"></span></td>
+          <td  class="text-center" ng-if="li.Gr1Nm != null"><span ng-bind="li.Gr1Nm"></span></td>
+          <td  class="text-center" ng-if="li.Gr2Nm != null"><span ng-bind="li.Gr2Nm"></span></td>
+          <td  class="text-center" ng-if="li.Gr3Nm != null"><span ng-bind="li.Gr3Nm"></span></td>
+          <td  class="text-center" ng-if="li.Gr4Nm != null"><span ng-bind="li.Gr4Nm"></span></td>
+          <td  class="text-center"><span ng-bind="li.LvCd"></span></td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+  <!-- //modal-body -->
+
+  <div class="modal-footer ng-scope">
+    <button class="btn btn-default mb-10" ng-click="vc.cancel()">
+      <i class="fa fa-times"></i>{{ 'Menu.CLOSE' | translate }}
+    </button>
+  </div>
+</div>

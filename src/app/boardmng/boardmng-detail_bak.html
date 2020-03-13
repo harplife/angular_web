@@ -1,0 +1,142 @@
+<div class="page page-footable">
+  <!-- page header -->
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">{{ 'Menu.META_TABLE' | translate }} {{ 'Menu.DETAIL' | translate }}</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+  </div>
+  <!-- /page header -->
+  <!-- page content -->
+  <div class="pagecontent">
+    <div class="row">
+        <!-- Action Buttons -->
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 btn-group">
+          <div class="pull-right">
+            <button class="btn btn-default"   ui-sref="app.boardmng.list">
+              <i class="fa fa-list"></i> {{ 'Menu.LIST' | translate }}
+            </button>
+            <button class="btn btn-default" ng-click="boardMngDetail.goModifyMetaTable()">
+              <i class="fa fa-edit"></i> {{ 'Menu.MODIFY' | translate }}
+            </button>
+          </div>
+        </div>
+      </div>
+    <!-- row -->
+    <div class="row">
+      <!-- col -->
+      <div class="col-md-12">
+        <div class="panel panel-default tile">
+          <div class="panel-heading tile-header">
+            <strong style="letter-spacing: 0.5px;" class="ng-binding">{{ 'Menu.META_TABLE' | translate }} {{ 'Menu.DETAIL' | translate }}</strong>
+            <div class="pull-right">
+              <a href="" tile-control-toggle=""> <i class="fa fa-minus fa-lg"></i>
+              </a>
+            </div>
+          </div>
+          <div class="panel-body collapse in">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group form-inline">
+                  <label style="color: red">*</label><label>{{ 'Menu.EM710VC01' | translate }}</label>
+                  <div class="form-control txt_view" ng-bind="boardMngDetail.metaTable.tableNm"></div>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group form-inline">
+                  <label>{{ 'Menu.EM710DC02' | translate }}</label>
+                  <div class="form-control txt_view" ng-bind="boardMngDetail.metaTable.moduleType"></div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="form-group form-inline">
+                  <label>{{ 'Menu.EM710DC03' | translate }}</label>
+                  <div class="form-control txt_view" ng-bind="boardMngDetail.metaTable.tableDesc"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-default tile">
+          <!-- tile header -->
+          <div class="panel-heading tile-header">
+            <strong style="letter-spacing: 0.5px;" class="ng-binding">{{ 'Menu.EM710VT07' | translate }}</strong>
+            <div class="pull-right">
+              <a href="" tile-control-toggle=""> <i class="fa fa-minus fa-lg"></i>
+              </a>
+            </div>
+          </div>
+          <!-- /tile header -->
+          <!-- tile body -->
+          <div class="panel-body collapse in">
+            <span ng-repeat="column in boardMngDetail.metaTable.metaColumns track by $index">
+              <div class="row">
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <label>{{ 'Menu.EM710VC02' | translate }}</label>
+                    <div class="form-control-static txt_view" ng-bind="column.columnLogicalNm"></div>
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <label ng-show="column.customColumnYN == 'Y'">{{ 'Menu.EM710VC03' | translate }} <i class="fa fa-question-circle" ng-click="boardMngDetail.showFieldNameRule()" style="color:red"></i></label><label style="color: red" ng-show="column.customColumnYN == 'N'">{{ 'Menu.EM710VC03' | translate }}</label>
+                    <div class="form-control-static txt_view" ng-bind="column.columnPhysicalNm"></div>
+                  </div>
+                </div>
+                <div class="col-lg-2">
+                  <div class="form-group">
+                    <label>{{ 'Menu.EM710VC04' | translate }}</label>
+                    <div class="form-control-static txt_view" ng-bind="column.listColumnWidth"></div>
+                  </div>
+                </div>
+                <div class="col-lg-1">
+                  <div class="form-group">
+                    <label>{{ 'Menu.EM710VC05' | translate }}</label>
+                    <div class="form-control-static txt_view" ng-bind="column.listColumnSort"></div>
+                  </div>
+                </div>
+                <div class="col-lg-1">
+                  <label>{{ 'Menu.EM710VC06' | translate }}</label>
+                  <div class="form-control-static">
+                    <label><input type="checkbox" ng-checked="column.listColumnShowYN == 'Y'" disabled required></label>
+                    <label><input type="checkbox" ng-checked="column.editColumnShowYN == 'Y'" disabled required></label>
+                  </div>
+                </div>
+                <div class="col-lg-2">
+                  <div class="pull-right" style="height: 100%">
+                    <button class="btn btn-primary btn-xs mb-10 mr-5" ng-click="boardMngDetail.showColumnInfo(column)">
+                      <i class="fa fa-sticky-note-o">{{ 'Menu.EICON_DETAILPROPERTY' | translate }} </i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </span>
+            <!-- /tile body -->
+          </div>
+        <!-- /tile -->
+        </div>
+      </div>
+      <!-- /col -->
+    </div>
+    <div class="row">
+      <!-- Action Buttons -->
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 btn-bottom btn-group">
+        <div class="pull-right">
+          <button class="btn btn-default"   ui-sref="app.boardmng.list">
+            <i class="fa fa-list"></i> {{ 'Menu.LIST' | translate }}
+          </button>
+          <button class="btn btn-default" ng-click="boardMngDetail.goModifyMetaTable()">
+            <i class="fa fa-edit"></i> {{ 'Menu.MODIFY' | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+  <!-- /page content -->
+  </div>
+</div>

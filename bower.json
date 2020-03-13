@@ -1,0 +1,230 @@
+{
+  "name": "salevis4-home",
+  "version": "1.2.0",
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "angular": "~1.5.11",
+    "angular-animate": "1.5.11",
+    "angular-aria": "~1.5.11",
+    "angular-bootstrap": "1.1.2",
+    "angular-bootstrap-colorpicker": "~3.0.19",
+    "angular-bootstrap-nav-tree": "*",
+    "angular-chosen-localytics": "~1.0.7",
+    "angular-cookies": "1.5.11",
+    "angular-datatables": "~0.5.0",
+    "d3": "~3.5.6",
+    "angular-file-upload": "~2.1.4",
+    "angular-flot": "~0.0.13",
+    "angular-fontawesome": "~0.4.0",
+    "angular-fullscreen": "~1.0.1",
+    "angular-google-maps": "~2.2.1",
+    "angular-i18n": "~1.5.11",
+    "angular-intro.js": "~1.3.0",
+    "angular-ipsum": "~0.0.4",
+    "angular-leaflet-directive": "~0.8.8",
+    "angular-loading-bar": "~0.8.0",
+    "angular-masonry": "~0.16.0",
+    "angular-material": "~1.1.20",
+    "angular-messages": "1.5.11",
+    "angular-momentjs": "~0.2.2",
+    "angular-qrcode": "7.2.0",
+    "angular-resource": "1.5.11",
+    "angular-rickshaw": "~0.5.0",
+    "angular-sanitize": "1.5.11",
+    "angular-smart-table": "~2.1.3",
+    "angular-toastr": "~1.5.0",
+    "angular-touch": "~1.5.0",
+    "angular-translate": "~2.16.0",
+    "angular-translate-loader-static-files": "~2.16.0",
+    "angular-translate-storage-local": "~2.16.0",
+    "angular-ui-calendar": "~0.8.1",
+    "angular-ui-grid": "~3.0.6",
+    "angular-ui-router": "~1.0.8",
+    "angular-ui-select": "~0.14.9",
+    "angular-ui-tree": "~2.9.0",
+    "angular-ui-utils": "~0.2.3",
+    "angular-chart.js": "1.1.1",
+    "angular-flexslider": "1.3.2",
+    "chartjs-plugin-annotation": "0.5.7",
+    "animate.css": "~3.4.0",
+    "bootstrap": "~3.3.7",
+    "bootstrap-daterangepicker": "~2.0.11",
+    "bourbon": "~4.2.5",
+    "chosen": "https://github.com/harvesthq/chosen/releases/download/1.4.2/chosen_v1.4.2.zip",
+    "es5-shim": "~4.1.13",
+    "flot": "~0.8.3",
+    "flot-spline": "*",
+    "flot.tooltip": "~0.8.4",
+    "font-awesome": "~4.7.0",
+    "html.sortable": "~0.3.0",
+    "imagesloaded": "~4.1.0",
+    "jquery-ui": "~1.10.3",
+    "jquery.easy-pie-chart": "~2.1.6",
+    "jquery.inputmask": "~3.2.7",
+    "jquery.slimscroll": "~1.3.6",
+    "jquery.sparkline": "http://omnipotent.net/jquery.sparkline/2.1.2/jquery.sparkline.js",
+    "json3": "~3.3.2",
+    "leaflet": "~0.7.5",
+    "leaflet-draw": "~0.2.4",
+    "leaflet-heat": "https://github.com/Leaflet/Leaflet.heat/archive/gh-pages.zip",
+    "leaflet-plugins": "~1.3.6",
+    "masonry": "4.0.0",
+    "material-design-iconic-font": "~2.1.1",
+    "morrisjs": "~0.5.1",
+    "ng-bs-daterangepicker": "~0.0.5",
+    "ng-table": "1.0.0-beta.5",
+    "ng-tags-input": "3.0.0",
+    "ngImgCrop": "~0.3.2",
+    "oclazyload": "~1.0.5",
+    "rickshaw": "~1.5.1",
+    "simple-line-icons": "~2.2.1",
+    "textAngular": "1.5.11",
+    "weather-icons": "~2.0.10",
+    "dragular": "4.0.0",
+    "magnific-popup": "~1.1.0",
+    "owl.carousel": "^2.3.4",
+    "api-check": "^7.0.0",
+    "angular-bootstrap-grid-tree": "0.4.0",
+    "printThis": "1.15.0"
+  },
+  "devDependencies": {
+    "angular-mocks": "1.5.11",
+    "angular-scenario": "1.5.11"
+  },
+  "overrides": {
+    "angular-bootstrap": {
+      "main": [
+        "ui-bootstrap-tpls.js"
+      ]
+    },
+    "bootstrap": {
+      "main": [
+        "./dist/css/bootstrap.css",
+        "./dist/js/bootstrap.js"
+      ]
+    },
+    "font-awesome": {
+      "main": [
+        "css/font-awesome.css"
+      ]
+    },
+    "api-check": {
+      "main": [
+        "./dist/api-check.min.js"
+      ]
+    },
+    "angular-formly": {
+      "main": [
+        "./dist/formly.min.js"
+      ]
+    },
+    "angular-formly-templates-bootstrap": {
+      "main": [
+        "./dist/angular-formly-templates-bootstrap.min.js"
+      ]
+    },
+    "material-design-iconic-font": {
+      "main": [
+        "./dist/css/material-design-iconic-font.css"
+      ]
+    },
+    "chosen": {
+      "main": [
+        "chosen.jquery.js",
+        "chosen.min.css"
+      ]
+    },
+    "rickshaw": {
+      "main": [
+        "rickshaw.js",
+        "rickshaw.min.css"
+      ]
+    },
+    "angular-toastr": {
+      "main": [
+        "./dist/angular-toastr.css",
+        "./dist/angular-toastr.tpls.js"
+      ]
+    },
+    "flot": {
+      "main": [
+        "jquery.flot.js",
+        "jquery.flot.resize.js"
+      ]
+    },
+    "flot-spline": {
+      "main": "./js/jquery.flot.spline.js"
+    },
+    "jquery.easy-pie-chart": {
+      "main": "./dist/angular.easypiechart.js",
+      "dependencies": {
+        "jquery": ">=1.9.0"
+      }
+    },
+    "angular-datatables": {
+      "main": [
+        "./dist/angular-datatables.js",
+        "./dist/plugins/bootstrap/angular-datatables.bootstrap.js",
+        "./dist/plugins/colreorder/angular-datatables.colreorder.js",
+        "./dist/plugins/columnfilter/angular-datatables.columnfilter.js",
+        "./dist/plugins/colvis/angular-datatables.colvis.js",
+        "./dist/plugins/fixedcolumns/angular-datatables.fixedcolumns.js",
+        "./dist/plugins/fixedheader/angular-datatables.fixedheader.js",
+        "./dist/plugins/scroller/angular-datatables.scroller.js",
+        "./dist/plugins/tabletools/angular-datatables.tabletools.js"
+      ]
+    },
+    "jquery.inputmask": {
+      "main": "./dist/jquery.inputmask.bundle.js"
+    },
+    "owl-carousel": {
+      "main": [
+        "./owl.carousel/dist/owl.carousel.js",
+        "./owl.carousel/dist/owl.carousel.css",
+        "./owl.carousel/dist/assets/owl.theme.css"
+      ]
+    },
+    "leaflet-draw": {
+      "main": [
+        "./dist/leaflet.draw.js",
+        "./dist/leaflet.draw.css"
+      ],
+      "dependencies": {}
+    },
+    "masonry": {
+      "main": [
+        "./dist/masonry.pkgd.js"
+      ],
+      "dependencies": {}
+    },
+    "textAngular": {
+      "main": [
+        "./dist/textAngular-rangy.min.js",
+        "./dist/textAngular-sanitize.js",
+        "./dist/textAngular.js",
+        "./dist/textAngularSetup.js"
+      ],
+      "dependencies": {}
+    },
+    "leaflet-heat": {
+      "main": "./dist/leaflet-heat.js"
+    }
+  },
+  "appPath": "webapp",
+  "resolutions": {
+    "angular": "1.5.11",
+    "bootstrap": "~3.3.5",
+    "rickshaw": "~1.5.1",
+    "d3": "~3.5.6",
+    "bootstrap-daterangepicker": "~2.0.11",
+    "moment": ">=2.9.0",
+    "angular-cookies": "1.5.11",
+    "masonry": "4.0.0",
+    "jquery": ">= 1.9.0",
+    "get-size": "~2.0.2",
+    "outlayer": "~2.0.0",
+    "fizzy-ui-utils": "~2.0.0",
+    "imagesloaded": "~4.1.0",
+    "jquery-bridget": "~2.0.0"
+  }
+}

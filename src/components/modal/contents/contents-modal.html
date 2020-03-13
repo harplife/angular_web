@@ -1,0 +1,24 @@
+<div class="modal-content" style="max-width: 100%; min-width: 899px; display: table; border-radius:6px">
+  <div class="modal-header ng-scope" style="border-radius:6px">
+    <h3 class="page-header">컨텐츠 미리보기</h3>
+  </div>
+
+  <div class="modal-body ng-scope">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="form-group">
+          <div ng-bind-html="modalCtrl.Contents">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- //modal-body -->
+
+    <div class="modal-footer ng-scope">
+      <button class="btn btn-default mb-10" ng-click="modalCtrl.cancel()">
+        <i class="fa fa-times"></i> 닫기
+      </button>
+    </div>
+  </div>
+</div>

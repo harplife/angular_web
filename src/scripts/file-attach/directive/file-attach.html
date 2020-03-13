@@ -1,0 +1,31 @@
+
+<div class="form-right">
+  <table class="table b-a b-solid bg-white">
+    <thead>
+      <tr>
+        <th width="50%">Name</th>
+        <th class="">Size</th>
+        <th class="">Progress</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="filectl_{{obj.id}}" ng-repeat="obj in faCtrl.fileData" ng-if="!obj.delStatus">
+        <td><span ng-show="!obj.isLoaded" class="file_list" ng-bind="obj.fileName"></span> <a href="{{obj.link}}" target="attach" ng-show="obj.isLoaded"><span
+            class="file_list" ng-bind="obj.fileName"></span></a></td>
+        <td align=right><span class="file_size" ng-bind="obj.size|filesize"></span></td>
+        <td><div class="progress progress-xs">
+            <div class="progress-bar progress-bar-primary" style="width: 0%;"></div>
+          </div></td>
+        <td></td>
+        <td align=center><a href="" ng-click="faCtrl.onDelete(obj)"><span ng-show="obj.delState == ''"><i class="icon-trash"></i> {{ 'Menu.DELETE' | translate }}</span><span
+            ng-show="obj.delState == 'delete'"><i class="icon-refresh"></i> {{ 'Menu.CANCEL' | translate }}</span></a></td>
+      </tr>
+    </tbody>
+  </table>
+  <div tabindex="500" class="btn btn-info btn-file pull-right" ng-click="faCtrl.openDilalog()">
+    <i class="icon-file-plus"></i>{{ 'Menu.ATTACHMENT' | translate }}
+  </div>
+  <input id="file-5" style="display: none;" class="file" type="file" multiple="multiple" data-preview-file-type="any" data-upload-url="#" placeholder="">
+</div>

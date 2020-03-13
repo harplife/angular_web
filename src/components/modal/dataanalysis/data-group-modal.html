@@ -1,0 +1,86 @@
+<div class="modal-content">
+  <div class="modal-header ng-scope">
+    <h3 class="modal-title custom-font"> {{ 'Menu.TASK' | translate }} {{ 'Menu.SEARCH' | translate }}</h3>
+  </div>
+
+  <div class="modal-body ng-scope">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="form-group">
+          <select class="form-control" name="searchFieldType" id="searchFieldType" ng-model="modalCtrl.searchFieldType"
+            ng-options="item['optionId'] as item['optionName'] for item in modalCtrl.searchFieldTypeList" ng-init="modalCtrl.selSearchType">
+          </select>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <input type="text" class="form-control" ng-model="modalCtrl.searchValue" placeholder="{{ 'Menu.EM410DT02' | translate }}">
+      </div>
+      <div class="col-lg-2">
+        <div class="pull-right">
+          <button class="btn btn-slategray btn-ef btn-ef-7b mb-10 mr-5" activate-button="" ng-click="modalCtrl.getClientList()">
+            <i class="fa fa-search"></i> {{ 'Menu.SEARCH' | translate }}
+          </button>
+        </div>
+      </div>
+      <div class="col-lg-2">
+        <div class="pull-right">
+          <select name="DataTables_Table_0_length" aria-controls="DataTables_Table_0" ng-model="modalCtrl.viewSizePerPage"
+            ng-change="modalCtrl.changeViewSize()" ng-options="c for c in modalCtrl.viewSizePerPageList" class="input-sm">
+          </select>
+        </div>
+      </div>
+    </div>
+    <!-- //row -->
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <table id="searchTextResults" data-filter="#filter" class="table table-striped table-bordered table-hover data_table table-custom">
+            <!-- Header -->
+            <colgroup>
+              <col width="">
+              <col width="">
+              <col width="">
+              <col width="">
+              <col width="">
+            </colgroup>
+            <thead>
+              <tr>
+                <th>{{ 'Menu.BASIC_TASK' | translate }}</th>
+                <th>{{ 'Menu.DATAGROUP_NAME' | translate }}</th>
+                <th>{{ 'Menu.TASK_NAME' | translate }}</th>
+                <th>{{ 'Menu.START_DATE' | translate }}</th>
+                <th>{{ 'Menu.END_DATE' | translate }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Result Rows -->
+              <tr ng-repeat="li in modalCtrl.ShopList" ng-click="modalCtrl.select(li);" style="cursor: pointer;">
+                <td class="text-center"><i class="fa fa-check-square-o" ng-show="li.RelateDataId == modalCtrl.selectedLi.RelateDataId" style="color:blue;"></i><i class="fa fa-check-square-o" ng-show="li.UseYN == 'Y'" style="color:red;"></i></td>
+                <td><span ng-bind="li.DatagroupNm"></span></td>
+                <td><span ng-bind="li.MaShopId"></span></td>
+                <td><span ng-bind="li.BeginDate | utcToLocal:'yyyy-MM-dd h:mm a'"></span></td>
+                <td><span ng-bind="li.EndDate | utcToLocal:'yyyy-MM-dd h:mm a'"></span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- /row -->
+        <div class="paging dataTables_paginate pull-right">
+          <ul uib-pagination name="pagination" data-ng-if="modalCtrl.totalItems" ng-model="modalCtrl.currentPage" total-items="modalCtrl.totalItems" previous-text="{{'BTN.PAGINATION.PREV'|translate}}" next-text="{{'BTN.PAGINATION.NEXT'|translate}}" first-text="{{'BTN.PAGINATION.FIRST'|translate}}" last-text="{{'BTN.PAGINATION.LAST'|translate}}" ng-change="modalCtrl.pageChanged()" direction-links="true"
+            boundary-links="true" num-pages="modalCtrl.numPages" template-url="app/template/pagination.html" rotate="false" max-size="modalCtrl.maxSize" items-per-page="modalCtrl.viewSize"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- //modal-body -->
+
+  <div class="modal-footer ng-scope">
+    <button class="btn btn-primary mb-10" ng-click="modalCtrl.ok()" ng-disabled="modalCtrl.selectedLi.RelateDataId == null">
+      <i class="fa fa-check"></i>{{ 'Menu.CHOOSE' | translate }}
+    </button>
+    <button class="btn btn-default btn-ef btn-ef-6 btn-ef-6a mb-10" ng-click="modalCtrl.cancel()">
+      <i class="fa fa-times"></i>{{ 'Menu.CANCEL' | translate }}
+    </button>
+  </div>
+</div>

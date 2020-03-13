@@ -1,0 +1,132 @@
+<div class="modal-content">
+  <div class="modal-header ng-scope">
+    <div class="page-header">{{vc.pageTitle}} 추가</div>
+  </div>
+
+  <div class="modal-body ng-scope">
+    <div ng-show="vc.srch.tgtType == '100'">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="form-group form-inline">
+            <label>이름</label>
+            <input type="text" class="form-control" ng-model="vc.srch.UserNm">
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="form-group form-inline">
+            <label>연락처</label>
+            <input type="text" class="form-control" ng-model="vc.srch.Mobile">
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="form-group form-inline">
+            <label>등급</label>
+            <common-code-custom code-list="vc.UserGradeCodeList" code-model="vc.srch.UserGrade"></common-code-custom>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="form-group form-inline">
+            <label>지역(시/도)</label>
+            <input type="text" class="form-control" ng-model="vc.srch.Addr1">
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="form-group form-inline">
+            <label>나이(시작)</label>
+            <input type="text" class="form-control" ng-model="vc.srch.AgeFrom" numbers-hyphen maxlength="3">
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="form-group form-inline">
+            <label>나이(종료)</label>
+            <input type="text" class="form-control" ng-model="vc.srch.AgeTo" numbers-hyphen maxlength="3">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div ng-show="vc.srch.tgtType == '200'">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="form-group form-inline">
+            <label>이름</label>
+            <input type="text" class="form-control" ng-model="vc.srch.CustNm">
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="form-group form-inline">
+            <label>연락처</label>
+            <input type="text" class="form-control" ng-model="vc.srch.Mobile" numbers-hyphen>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="form-group form-inline">
+            <label>성별</label>
+            <common-code-custom code-list="vc.GenderCodeList" code-model="vc.srch.Gender"></common-code-custom>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="form-group form-inline">
+            <label>등급</label>
+            <common-code-custom code-list="vc.CustGradeCodeList" code-model="vc.srch.CustGrade"></common-code-custom>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="form-group form-inline">
+            <label>나이(시작)</label>
+            <input type="text" class="form-control" ng-model="vc.srch.AgeFrom" numbers-hyphen maxlength="3">
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="form-group form-inline">
+            <label>나이(종료)</label>
+            <input type="text" class="form-control" ng-model="vc.srch.AgeTo" numbers-hyphen maxlength="3">
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="form-group form-inline">
+            <label>지역(시/도)</label>
+            <input type="text" class="form-control" ng-model="vc.srch.Addr1">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="form-group form-inline">
+          <label>Shop명</label>
+          <div class="input-group">
+            <input type="text" class="form-control" ng-model="vc.srch.TenantNm" readonly>
+            <span class="input-group-btn">
+              <button class="btn btn-default" ng-click="vc.srchTenantModal();" type="button">
+                <i class="fa fa-search"></i>
+              </button>
+              <button class="btn btn-default" ng-click="vc.eraseTenant();" type="button">
+                <i class="fa fa-eraser"></i>
+              </button>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="form-group form-inline">
+          <label>추출대상수</label>
+          <div class="input-group">
+            <input type="text" class="form-control" ng-model="vc.data.TgtCnt" readonly>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer ng-scope">
+    <button class="btn btn-primary mb-10" ng-click="vc.getData()">
+      <i class="glyphicon glyphicon-search"></i> 추출
+    </button>
+    <button class="btn btn-primary mb-10" ng-click="vc.setData()">
+      <i class="fa fa-save"></i> 테스트대상추가
+    </button>
+    <button class="btn btn-default btn-ef btn-ef-6 btn-ef-6a mb-10" ng-click="vc.cancel()"><i
+      class="fa fa-times"></i> {{ 'Menu.CANCEL' | translate }}
+    </button>
+  </div>
+</div>

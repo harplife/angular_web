@@ -1,0 +1,134 @@
+<style>
+  .teacher_schedule li {
+    width: 50%;
+    float: left;
+    padding: 0 0 10px;
+  }
+  </style>
+
+  <form id="form1" name="form1">
+    <div id="container_user" style="padding: 30px 0 0; margin-bottom: 70px;">
+      <div class="container_inner register" style="padding: 50px 0 70px;  border:0 !important;">
+
+        <!-- 서브타이틀 -->
+        <p class="user_subtitle">salevis 회원가입</p>
+        <!-- //서브타이틀 -->
+
+        <div class="content">
+          <div class="membership_cont">
+            <div class="sec2 last">
+              <div>
+                <ul class="tab">
+                  <li id="tab1"><a>회원사 선택</a></li>
+                  <li id="tab2"class="current"><a>기본정보 입력</a></li>
+                  <li id="tab3"><a>회원가입 완료</a></li>
+                </ul>
+              </div>
+              <div id = "tab_contents" ng-show="!vc.result">
+                <table class="table mg_auto table_1">
+                  <tr>
+                    <th scope="row" class="required">아이디 <span style="color:#f69679;">*</span><br /></th>
+                    <td style="text-align: left;">
+                      <input type="text" id="userId" name="id" class="w245 signupText" title="아이디" placeholder="아이디를 입력해 주세요" ng-model="vc.UserId" required maxlength="25">
+                      <button type="button" ng-click="vc.chkDupLoginId()" class="signupBtn commonBtn2 type3" ng-disabled="vc.UserId == null || vc.UserId.length < 5">중복확인</button>
+                      <p class="txt2">아이디는 5~25자의 영문 소문자, 숫자, 특수문자(_), (-)만 사용해야 합니다.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row" class="required">{{vc.columnMap['UserNm'].ColumnLogicalNm | translate}} <span style="color:#f69679;">*</span></th>
+                    <td style="text-align: left;">
+                      <input type="text" class="signupText" id="name" name="memberName" title="성명" maxlength="50" placeholder="이름을 입력해 주세요." ng-model="vc.data.UserNm" required style="width:200px;">
+                    </td>
+                  </tr>
+<!--                   <tr class="tr-select">
+                    <th scope="row" class="required">성별</th>
+                      <td style="text-align: left;">
+                        <common-code-custom code-list="li.CodeList" code-model="vc.data['Gender']" callback="vc.onModelChanged"></common-code-custom>
+                    </td>
+                  </tr> -->
+                  <tr>
+                    <th scope="row" class="required">비밀번호<span style="color:#f69679;">*</span><br /></th>
+                    <td style="text-align: left;">
+                      <input type="password" class="signupPwd" id="password" name="password" title="비밀번호" placeholder="비밀번호를 입력해 주세요." ng-model="vc.data.Password" required maxlength="16">
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row" class="required">비밀번호 확인 <span style="color:#f69679;">*</span><br /></th>
+                    <td style="text-align: left;">
+                      <input type="password" class="signupPwd" id="userPwdCheck" name="userPwdCheck" title="비밀번호 확인" placeholder="비밀번호를 다시 입력해 주세요." ng-model="vc.data.Password2" required maxlength="16">
+                      <ul>
+                        <li>* 비밀번호는 8~16자의 영문 대, 소문자, 숫자, 특수문자 중 3개를 조합하여 사용합니다.</li>
+                        <li>* 사용 가능 특수문자: ` . ~ ! @ # $ % ^ * ( ) - _ = +</li>
+                      </ul>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row" class="required">{{vc.columnMap['Email'].ColumnLogicalNm | translate}}  <span style="color:#f69679;">*</span><br /></th>
+                    <td style="text-align: left;"><input type="text" id="email1" class="signupText w200" title="이메일" maxlength="20" placeholder="이메일을 입력해 주세요." ng-model="vc.data.Email1" required>
+                      <span class="blank">@</span>
+                      <input type="text" id="email2" class="signupText w160" title="이메일" maxlength="25" ng-model="vc.data.Email2" required>
+                      <select id="userEmail2Select" class="w108 signupText" onchange="" title="이메일" ng-change="vc.setEmail()" ng-model="vc.data.Email3">
+                        <option value="">직접입력</option>
+                        <option value="naver.com">naver.com</option>
+                        <option value="gmail.com">gmail.com</option>
+                        <option value="hanmail.net">hanmail.net</option>
+                        <option value="daum.net">daum.net</option>
+                        <option value="nate.com">nate.com</option>
+                        <option value="hotmail.com">hotmail.com</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row" class="required">{{vc.columnMap['Mobile'].ColumnLogicalNm | translate}} <span style="color:#f69679;">*</span><br /></th>
+                    <td style="text-align: left;">
+                      <select id="userTelM1" name="userTelM1" title="휴대번호" class="signupText num_check first_select w108" ng-model="vc.data.Mobile1">
+                        <option value="010">010</option>
+                        <option value="011">011</option>
+                        <option value="016">016</option>
+                        <option value="017">017</option>
+                        <option value="018">018</option>
+                        <option value="019">019</option>
+                      </select> <span class="blank">-</span>
+                      <input type="text" id="userTelM2" class="num_check w108 signupText" title="휴대번호" ng-model="vc.data.Mobile2"  maxlength="4"> <span class="blank">-</span>
+                      <input type="text" id="userTelM3" class="num_check w108 signupText" title="휴대번호" ng-model="vc.data.Mobile3"  maxlength="4">
+                    </td>
+                  </tr>
+                  <tr ng-repeat="li in vc.allColumns" ng-if="li.CustomColumnYN == 'Y'">
+                    <th scope="row" class="required">{{ li.ColumnLogicalNm }}</th>
+                    <td>
+                      <input ng-if="li.ColumnLogicalDataType == '10'" type="text" class="signupText" ng-change="vc.onModelChanged()" ng-model="vc.data[li.ColumnPhysicalNm]">
+                      <input ng-if="li.ColumnLogicalDataType == '20'" type="number" class="form-control form-right" ng-change="vc.onModelChanged()" ng-model="vc.data[li.ColumnPhysicalNm]">
+                      <div ng-if="li.ColumnLogicalDataType == '40'" class="input-group" ng-controller="DatepickerDemoCtrl">
+                        <input type="text" class="form-control" uib-datepicker-popup="{{ :: format}}" ng-init="vc.RegDate[$index] = $root.getDate(vc.data[li.ColumnPhysicalNm])"
+                          ng-model="vc.RegDate[$index]" ng-change="vc.onDateChanged(li.ColumnPhysicalNm, $index);" is-open="opened" datepicker-options="dateOptions"
+                          ng-required="false" current-text="오늘" clear-text="취소" close-text="닫기" />
+                        <span class="input-group-btn">
+                          <button type="button" class="btn btn-default" ng-click="open($event)">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                          </button>
+                        </span>
+                      </div>
+                      <common-code-custom ng-if="li.ColumnLogicalDataType == '50'" code-list="li.CodeList" code-model="vc.data[li.ColumnPhysicalNm]" callback="vc.onModelChanged"></common-code-custom>
+                    </td>
+                  </tr>
+                </table>
+                <p>
+                  <!-- 회사의 <a href="/#/reserve/policy" style="color: blue;" target="_blank">이용약관</a>과 <a href="/#/reserve/private" style="color: blue;" target="_blank">개인정보보호정책</a>에 동의합니다. -->
+                  회사의 <a style="cursor: pointer; color: blue;">이용약관</a>과 <a style="cursor: pointer; color: blue;">개인정보보호정책</a>에 동의합니다.
+                </p>
+                <div class="btn_area" style="margin-top: 30px;">
+                  <button class="signupBtn commonBtn5 type2 etc2" ng-click="vc.setData()">회원가입</button>
+                  <button type="button" class="signupBtn commonBtn5 type3" ng-click="vc.goCancel()">취소</button>
+                </div>
+              </div>
+              <div id = "tab_success" ng-show="vc.result">
+                <h1>회원가입을 축하드립니다.</h1>
+                <button type="button" class="signupBtn commonBtn5 type3" ng-click="vc.goCancel()">로그인</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+

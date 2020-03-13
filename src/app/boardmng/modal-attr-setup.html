@@ -1,0 +1,125 @@
+<div class="modal-content">
+  <div class="modal-header ng-scope">
+    <div class="modal-title page-header">{{ modalCtrl.title | translate }}</div>
+  </div>
+
+  <div class="modal-body ng-scope">
+    <div class="row">
+      <div class="col-lg-12">
+        <form name="metaColumn" novalidate>
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label>표시섹션</label> <input type="text" class="form-control pre" ng-model="modalCtrl.column.columnSection">
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label> <input type="checkbox" ng-checked-="modalCtrl.column.customColumnYN == 'Y'" ng-model="modalCtrl.column.customColumnYN" ng-true-value="'Y'"
+                               ng-false-value="'N'"> 사용자정의 컬럼 여부
+                </label> <label> <input type="checkbox" ng-checked-="modalCtrl.column.KeyColumnYN == 'Y'" ng-model="modalCtrl.column.keyColumnYN" ng-true-value="'Y'"
+                                        ng-false-value="'N'"> 정렬가능 여부
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label style="color: red">*</label><label>물리이름</label> <input type="text" class="form-control" ng-model="modalCtrl.column.columnPhysicalNm" required>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label ng-show="modalCtrl.isSizableData()"  style="color: red">*</label><label>물리데이터크기</label> <input type="number" class="form-control pre" ng-value="0"
+                  ng-model="modalCtrl.column.columnPhysicalDataSize" ng-disabled="modalCtrl.column.customColumnYN == 'N' && modalCtrl.column.type =='old'" ng-required="modalCtrl.isSizableData()">
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label style="color: red">*</label><label>물리데이터유형</label> <select class="form-control" ng-disabled="modalCtrl.column.customColumnYN == 'N' && modalCtrl.column.type =='old'" ng-model="modalCtrl.selectedPhysicalDataType"
+                  ng-options="code as code.codeValue for code in modalCtrl.codeList track by code.code"></select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label>물리참조이름</label> <input type="text" class="form-control" ng-model="modalCtrl.column.columnPhysicalAsNm">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label style="color: red">*</label><label>논리데이터유형</label> <select class="form-control" ng-model="modalCtrl.selectedLogicalDataType"
+                  ng-options="code as code.codeValue for code in modalCtrl.codeList track by code.code"></select>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label>상세화면 컬럼 높이</label><input type="text" class="form-control  pre" ng-disabled="modalCtrl.column.customColumnYN == 'N' && modalCtrl.column.type =='old'" ng-model="modalCtrl.column.editColumnHeight">
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label style="color: red">*</label><label>상세화면 폭</label><input type="text" class="form-control  pre" ng-disabled="modalCtrl.column.customColumnYN == 'N' && modalCtrl.column.type =='old'" ng-model="modalCtrl.column.editColumnWidth">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label style="color: red">*</label><label>목록표시 방법</label>
+                <select class="form-control" ng-model="modalCtrl.column.listColumnShowLevel">
+                  <option value="showlevel1">①항상 표시</option>
+                  <option value="showlevel2">②768 이상일때 표시</option>
+                  <option value="showlevel3">③992 이상일때 표시</option>
+                  <option value="showlevel0">검색영역에만 표시</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label>목록화면 텍스트 정렬</label> <input type="text" class="form-control" ng-model="modalCtrl.column.listColumnTextAlign" required>
+                </select>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                  <label style="color: red">*</label><label>목록화면 폭</label> <input type="text" class="form-control" ng-model="modalCtrl.column.listColumnWidth" required>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label>공통코드용 코드타입</label>
+                <input type="text" class="form-control" ng-model="modalCtrl.column.codeType">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="form-group">
+                <label>속성 설명</label>
+                <textarea class="form-control" row="3" cols="50" ng-model="modalCtrl.column.columnDesc"></textarea>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer ng-scope">
+    <button class="btn btn-primary" ng-click="modalCtrl.onAddClick()">
+      <i class="fa fa-save"></i> {{ 'Menu.APPLY' | translate }}
+    </button>
+    <button class="btn btn-default" ng-click="modalCtrl.onCancelClick()">
+      <i class="fa fa-close"></i> {{ 'Menu.CLOSE' | translate}}
+    </button>
+
+  </div>
+</div>
+

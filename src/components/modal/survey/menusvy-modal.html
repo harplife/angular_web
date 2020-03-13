@@ -1,0 +1,91 @@
+<div class="modal-content">
+  <div class="modal-header ng-scope">
+    <div class="page-header">연관설문 추가</div>
+  </div>
+
+  <div class="modal-body ng-scope">
+    <div class="row">
+      <div class="col-lg-5">
+        <div class="form-group form-inline">
+          <label>제목</label>
+          <input type="text" class="form-control" ng-model="vc.srch.SvyNm"
+                 placeholder="제목">
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="form-group form-inline">
+          <label>유형</label>
+          <common-code-custom code-list="vc.SvyTypeCodeList" code-model="vc.srch.SvyType"></common-code-custom>
+        </div>
+      </div>
+      <div class="col-lg-2">
+        <div class="form-group">
+          <label>&nbsp;</label>
+          <button class="btn btn-default btn-ef btn-ef-1 btn-ef-1a" style="margin-left:-24px;"
+                  ng-click="vc.getList()"><i class="fa fa-search"></i> 조회</button>
+        </div>
+      </div>
+    </div><!-- //row -->
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <table data-filter="#filter" data-page-size="10" class="table table-hover">
+            <!-- Header -->
+            <colgroup>
+              <col width="1%">
+              <col width="*">
+              <col width="20%">
+              <!--
+              <col width="10%">
+              <col width="15%">
+              -->
+            </colgroup>
+            <thead>
+            <tr>
+              <th class="text-center" style="vertical-align:middle;"><input type="checkbox" ng-model="vc.svyChkHead" ng-change="svyChkHeadChg()"></th>
+              <th class="text-center none"><span>제목</span></th>
+              <th class="text-center none"><span>구분</span></th>
+              <!--
+              <th class="text-center none"><span>통과점수</span></th>
+              <th class="text-center none"><span>신규가입표시여부</span></th>
+              -->
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Result Rows -->
+            <tr ng-repeat="li in vc.svyLists">
+              <td class="text-center" style="vertical-align:middle;"><input type="checkbox" ng-model="li.svyChkRow" ng-change="svyChkRowChg()">
+              <td><span ng-bind="li.SvyNm"></span></td>
+              <td><span ng-bind="li.SvyType_"></span></td>
+              <!--
+              <td><span ng-bind="li.PassScore"></span></td>
+              <td><span ng-bind="li.JoinShowYN"></span></td>
+              -->
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div><!-- /row -->
+
+    <div class="paging">
+      <ul uib-pagination data-ng-if="vc.totalItems"
+          total-items="vc.totalItems"
+          items-per-page="vc.srch.viewSize"
+          ng-model="vc.currentPage"
+          ng-change="vc.pageChanged()"
+          max-size="vc.maxSize"
+          boundary-links="true"
+          num-pages="vc.numPages"
+          template-url="app/template/pagination.html"></ul>
+    </div>
+  </div><!-- //modal-body -->
+
+  <div class="modal-footer ng-scope">
+    <button class="btn btn-primary mb-10" ng-click="vc.setData()"><i
+      class="fa fa-check"></i>선택설문 추가</button>
+    <button class="btn btn-default btn-ef btn-ef-6 btn-ef-6a mb-10" ng-click="vc.close()"><i
+      class="fa fa-times"></i>{{ 'Menu.CLOSE' | translate }}</button>
+  </div>
+</div>

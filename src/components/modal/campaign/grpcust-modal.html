@@ -1,0 +1,74 @@
+<div class="modal-content">
+  <div class="modal-header ng-scope">
+    <div class="page-header">그룹고객 추가</div>
+  </div>
+
+  <div class="modal-body ng-scope">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="form-group form-inline">
+          <label>이름</label>
+          <input type="text" class="form-control" ng-model="vc.srch.CustNm">
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="form-group form-inline">
+          <label>연락처</label>
+          <input type="text" class="form-control" ng-model="vc.srch.Mobile">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="form-group form-inline">
+          <label>고객등급</label>
+          <common-code-custom code-list="vc.CustGradeCodeList" code-model="vc.srch.CustGrade"></common-code-custom>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="form-group form-inline">
+          <label>방문경로</label>
+          <common-code-custom code-list="vc.VisitPathCodeList" code-model="vc.srch.VisitPath"></common-code-custom>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="form-group form-inline">
+          <label>담당자</label>
+          <div class="input-group">
+            <input type="text" class="form-control" ng-model="vc.srch.ManagerNm" readonly>
+            <span class="input-group-btn">
+              <button class="btn btn-default" ng-click="vc.srchUserModal();" type="button">
+                <i class="fa fa-search"></i>
+              </button>
+              <button class="btn btn-default" ng-click="vc.eraseUser();" type="button">
+                <i class="fa fa-eraser"></i>
+              </button>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="form-group form-inline">
+          <label>추출고객수</label>
+          <div class="input-group">
+            <input type="text" class="form-control" ng-model="vc.data.CustCnt" readonly>
+          </div>
+        </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="modal-footer ng-scope">
+    <button class="btn btn-primary mb-10" ng-click="vc.getData()">
+      <i class="glyphicon glyphicon-search"></i> 추출
+    </button>
+    <button class="btn btn-primary mb-10" ng-click="vc.setData()">
+      <i class="fa fa-save"></i> 그룹고객추가
+    </button>
+    <button class="btn btn-default btn-ef btn-ef-6 btn-ef-6a mb-10" ng-click="vc.cancel()"><i
+      class="fa fa-times"></i> {{ 'Menu.CANCEL' | translate }}
+    </button>
+  </div>
+</div>

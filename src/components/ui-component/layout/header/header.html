@@ -1,0 +1,30 @@
+<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+  <div class="navbar-header">
+    <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> -->
+    <div class="navbar-toggle sz-custom-navbar-toggle">
+      <a href=""><i class="fa fa-outdent"></i></a>
+    </div>
+    <div class="sz-custom-select-tenant">
+      <section class="tile" fullscreen="isFullscreen06">
+        <div class="form-group" ng-if="header.checkUse">
+          <div class="input-group custom-search-form">
+            <input type="text" readonly="readonly" class="form-control" ng-model="header.TENANTNAME" ng-click="header.srchTenantModal();">
+            <input type="hidden" ng-model="header.TENANTID">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button" ng-click="header.srchTenantModal();">
+                <i class="fa fa-search"></i>
+              </button>
+              <button class="btn btn-default" type="button" ng-click="header.eraseTenant();">
+                <i class="fa fa-eraser"></i>
+              </button>
+            </span>
+          </div>
+        </div>
+      </section>
+    </div>
+    <a class="navbar-brand" href="/#/app/dashboard">{{'PRODUCT.COMPANY'|translate}}</a>
+    <div style="clear:both"></div>
+    <header-notification></header-notification>
+  </div>
+  <!-- /.navbar-header -->
+</nav>

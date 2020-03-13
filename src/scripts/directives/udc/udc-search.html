@@ -1,0 +1,18 @@
+<div ng-repeat="li in vc.metaList" class="col-xs-12 col-sm-12 col-md-12 col-xg-12 col-xl-12" ng-if="li.CustomColumnYN == 'Y'">
+  <div class="form-group form-inner-label">
+    <input ng-if="li.ColumnLogicalDataType == '10'" type="text" class="form-control form-right" ng-change="vc.onModelChanged()" ng-model="vc.metaModel[li.ColumnPhysicalNm]">
+    <input ng-if="li.ColumnLogicalDataType == '20'" type="number" class="form-control form-right" ng-change="vc.onModelChanged()" ng-model="vc.metaModel[li.ColumnPhysicalNm]">
+    <div ng-if="li.ColumnLogicalDataType == '40'" class="input-group" ng-controller="DatepickerDemoCtrl">
+      <input type="text" class="form-control" uib-datepicker-popup="{{ :: format}}" ng-init="vc.RegDate[$index] = $root.getDate(vc.metaModel[li.ColumnPhysicalNm])"
+        ng-model="vc.RegDate[$index]" ng-change="vc.onDateChanged(li.ColumnPhysicalNm, $index);" is-open="opened" datepicker-options="dateOptions"
+        ng-required="false" current-text="오늘" clear-text="취소" close-text="닫기" />
+      <span class="input-group-btn">
+        <button type="button" class="btn btn-default" ng-click="open($event)">
+          <i class="glyphicon glyphicon-calendar"></i>
+        </button>
+      </span>
+    </div>
+    <common-code-custom ng-if="li.ColumnLogicalDataType == '50'" code-list="li.CodeList" code-model="vc.metaModel[li.ColumnPhysicalNm]" callback="vc.onModelChanged"></common-code-custom>
+    <label title="{{ li.ColumnLogicalNm }}">{{ li.ColumnLogicalNm }}</label>
+  </div>
+</div>

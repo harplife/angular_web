@@ -1,0 +1,60 @@
+<div class="modal-content">
+  <div class="modal-header ng-scope">
+    <div class="page-header">{{'Menu.ROLE' | translate}} {{'Menu.SEARCH' | translate}}</div>
+  </div>
+
+  <div class="modal-body ng-scope">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="form-group">
+          <select class="form-control" name="searchFieldType" id="searchFieldType" ng-model="vc.searchFieldType"
+            ng-options="item['optionId'] as item['optionName'] for item in vc.searchFieldTypeList" ng-init="vc.selSearchType">
+          </select>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <input type="text" class="form-control" ng-model="vc.searchValue" placeholder="검색어">
+      </div>
+      <div class="col-lg-2">
+        <div class="pull-right">
+          <button class="btn btn-slategray btn-ef btn-ef-7b mb-10 mr-5" activate-button="" ng-click="vc.getList()">
+            <i class="fa fa-search"></i> 조회
+          </button>
+        </div>
+      </div>
+      <div class="col-lg-2">
+        <div class="pull-right">
+          <select name="DataTables_Table_0_length" aria-controls="DataTables_Table_0" ng-model="vc.viewSizePerPage"
+            ng-change="vc.changeViewSize()" ng-options="c for c in vc.viewSizePerPageList" class="input-sm">
+          </select>
+        </div>
+      </div>
+    </div>
+    <!-- //row -->
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <md-contact-chips ng-model="vc.UserRoles" md-contacts="vc.querySearch($query)" md-contact-name="RoleNm" md-contact-image="image" md-contact-email="email"
+            md-require-match="true" md-highlight-flags="i" filter-selected="vc.filterSelected" md-on-remove="vc.onRemoveChip($item)" placeholder="역할">
+          </md-contact-chips>
+          <md-list class="fixedRows"> <md-subheader class="md-no-sticky">**추가할 역할을 선택하세요**</md-subheader>
+            <md-list-item class="contact-item" ng-repeat="(index, role) in vc.data.list" ng-if="!vc.IsRole(role)" ng-click="vc.addRole(role.RoleId)">
+              <div class="md-list-item-text compact" draggable="true">{{role.RoleNm}}</div>
+            </md-list-item>
+          </md-list>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- //modal-body -->
+
+  <div class="modal-footer ng-scope">
+    <button class="btn btn-primary mb-10" ng-click="vc.ok()">
+      <i class="fa fa-check"></i>{{ 'Menu.CHOOSE' | translate }}
+    </button>
+    <button class="btn btn-default btn-ef btn-ef-6 btn-ef-6a mb-10" ng-click="vc.cancel()">
+      <i class="fa fa-times"></i>{{ 'Menu.CANCEL' | translate }}
+    </button>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="modal-content">
+  <div class="modal-header ng-scope">
+    <h3 class="page-header">수신인 관리</h3>
+  </div>
+
+  <div class="modal-body ng-scope">
+    <md-sidenav class="" md-component-id="left" md-is-locked-open="true" style="min-height:600px;">
+      <div class="panel-heading" style="padding-left:15px; border-bottom: 1px solid #eee;">
+        수신자그룹 목록
+      </div>
+      <md-content layout-padding-sm ng-controller="mtSidenavLeftCtrl">
+        <abn-tree tree-data="my_data" tree-control="my_tree" on-select="my_tree_handler(branch)" expand-level="1" select-text="vc.srch.GrpNm" icon-leaf="fa fa-file-o" icon-expand="fa fa-plus" icon-collapse="fa fa-minus"></abn-tree>
+      </md-content>
+    </md-sidenav>
+
+  </div>
+  <!-- //modal-body -->
+
+  <div class="modal-footer ng-scope">
+    <button class="btn btn-primary mb-10" ng-click="modalCtrl.ok()">
+      <i class="fa fa-check"></i>{{ 'Menu.CHOOSE' | translate }}
+    </button>
+    <button class="btn btn-default mb-10" ng-click="modalCtrl.cancel()">
+      <i class="fa fa-times"></i>{{ 'Menu.CANCEL' | translate }}
+    </button>
+  </div>
+</div>

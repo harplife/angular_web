@@ -1,0 +1,284 @@
+<div class="modal-content">
+  <div class="modal-header ng-scope">
+    <div class="page-header">문항 편집 {{wjmSurvey.getQstTypeNm(vc.qt.QstType)}}</div>
+  </div>
+
+  <div class="modal-body ng-scope">
+
+    <!-- 선택형 -->
+    <div ng-if="vc.qt.QstType == '1'">
+      <div class="row" style="padding-bottom:10px;">
+        <div class="col-sm-12">
+          <div class="form-group form-inline">
+            <label>문항영역</label>
+            <select class="form-control" ng-model="vc.qt.QstSecId" ng-options="li.QstSecId as li.QstSecNm for li in vc.qstSecList">
+              <option value="">--선택--</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row" style="padding-bottom:10px;">
+        <div class="col-lg-12">
+          <div class="form-group form-inline">
+            <label>질문내용</label>
+            <input type="text" class="form-control" ng-model="vc.qt.QstSubject" maxlength="50" ng-click="vc.clickQstSubject()" ng-blur="vc.blurQstSubject()">
+          </div>
+        </div>
+      </div>
+
+      <div style="background-color: #f4f4f4; padding:10px;">
+        <div class="row" style="padding-bottom:5px;">
+          <div class="col-xs-1 text-center">번호</div>
+          <div class="col-xs-7 text-center">내용</div>
+          <div class="col-xs-2 text-center">배점</div>
+          <div class="col-xs-2 text-center"></div>
+        </div>
+        <div class="row" ng-repeat="it in vc.it | filter : {stat: '!D'} : true" style="padding-bottom:5px;">
+          <div class="col-xs-1 text-center">{{it.QstItemNo}}</div>
+          <div class="col-xs-7">
+            <input type="text" class="form-control" ng-model="it.QstItemContents" maxlength="50" ng-click="vc.clickQstItemContents(it)" ng-blur="vc.blurQstItemContents(it)">
+          </div>
+          <div class="col-xs-2"><input type="text" class="form-control text-right" ng-model="it.QstItemScore" numbers-only="" maxlength="5" ng-click="vc.clickQstItemScore(it)" ng-blur="vc.blurQstItemScore(it)"></div>
+          <div class="col-xs-2"><button class="btn btn-default" ng-click="vc.setSvyQstItemDel(it.itId)"><i class="fa fa-remove"></i> 삭제</button></div>
+        </div>
+        <div class="row" style="padding-top:10px;">
+          <div class="col-lg-12 text-right">
+            <button class="btn btn-default" ng-click="vc.setSvyQstItemAdd()"><i class="fa fa-plus"></i> 보기추가</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 입력형 -->
+    <div ng-if="vc.qt.QstType == '2'">
+      <div class="row" style="padding-bottom:10px;">
+        <div class="col-lg-12">
+          <div class="form-group form-inline">
+            <label>질문내용</label>
+            <input type="text" class="form-control" ng-model="vc.qt.QstSubject" maxlength="50" ng-click="vc.clickQstSubject()" ng-blur="vc.blurQstSubject()">
+          </div>
+        </div>
+      </div>
+
+      <!--
+      <div style="background-color: #f4f4f4; padding:10px;">
+        <div class="row" style="padding-bottom:5px;">
+          <div class="col-lg-12">
+            <textarea class="form-control" style="height:100px;" maxlength="1000" disabled></textarea>
+          </div>
+        </div>
+      </div>
+      -->
+    </div>
+
+    <!-- 우선순위형 -->
+    <div ng-if="vc.qt.QstType == '3'">
+      <div class="row" style="padding-bottom:10px;">
+        <div class="col-lg-12">
+          <div class="form-group form-inline">
+            <label>질문내용</label>
+            <input type="text" class="form-control" ng-model="vc.qt.QstSubject" maxlength="50" ng-click="vc.clickQstSubject()" ng-blur="vc.blurQstSubject()">
+          </div>
+        </div>
+      </div>
+      <div class="row" style="padding-bottom:10px;">
+        <div class="col-sm-12">
+          <div class="form-group form-inline">
+            <label>선택개수</label>
+            <select class="form-control" ng-model="vc.qt.QstTopCnt" ng-options="li.QstItemNo as li.QstItemNo for li in vc.it">
+              <option value="">--선택--</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div style="background-color: #f4f4f4; padding:10px;">
+        <div class="row" style="padding-bottom:5px;">
+          <div class="col-xs-1 text-center">번호</div>
+          <div class="col-xs-9 text-center">내용</div>
+          <!--
+          <div class="col-xs-2 text-center">배점</div>
+          -->
+          <div class="col-xs-2 text-center"></div>
+        </div>
+        <div class="row" ng-repeat="it in vc.it | filter : {stat: '!D'} : true" style="padding-bottom:5px;">
+          <div class="col-xs-1 text-center">{{it.QstItemNo}}</div>
+          <div class="col-xs-9">
+            <input type="text" class="form-control" ng-model="it.QstItemContents" maxlength="50" ng-click="vc.clickQstItemContents(it)" ng-blur="vc.blurQstItemContents(it)">
+          </div>
+          <!--
+          <div class="col-xs-2"><input type="text" class="form-control text-right" ng-model="it.QstItemScore" numbers-only="" maxlength="5" ng-click="vc.clickQstItemScore(it)" ng-blur="vc.blurQstItemScore(it)"></div>
+          -->
+          <div class="col-xs-2"><button class="btn btn-default" ng-click="vc.setSvyQstItemDel(it.itId)"><i class="fa fa-remove"></i> 삭제</button></div>
+        </div>
+        <div class="row" style="padding-top:10px;">
+          <div class="col-lg-12 text-right">
+            <button class="btn btn-default" ng-click="vc.setSvyQstItemAdd()"><i class="fa fa-plus"></i> 보기추가</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 이미지형 -->
+    <div ng-if="vc.qt.QstType == '4'">
+      <div class="row" style="padding-bottom:10px;">
+        <div class="col-sm-12">
+          <div class="form-group form-inline">
+            <label>문항영역</label>
+            <select class="form-control" ng-model="vc.qt.QstSecId" ng-options="li.QstSecId as li.QstSecNm for li in vc.qstSecList">
+              <option value="">--선택--</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row" style="padding-bottom:10px;">
+        <div class="col-lg-12">
+          <div class="form-group form-inline">
+            <label>질문내용</label>
+            <input type="text" class="form-control" ng-model="vc.qt.QstSubject" maxlength="50" ng-click="vc.clickQstSubject()" ng-blur="vc.blurQstSubject()">
+            <p style="padding-top:5px;">
+              <select class="form-control" ng-model="vc.qt.QstImgId" ng-options="li.AttachmentId as li.ImgNm for li in vc.imageList" ng-change="vc.chgQstImgId(vc.qt)">
+                <option value="">--질문 이미지선택--</option>
+              </select>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="row" style="padding-bottom:10px;">
+        <div class="col-lg-12" style="padding-left:85px;">
+          <img ng-src="{{vc.qt.qtImgSrc}}" style="width:80px; height:80px;" />
+        </div>
+      </div>
+
+      <div style="background-color: #f4f4f4; padding:10px;">
+        <div class="row" style="padding-bottom:5px;">
+          <div class="col-xs-1 text-center">번호</div>
+          <div class="col-xs-2 text-center">이미지</div>
+          <div class="col-xs-5 text-center">내용</div>
+          <div class="col-xs-2 text-center">배점</div>
+          <div class="col-xs-2 text-center"></div>
+        </div>
+        <div class="row" ng-repeat="it in vc.it | filter : {stat: '!D'} : true" style="padding-bottom:5px;">
+          <div class="col-xs-1 text-center">{{it.QstItemNo}}</div>
+          <div class="col-xs-2 text-center"><img ng-src="{{it.itImgSrc}}" style="width:40px; height:40px;" /></div>
+          <div class="col-xs-5">
+            <input type="text" class="form-control" ng-model="it.QstItemContents" maxlength="50" ng-click="vc.clickQstItemContents(it)" ng-blur="vc.blurQstItemContents(it)">
+            <p style="padding-top:5px;">
+              <select class="form-control" ng-model="it.QstItemImgId" ng-options="li.AttachmentId as li.ImgNm for li in vc.imageList" ng-change="vc.chgQstItemImgId(it)">
+                <option value="">--보기 이미지선택--</option>
+              </select>
+            </p>
+          </div>
+          <div class="col-xs-2"><input type="text" class="form-control text-right" ng-model="it.QstItemScore" numbers-only="" maxlength="5" ng-click="vc.clickQstItemScore(it)" ng-blur="vc.blurQstItemScore(it)"></div>
+          <div class="col-xs-2"><button class="btn btn-default" ng-click="vc.setSvyQstItemDel(it.itId)"><i class="fa fa-remove"></i> 삭제</button></div>
+        </div>
+        <div class="row" style="padding-top:10px;">
+          <div class="col-lg-12 text-right">
+            <button class="btn btn-default" ng-click="vc.setSvyQstItemAdd()"><i class="fa fa-plus"></i> 보기추가</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 분류형 -->
+    <div ng-if="vc.qt.QstType == 'C'">
+      <div class="row" style="padding-bottom:10px;">
+        <div class="col-sm-12">
+          <div class="form-group form-inline">
+            <label>분류유형</label>
+            <select class="form-control" ng-model="vc.qt.ClassfyCd" ng-options="li.ClassfyId as li.ClassfyNm for li in vc.classfyListLev1">
+              <option value="">--선택--</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row" style="padding-bottom:10px;">
+        <div class="col-lg-12">
+          <div class="form-group form-inline">
+            <label>질문내용</label>
+            <input type="text" class="form-control" ng-model="vc.qt.QstSubject" maxlength="50" ng-click="vc.clickQstSubject()" ng-blur="vc.blurQstSubject()">
+          </div>
+        </div>
+      </div>
+      <div style="background-color: #f4f4f4; padding:10px;">
+        <div class="row" style="width:100%; padding-bottom:5px; margin:0px auto;">
+          <div class="col-lg-12" style="padding-bottom:5px;">아래와 같은 모습으로 보여집니다.</div>
+          <div class="col-lg-12" ng-if="vc.qt.ClassfyCd == 'MB'">
+            <div class="form-inline">
+              <div class="form-group">
+                <select class="form-control" style="margin-left:0 !Important; width:100% !Important;">
+                  <option value="010">010</option>
+                  <option value="011">011</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" maxlength="4" number-only="" style="margin-left:0 !Important; width:100% !Important;">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" maxlength="4" number-only="" style="margin-left:0 !Important; width:100% !Important;">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-12" ng-if="vc.qt.ClassfyCd == 'EM'">
+            <div class="form-inline">
+              <div class="form-group">
+                <input type="text" class="form-control" maxlength="30" style="margin-left:0 !Important; width:100% !Important;">
+              </div>
+              <div class="form-group">
+                @
+              </div>
+              <div class="form-group">
+                <select class="form-control" style="margin-left:0 !Important; width:100% !Important;">
+                  <option value="gmail.com">gmail.com</option>
+                  <option value="naver.com">naver.com</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-12" ng-if="vc.qt.ClassfyCd == 'GD'">
+            <div style="padding-top:10px;">
+              <p><input type="radio" name="rdoGD" style="margin-top:-3px;" disabled> <!--{{it.QstItemNo}}. -->남</p>
+              <p><input type="radio" name="rdoGD" style="margin-top:-3px;" disabled> <!--{{it.QstItemNo}}. -->여</p>
+            </div>
+          </div>
+
+          <div class="col-lg-12" ng-if="vc.qt.ClassfyCd != 'MB' && vc.qt.ClassfyCd != 'EM' && vc.qt.ClassfyCd != 'GD' && vc.qt.ClassfyCd != ''">
+            <div style="padding-top:10px;">
+              <p ng-repeat="it in vc.classfyListLev2 | filter : {ClassfyCd: vc.qt.ClassfyCd, stat: '!D'} : true">
+                <input type="radio" name="rdo{{it.ClassfyId}}" style="margin-top:-3px;" disabled> <!--{{it.QstItemNo}}. -->{{it.ClassfyNm}}
+              </p>
+            </div>
+            <!--
+            <select class="form-control" ng-model="vc.it.ClassfyId" ng-options="li.ClassfyId as li.ClassfyNm for li in vc.classfyListLev2 | filter : {ClassfyCd: vc.qt.ClassfyCd} : true">
+              <option value="">--선택--</option>
+            </select>
+            -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 설명글 -->
+    <div ng-if="vc.qt.QstType == 'R'">
+      <div class="row" style="padding-bottom:10px;">
+        <div class="col-lg-12">
+          <div class="form-group form-inline">
+            <label>설명내용</label>
+            <textarea ng-model="vc.qt.QstSubject" class="form-control" style="height:100px;" maxlength="500" ng-click="vc.clickQstSubject()" ng-blur="vc.blurQstSubject()"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer ng-scope">
+    <button class="btn btn-primary mb-10" ng-click="vc.apply()">
+      <i class="fa fa-save"></i> 적용
+    </button>
+    <button class="btn btn-default btn-ef btn-ef-6 btn-ef-6a mb-10" ng-click="vc.close()"><i
+      class="fa fa-times"></i>{{ 'Menu.CLOSE' | translate }}
+    </button>
+  </div>
+</div>

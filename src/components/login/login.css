@@ -1,0 +1,1355 @@
+@charset "UTF-8";
+/*reset*/
+
+body,
+div,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+table,
+th,
+td,
+dl,
+dt,
+dd,
+form,
+fieldset,
+legend,
+input,
+textarea,
+button,
+select,
+a,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+a,
+address,
+article,
+aside,
+body,
+caption,
+dd,
+dl,
+div,
+dt,
+em,
+fieldset,
+figcaption,
+footer,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+html,
+iframe,
+img,
+label,
+legend,
+li,
+nav,
+ol,
+p,
+section,
+span,
+strong,
+table,
+tbody,
+tfoot,
+thead,
+th,
+tr,
+ul,
+input,
+button,
+select,
+textarea {
+  margin: 0;
+  padding: 0;
+  /*font-family: "맑은 고딕","Malgun Gothic",dotum,AppleGothic,Helvetica,tahoma,sans-serif;*/
+}
+
+em,
+address {
+  font-style: normal;
+}
+
+img,
+input,
+button,
+select,
+textarea {
+  vertical-align: middle;
+}
+
+ul,
+ol {
+  list-style: none outside none;
+}
+
+img,
+fieldset {
+  border: 0 none;
+}
+
+table {
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+caption,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+  text-align: left;
+  font-weight: normal;
+}
+
+legend,
+hr,
+caption {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  line-height: 0;
+  visibility: hidden;
+  overflow: hidden;
+  font-size: 0;
+}
+
+a {
+  /*outline: none;*/
+  selector-dummy: expression(this.hideFocus=true);
+}
+
+/* 아웃라인 주석처리 : 2018-07-02 이연주 */
+
+a:link,
+a:visited {
+  color: #999;
+  text-decoration: none;
+}
+
+a:active,
+a:hover {
+  color: #00a5af;
+  text-decoration: none;
+}
+
+div {
+  font-size: 100%;
+}
+
+label {
+  display: inline;
+}
+
+em {
+  font-style: normal;
+}
+
+/*common*/
+
+html {
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  background: #fff;
+  color: #666;
+  font-size: 14px;
+  font-family: "맑은 고딕", "Malgun Gothic", dotum, AppleGothic, Helvetica, tahoma, sans-serif;
+}
+
+/*form*/
+
+input {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  color: #666;
+  vertical-align: middle;
+}
+
+textarea {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  color: #666;
+  vertical-align: middle;
+}
+
+select {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  color: #666;
+  vertical-align: middle;
+}
+
+/* ie10에서 x를 없애는 css */
+
+input[type="text"]::-ms-clear {
+  height: 0;
+  width: 0;
+  display: none !important;
+}
+
+input[type="search"]::-ms-clear {
+  height: 0;
+  width: 0;
+  display: none !important;
+}
+
+input[type=password]::-ms-reveal {
+  display: none !important;
+}
+
+/* placeholder */
+
+::-webkit-input-placeholder {
+  /* Chrome */
+  color: #a6a6a6;
+  font-size: 13px;
+  letter-spacing: -1px;
+  transition: opacity 250ms ease-in-out;
+}
+
+:focus::-webkit-input-placeholder {
+  opacity: 0.5;
+}
+
+:-ms-input-placeholder {
+  /* IE 10+ */
+  color: #a6a6a6;
+  transition: opacity 150ms ease-in-out;
+}
+
+:focus:-ms-input-placeholder {
+  opacity: 0.5;
+}
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #a6a6a6;
+  letter-spacing: -1px;
+  opacity: 1;
+  transition: opacity 250ms ease-in-out;
+}
+
+:focus::-moz-placeholder {
+  opacity: 0.5;
+}
+
+:-moz-placeholder {
+  /* Firefox 4 - 18 */
+  letter-spacing: -1px;
+  color: #a6a6a6;
+  opacity: 1;
+  transition: opacity 250ms ease-in-out;
+}
+
+:focus:-moz-placeholder {
+  opacity: 0.5;
+}
+
+/*login*/
+
+.login_area {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.logins {
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+
+.logins_box {
+  position: relative;
+  top: 0;
+  display: table-cell;
+  z-index: 20;
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+  background: url('/assets/images/login/bg_login.png') no-repeat center;
+  background-size: cover;
+}
+
+.login_footer {
+  position: absolute;
+  bottom: 30px;
+  width: 100%;
+  z-index: 30;
+  text-align: center;
+  color: #afb3b3;
+  font-size: 12px;
+}
+
+.loginbox {
+  width: 720px;
+  height: 580px;
+  overflow: hidden;
+  margin: 0 auto;
+  border-radius: 3px 5px 5px 3px;
+  background: url('/assets/images/login/bg_login_left.png') no-repeat 0 0;
+}
+
+.loginbox .login_txt {
+  float: left;
+  padding: 0 0 0 40px;
+  width: 220px;
+  color: #fff;
+}
+
+.login_txt strong.tit {
+  display: block;
+  margin-top: 90px;
+  height: 70px;
+  color: #a5a8e8;
+  font-size: 40px;
+}
+
+.login_txt .txt {
+  width: 175px;
+  height: 112px;
+  color: #a5a8e8;
+  font-size: 14px;
+  line-height: 24px;
+  font-family: 'Verdana';
+  border-bottom: 1px solid #5c5ed3;
+}
+
+.3rk {
+  background-color: #66afe9;
+}
+
+.login_txt .txt span {
+  color: #fff;
+  font-weight: bold;
+}
+
+.login_txt .sel {
+  margin-top: 130px;
+}
+
+.login_txt .sel .ui-menu {
+  width: 100% !important;
+  overflow-x: hidden !important;
+}
+
+/*.login_txt .sel select {width:140px; height:28px; font-size:12px; background:none; border:1px solid #fff; color:#fff;}*/
+
+.nicescroll-cursors {
+  border: 0 none !important;
+  background: rgba(0, 0, 0, 0.7) !important;
+}
+
+.loginbox .login_box {
+  float: left;
+  padding: 0 0 0 70px;
+  width: 320px;
+}
+
+.login_box .logos {
+  display: block;
+  margin-top: 70px;
+  line-height: 0;
+}
+
+.logs_cont {
+  height: 300px;
+}
+
+.logos_des {
+  min-height: 15px;
+  padding-top: 10px;
+  color: #9d9d9d;
+  font-family: 'Verdana';
+}
+
+.logos_des2 {
+  padding-top: 32px;
+  font-size: 12px;
+  line-height: 17px;
+  color: #333;
+}
+
+.logos_des2 strong.tits {
+  display: block;
+  font-size: 13px;
+  padding: 0 0 4px 0;
+}
+
+.login_box .btns { min-width: 300px; }
+
+.login_box .btns button.bts {
+  display: inline-block;
+  height: 37px;
+  width:150px;
+  padding: 0;
+  font-size: 13px;
+  line-height: 20px;
+  color: #f1f3fd;
+  font-weight: bold;
+  text-align: center;
+  background: #3858ed;
+  border-radius: 2px;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+  cursor: pointer;
+}
+
+.login_box .btns button.bts:hover {
+  background: #3654d9;
+}
+
+.login_box .btns button.bts:active {
+  background: #203ec7;
+}
+
+.checks {
+  margin-top: 12px;
+  color: #7e7e7e;
+  font-size: 12px;
+  position: relative;
+}
+
+/* 포지션 속성 추가 : 2018-07-02 이연주 */
+
+.checks input[type="checkbox"] {
+  /*display:none;*/
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 16px;
+  height: 16px;
+  opacity: 0;
+}
+
+/* 포커스 처리를 위해 기존 속성 주석처리 및 속성 추가 : 2018-07-02 이연주 */
+
+.checks input[type="checkbox"]+label span {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin: -2px 5px 0 0;
+  vertical-align: middle;
+  background: url('/assets/images/login/checkbox.png') no-repeat 0 0;
+  cursor: pointer;
+}
+
+.checks input[type="checkbox"]:checked+label span {
+  background: url('/assets/images/login/checkbox.png') no-repeat 0 -18px;
+}
+
+.checks input[type="checkbox"]:focus+label {
+  box-shadow: 0 0 2px #3858ed;
+  border: 1px solid #3858ed;
+  margin: -1px;
+}
+
+/* 체크박스 포커스 시 label 태그 box-shadow 처리 : 2018-07-02 이연주 */
+
+.login_box .btns .chk input {
+  vertical-align: -2px;
+}
+
+.logs_area {
+  position: relative;
+  margin-top: 70px;
+}
+
+.logs_area .checks {
+  position: absolute;
+  right: 0;
+  top: 23px;
+}
+
+.signup_area {
+  position: relative;
+  margin-top: 10px;
+}
+
+.logs_txt {}
+
+.logs_txt li {
+  position: relative;
+  width: 100%;
+  height: 48px;
+}
+
+.logs_txt li input {
+  height: 32px;
+  font-size: 14px;
+  color: #333;
+  font-weight: bold;
+  outline: none;
+  border-bottom: 1px solid #e3e3e3;
+  box-sizing: border-box;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+}
+
+.logs_txt li input:-webkit-autofill {
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.logs_txt li input:focus {
+  border-bottom: 1px solid #3858ed;
+}
+
+.logs_txt li.log_id .icon {
+  position: absolute;
+  display: block;
+  width: 38px;
+  height: 48px;
+  font-size: 0;
+  background: url('/assets/images/login/input_id.png') no-repeat 0 10px;
+}
+
+.logs_txt li.log_id input {
+  width: 320px;
+  height: 48px;
+  padding: 0 100px 0 38px;
+}
+
+.logs_txt li.log_pw {
+  margin-top: 12px;
+}
+
+.logs_txt li.log_pw .icon {
+  position: absolute;
+  display: block;
+  width: 38px;
+  height: 48px;
+  font-size: 0;
+  background: url('/assets/images/login/input_pw.png') no-repeat 0 10px;
+}
+
+.logs_txt li.log_pw input {
+  width: 320px;
+  height: 48px;
+  background: url('/assets/images/login/input_pw.png') no-repeat 0 10px;
+  padding: 0 10px 0 38px;
+}
+
+.logs_txt2 {
+  margin-top: 20px;
+}
+
+.logs_txt2 li {}
+
+.logs_txt2 li input {
+  width: 100%;
+  height: 33px;
+  border-bottom: 1px solid #e3e3e3;
+  outline: none;
+  padding: 5px;
+  padding-left: 0;
+  box-sizing: border-box;
+  margin-top: 4px;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+}
+
+.logs_txt2 li input:focus {
+  border-bottom: 1px solid #3858ed;
+}
+
+.others {
+  margin-top: 25px;
+  text-align: center;
+}
+
+.others a {
+  font-size: 14px;
+  font-weight: bold;
+  color: #566eef;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.forms ul {
+  margin-top: 39px;
+}
+
+.forms ul li {
+  padding: 0 0 10px 0;
+  position: relative;
+}
+
+/* 포지션 속성 추가 : 2018-07-02 이연주 */
+
+.forms input {
+  /*display:none;*/
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 16px;
+  height: 16px;
+  opacity: 0;
+}
+
+/* 포커스 처리를 위해 기존 속성 주석처리 및 속성 추가 : 2018-07-02 이연주 */
+
+.forms label {
+  display: block;
+  height: 35px;
+  width: 240px;
+  padding: 12px 23px 0 55px;
+  border: 1px solid #f4f7fd;
+  border-radius: 24px;
+  color: #333;
+  font-weight: bold;
+  background: #f4f7fd url('/assets/images/login/check2_off.png') no-repeat 12px center;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: all 0.2s ease-out;
+  -webkit-transition: all 0.2s ease-out;
+}
+
+.forms input:focus+label {
+  border: 1px solid #667ff4;
+  outline: 0 none
+}
+
+/* 선택자 수정 : 2018-07-02 이연주 */
+
+.forms input:checked+label {
+  border: 1px solid #667ff4;
+  background: #f4f7fd url('/assets/images/login/check2_on.png') no-repeat 12px center;
+}
+
+.logs_txt4 {
+  margin-top: 33px;
+  height: 113px;
+  padding: 0;
+  background: #f4f7fd;
+  border-radius: 4px;
+}
+
+.select_mbr {
+  position: relative;
+  width: 320px;
+  height: 113px;
+  padding: 0;
+  margin: 0;
+}
+
+.select_mbr .list-scroll {
+  height: 113px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.select_mbr .scroll-wrapper {
+  width: auto;
+}
+
+.logs_txt4 ul {}
+
+.logs_txt4 ul li {
+  font-size: 12px;
+  color: #000;
+}
+
+.logs_txt4 ul li label {
+  display: block;
+  height: 23px;
+  padding: 5px 0 0 17px;
+  color: #000;
+}
+
+.logs_txt4 ul li input[type="radio"] {
+  display: none;
+}
+
+.logs_txt4 ul li label:hover,
+.logs_txt4 ul input[type="radio"]:checked+label {
+  font-weight: bold;
+  background: #dce4f4;
+}
+
+.logs_txt4 .mess {
+  display: table-cell;
+  height: 113px;
+  width: 320px;
+  text-align: center;
+  font-weight: bold;
+  color: #333;
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+.radio-group {
+  position: absolute;
+  right: 0;
+  top: 12px;
+  display: inline-block;
+  margin: 0;
+  border: 0;
+  border-radius: 2px;
+  /*overflow:hidden;*/
+  background: #e4e4e4;
+  z-index: 9;
+}
+
+/* 포커스 처리를 위해 overflow 속성 주석처리 : 2018-07-02 이연주 */
+
+.radio-group input[type=radio] {
+  /* position:absolute; visibility:hidden; display:none; */
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 16px;
+  height: 16px;
+  opacity: 0;
+}
+
+/* 포커스 처리를 위해 기존 속성 주석처리 및 속성 추가 : 2018-07-02 이연주 */
+
+.radio-group label {
+  display: inline-block;
+  float: left;
+  width: 44px;
+  height: 20px;
+  padding: 4px 0 0 0;
+  color: #3b3b3b;
+  cursor: pointer;
+  text-align: center;
+  font-size: 11px;
+}
+
+.radio-group input[type=radio]:checked+label {
+  color: #efefef;
+  background: #737373;
+  transition: all 0.2s ease-out;
+  -webkit-transition: all 0.2s ease-out;
+}
+
+.radio-group label+input[type=radio]+label {}
+
+.radio-group input[type="radio"]:focus+label {
+  box-shadow: 0 0 2px #3858ed;
+  border: 1px solid #3858ed;
+}
+
+/* 라디오 포커스 시 label 태그 box-shadow 처리 : 2018-07-02 이연주 */
+
+.selects {
+  position: relative;
+  display: block;
+  margin: 0;
+  width: 100%;
+  max-width: 140px;
+  vertical-align: middle;
+  font-size: 12px;
+}
+
+.selects .placeholder {
+  position: relative;
+  display: block;
+  height: 23px;
+  z-index: 1;
+  padding: 5px 0 0 5px;
+  border-radius: 2px;
+  color: #fff;
+  border: 1px solid #cacaca;
+  cursor: pointer;
+  background: url('/assets/images/login/select.png') no-repeat right 12px;
+}
+
+.selects .placeholder:hover {}
+
+.selects ul {
+  position: absolute;
+  display: none;
+  overflow: hidden;
+  width: 100%;
+  background: #fff;
+  border-radius: 2px;
+  top: 100%;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  z-index: 100;
+}
+
+.selects.is-open ul {
+  display: block;
+}
+
+.selects ul li {
+  display: block;
+  padding: 0 0 0 5px;
+  color: #999;
+  line-height: 23px;
+  cursor: pointer;
+}
+
+.selects ul li:hover {
+  color: #fff;
+  background: #4ebbf0;
+}
+
+.list-select {
+  width: 100%;
+  height: 100%
+}
+
+.list-select select {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+}
+
+.list-select select:focus {
+  outline: 0;
+  border: 1px solid #3858ed;
+}
+
+/* scroll 영역 */
+
+.scroll_area {
+  position: relative;
+  width: auto;
+  overflow-y: auto;
+}
+
+/* SCROLLBAR BASE CSS */
+
+.scroll-wrapper {
+  position: relative;
+  width: 138px;
+  height: 100%;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+.scroll-wrapper>.scroll-content {
+  position: relative !important;
+  top: 0;
+  left: 0;
+  width: auto !important;
+  max-width: none !important;
+  height: auto;
+  max-height: none;
+  padding: 0;
+  margin: 0;
+  overflow: scroll !important;
+  border: none !important;
+}
+
+.scroll-wrapper>.scroll-content::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.scroll-element {
+  display: none;
+}
+
+.scroll-element,
+.scroll-element div {
+  box-sizing: content-box;
+}
+
+.scroll-element.scroll-x.scroll-scrollx_visible,
+.scroll-element.scroll-y.scroll-scrolly_visible {
+  display: block;
+}
+
+.scroll-element .scroll-bar,
+.scroll-element .scroll-arrow {
+  cursor: default;
+}
+
+.scroll-textarea {
+  border: 1px solid #cccccc;
+  border-top-color: #999999;
+}
+
+.scroll-textarea>.scroll-content {
+  overflow: hidden !important;
+}
+
+.scroll-textarea>.scroll-content>textarea {
+  position: relative !important;
+  top: 0;
+  width: 100% !important;
+  max-width: none !important;
+  height: 100% !important;
+  max-height: none !important;
+  padding: 2px;
+  margin: 0;
+  overflow: scroll !important;
+  border: none !important;
+  outline: none;
+}
+
+.scroll-textarea>.scroll-content>textarea::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+/*************** TEXTAREA STYLES ***************/
+
+.textarea-scrollbar {
+  height: 250px;
+  width: 500px;
+}
+
+/* SCROLLBAR DYNAMIC - 커스텀*/
+
+.sz-scroll>.scroll-element,
+.sz-scroll>.scroll-element div {
+  position: absolute;
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  z-index: 10;
+}
+
+.sz-scroll>.scroll-element div {
+  display: block;
+  height: 100%;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+.sz-scroll>.scroll-element.scroll-x {
+  left: 0;
+  bottom: 2px;
+  width: 100%;
+  min-width: 100%;
+  height: 7px;
+}
+
+.sz-scroll>.scroll-element.scroll-y {
+  top: 0;
+  right: 2px;
+  width: 7px;
+  height: 100%;
+  min-height: 100%;
+}
+
+.sz-scroll>.scroll-element .scroll-element_outer {
+  opacity: 0.3;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  border-radius: 12px;
+}
+
+.sz-scroll>.scroll-element .scroll-element_size {
+  background-color: #cccccc;
+  opacity: 0;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  border-radius: 12px;
+  -webkit-transition: opacity 0.2s;
+  -moz-transition: opacity 0.2s;
+  -o-transition: opacity 0.2s;
+  -ms-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+}
+
+.sz-scroll>.scroll-element .scroll-bar {
+  background-color: #6c6e71;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
+}
+
+/* scrollbar height/width & offset from container borders */
+
+.sz-scroll>.scroll-element.scroll-x .scroll-bar {
+  top: auto;
+  bottom: 0;
+  min-width: 24px;
+  height: 7px;
+}
+
+.sz-scroll>.scroll-element.scroll-y .scroll-bar {
+  left: auto;
+  right: 0;
+  width: 7px;
+  min-height: 24px;
+}
+
+.sz-scroll>.scroll-element.scroll-x .scroll-element_outer {
+  top: auto;
+  bottom: 0;
+  left: 2px;
+  -webkit-transition: height 0.2s;
+  -moz-transition: height 0.2s;
+  -o-transition: height 0.2s;
+  -ms-transition: height 0.2s;
+  transition: height 0.2s;
+}
+
+.sz-scroll>.scroll-element.scroll-y .scroll-element_outer {
+  top: 2px;
+  right: 0;
+  left: auto;
+  -webkit-transition: width 0.2s;
+  -moz-transition: width 0.2s;
+  -o-transition: width 0.2s;
+  -ms-transition: width 0.2s;
+  transition: width 0.2s;
+}
+
+.sz-scroll>.scroll-element.scroll-x .scroll-element_size {
+  left: -4px;
+}
+
+.sz-scroll>.scroll-element.scroll-y .scroll-element_size {
+  top: -4px;
+}
+
+/* update scrollbar offset if both scrolls are visible */
+
+.sz-scroll>.scroll-element.scroll-x.scroll-scrolly_visible .scroll-element_size {
+  left: -11px;
+}
+
+.sz-scroll>.scroll-element.scroll-y.scroll-scrollx_visible .scroll-element_size {
+  top: -11px;
+}
+
+/* hover & drag */
+
+.sz-scroll>.scroll-element:hover .scroll-element_outer,
+.sz-scroll>.scroll-element.scroll-draggable .scroll-element_outer {
+  overflow: hidden;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+  filter: alpha(opacity=70);
+  opacity: 0.7;
+}
+
+.sz-scroll>.scroll-element:hover .scroll-element_outer .scroll-element_size,
+.sz-scroll>.scroll-element.scroll-draggable .scroll-element_outer .scroll-element_size {
+  opacity: 1;
+}
+
+.sz-scroll>.scroll-element:hover .scroll-element_outer .scroll-bar,
+.sz-scroll>.scroll-element.scroll-draggable .scroll-element_outer .scroll-bar {
+  width: 100%;
+  height: 100%;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  border-radius: 12px;
+}
+
+.sz-scroll>.scroll-element.scroll-x:hover .scroll-element_outer,
+.sz-scroll>.scroll-element.scroll-x.scroll-draggable .scroll-element_outer {
+  height: 10px;
+  min-height: 7px;
+}
+
+.sz-scroll>.scroll-element.scroll-y:hover .scroll-element_outer,
+.sz-scroll>.scroll-element.scroll-y.scroll-draggable .scroll-element_outer {
+  width: 10px;
+  min-width: 7px;
+}
+
+/* login select */
+
+.ui-front {
+  z-index: 100;
+}
+
+.ui-state-disabled {
+  cursor: default !important;
+  pointer-events: none;
+}
+
+.ui-menu {
+  width: 140px;
+  list-style: none;
+  padding: 0;
+  margin: 1px 0 0 0;
+  display: block;
+  outline: 0;
+  max-height: 120px;
+  overflow-x: hidden;
+}
+
+.ui-menu .ui-menu-item {
+  margin: 0;
+  cursor: pointer;
+}
+
+.ui-menu .ui-menu-item-wrapper {
+  position: relative;
+  line-height: 16px;
+  padding: 7px 19px 7px 9px;
+}
+
+.ui-menu .ui-menu-divider {
+  margin: 5px 0;
+  height: 0;
+  font-size: 0;
+  line-height: 0;
+  border-width: 1px 0 0 0;
+}
+
+.ui-menu .ui-state-focus,
+.ui-menu .ui-state-active {
+  margin: -1px;
+}
+
+.ui-menu-icons {
+  position: relative;
+}
+
+.ui-menu-icons .ui-menu-item-wrapper {
+  padding-left: 2em;
+}
+
+.ui-menu .ui-icon {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: .2em;
+  margin: auto 0;
+}
+
+.ui-menu .ui-menu-icon {
+  left: auto;
+  right: 0;
+}
+
+.ui-button {
+  position: relative;
+  height: 28px;
+  line-height: 24px;
+  border: 1px solid #fff;
+  padding: 0 10px;
+  display: inline-block;
+  cursor: pointer;
+  vertical-align: middle;
+  text-align: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background: url('/assets/images/btn_select_wh.png') right 50% no-repeat;
+  box-sizing: content-box;
+}
+
+.ui-button,
+.ui-button:link,
+.ui-button:visited,
+.ui-button:hover,
+.ui-button:active {
+  text-decoration: none;
+  outline: none;
+}
+
+.ui-button:focus {
+  box-shadow: 0 0 10px 0 #fff;
+}
+
+.ui-button:hover {}
+
+.ui-button:active {
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+.ui-selectmenu-menu {
+  padding: 0;
+  margin: 0;
+  top: 0;
+  left: 0;
+  display: none;
+}
+
+.ui-selectmenu-menu .ui-menu {
+  padding-bottom: 1px;
+}
+
+.ui-selectmenu-menu .ui-menu .ui-selectmenu-optgroup {
+  font-size: 1em;
+  font-weight: bold;
+  line-height: 1.5;
+  padding: 2px 0.4em;
+  margin: 0.5em 0 0 0;
+  height: auto;
+  border: 0;
+}
+
+.ui-selectmenu-open {
+  display: block;
+}
+
+.ui-selectmenu-text {
+  display: block;
+  margin-right: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 24px;
+  line-height: 24px
+}
+
+.ui-selectmenu-button.ui-button {
+  text-align: left;
+  white-space: nowrap;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.ui-selectmenu-icon.ui-icon {
+  float: right;
+  margin-top: 0;
+}
+
+.ui-widget {
+  font-size: 12px
+}
+
+.ui-widget .ui-widget {
+  font-size: 13px;
+}
+
+.ui-widget input,
+.ui-widget select,
+.ui-widget textarea,
+.ui-widget button {
+  font-size: 13px;
+}
+
+.ui-widget.ui-widget-content {
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 2px;
+  border: 1px solid #fff;
+}
+
+.ui-widget-content {
+  background: rgba(0, 0, 0, 0);
+  color: #fff;
+}
+
+.ui-widget-content a {
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default,
+.ui-button {
+  font-weight: normal;
+  color: #fff;
+}
+
+.ui-button.ui-state-disabled,
+.ui-button.ui-state-disabled:hover,
+.ui-button.ui-state-disabled:active {
+  font-weight: normal;
+  color: #ccc;
+  background-color: rgba(0, 0, 0, 0.3)
+}
+
+.ui-state-default a,
+.ui-state-default a:link,
+.ui-state-default a:visited,
+a.ui-button,
+a:link.ui-button,
+a:visited.ui-button,
+.ui-button {
+  color: #fff;
+  text-decoration: none;
+}
+
+.ui-state-hover,
+.ui-widget-content .ui-state-hover,
+.ui-widget-header .ui-state-hover,
+.ui-state-focus,
+.ui-widget-content .ui-state-focus,
+.ui-widget-header .ui-state-focus,
+.ui-button:hover,
+.ui-button:focus {
+  font-weight: normal;
+  color: #fff;
+}
+
+.ui-state-hover a,
+.ui-state-hover a:hover,
+.ui-state-hover a:link,
+.ui-state-hover a:visited,
+.ui-state-focus a,
+.ui-state-focus a:hover,
+.ui-state-focus a:link,
+.ui-state-focus a:visited,
+a.ui-button:hover,
+a.ui-button:focus {
+  color: #fff;
+  text-decoration: none;
+  outline: none;
+}
+
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active,
+.ui-button.ui-state-active:hover {
+  padding: 8px 19px 8px 10px;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.ui-icon-background,
+.ui-state-active .ui-icon-background {
+  border: #003eff;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.ui-state-active a,
+.ui-state-active a:link,
+.ui-state-active a:visited {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.ui-corner-all {
+  border-radius: 2px;
+}
+
+/* 동명이인선택 */

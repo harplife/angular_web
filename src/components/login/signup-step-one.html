@@ -1,0 +1,137 @@
+<style>
+  .teacher_schedule li {
+    width: 50%;
+    float: left;
+    padding: 0 0 10px;
+  }
+  </style>
+
+  <form id="form1" name="form1">
+    <div id="container_user" style="padding: 30px 0 0; margin-bottom: 70px;">
+      <div class="container_inner register" style="padding: 50px 0 70px;  border:0 !important;">
+
+        <!-- 서브타이틀 -->
+        <p class="user_subtitle">salevis 회원가입</p>
+        <!-- //서브타이틀 -->
+        <div class="content">
+          <div class="membership_cont">
+            <div class="sec2 last">
+              <div>
+                <ul class="tab">
+                  <li class="current"><a>회원사 선택</a></li>
+                  <li><a>기본정보 입력</a></li>
+                  <li><a>회원가입 완료</a></li>
+                </ul>
+              </div>
+              <table class="table mg_auto table_1">
+                <tr>
+                  <th scope="row" class="required" style="height: 100px;">회원사명 <br /></th>
+                  <td style="text-align: left; height: 100px;">
+                    <div class="form-group">
+                      <div class="input-group custom-search-form">
+                        <input type="text" readonly="readonly" class="form-control" ng-model="vc.tenantNm" ng-click="vc.srchTenantModal();">
+                        <input type="hidden" ng-model="vc.tenantId">
+                        <span class="input-group-btn">
+                          <button class="btn btn-default" type="button" ng-click="vc.srchTenantModal();">
+                            <i class="fa fa-search"></i>
+                          </button>
+                          <button class="btn btn-default" type="button" ng-click="vc.eraseTenant();">
+                            <i class="fa fa-eraser"></i>
+                          </button>
+                        </span>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+             </table>
+              <div class="btn_area" style="margin-top: 30px;">
+                <button class="signupBtn commonBtn5 type2 etc2" type="submit" ng-click="vc.signupStepTwo()">다음단계</button>
+                <button type="button" class="signupBtn commonBtn5 type3" ng-click="vc.goCancel()">취소</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+
+<!-- <div class="login_area">
+  <div class="logins">
+    <div class="logins_box">
+      <div class="loginbox">
+        <div class="login_txt">
+          <strong class="tit">
+            Signup
+          </strong>
+          <p class="txt">
+            <span ng-bind="signup.appName"></span>
+            <span>Happy communication</span>
+            <br>bridge
+            <br>Solution
+          </p>
+          <div class="sel">
+            <div class="selectbox" style="width:140px;">
+              <select ng-change="signup.onChangeHandler()" name="selectCombo" ng-model="signup.language">
+                <option value="ko" selected="">
+                  한국어
+                </option>
+                <option value="en">
+                  English
+                </option>
+                <option value="ja">
+                  日本語
+                </option>
+                <option value="zh">
+                  中文（简体中文）
+                </option>
+                <option value="zh">
+                  中文（繁體）
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <form class="login_box" id="login_box" ng-submit="signup.doSignup()">
+          <strong class="logos">
+            <img src="assets/images/login/login_logo.png" alt="SOFTZION CRM">
+          </strong>
+          <div class="logs_cont">
+            <p class="logos_des" translate="LOGIN.MSG.REQ_SIGNUP"></p>
+            <div class="signup_area">
+              <ul class="logs_txt">
+                <li class="log_id">
+                  <span class="icon" title="{{'LOGIN.LABEL.ID'|translate}}"></span>
+                  <input type="text" placeholder="{{'LOGIN.LABEL.ID'|translate}}" title="{{'LOGIN.TITLE.INST_ID'|translate}}" id="ID" ng-model="signup.loginInfo.LoginId" ng-required="true">
+                </li>
+                <li class="log_id">
+                  <span class="icon" title="{{'LOGIN.LABEL.NAME'|translate}}"></span>
+                  <input type="text" placeholder="{{'LOGIN.LABEL.NAME'|translate}}" title="{{'LOGIN.TITLE.INST_ID'|translate}}" id="Name" ng-model="signup.loginInfo.UserNm" ng-required="true">
+                </li>
+                <li class="log_id">
+                  <span class="icon" title="{{'LOGIN.LABEL.PW'|translate}}"></span>
+                  <input type="password" placeholder="{{'LOGIN.LABEL.PW'|translate}}" title="{{'LOGIN.TITLE.INST_PW'|translate}}" id="PASSWD" ng-model="signup.loginInfo.Password" ng-required="true">
+                </li>
+                <li class="log_id">
+                  <span class="icon" title="{{'LOGIN.LABEL.PWCONFIRM'|translate}}"></span>
+                  <input type="password" placeholder="{{'LOGIN.LABEL.PWCONFIRM'|translate}}" title="{{'LOGIN.TITLE.INST_PW'|translate}}" id="PASSWD2" ng-model="signup.loginInfo.Password2" ng-required="true">
+                </li>
+                <li class="log_id">
+                  <span class="icon" title="{{'Menu.COMPANYCODE'|translate}}"></span>
+                  <input type="text" placeholder="{{'Menu.COMPANYCODE'|translate}}" title="{{'LOGIN.TITLE.INST_PW'|translate}}" id="TenantId" ng-model="signup.loginInfo.TenantId" ng-required="true">
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="rows btns btn-group">
+            <button class="bts" type="submit">{{ 'Menu.SIGNUP' | translate }}</button>
+            <div class="pull-right"><a ui-sref="login">{{ 'LOGIN.BTN.LOGIN' | translate }}</a></div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <span class="login_footer" translate="LOGIN.MSG.COPYRIGHT"></span>
+</div>
+ -->

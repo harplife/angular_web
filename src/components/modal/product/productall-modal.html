@@ -1,0 +1,70 @@
+<div class="modal-content">
+  <div class="modal-header ng-scope">
+    <div class="page-header">제품(단품) 검색</div>
+  </div>
+
+  <div class="modal-body ng-scope">
+    <div class="row">
+      <div class="col-lg-7">
+        <div class="form-group form-inline">
+          <label>품목명</label>
+          <input type="text" class="form-control" ng-model="modalCtrl.srch.ProductNm"
+                 placeholder="품목명">
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="form-group">
+          <label>&nbsp;</label>
+          <button class="btn btn-default btn-ef btn-ef-1 btn-ef-1a" style="margin-left:-24px;"
+                  ng-click="modalCtrl.getList()"><i class="fa fa-search"></i> 조회</button>
+        </div>
+      </div>
+    </div><!-- //row -->
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <table data-filter="#filter" data-page-size="10" class="table table-hover">
+            <!-- Header -->
+            <colgroup>
+              <col width="20%" style="align-content: center">
+              <col width="50%">
+              <col width="20%">
+              <col width="10%">
+            </colgroup>
+            <thead>
+            <tr>
+              <th class="text-center none"><span>품목코드</span></th>
+              <th class="text-center none"><span>품목명</span></th>
+              <th class="text-center none"><span>금액</span></th>
+              <th class="text-center none"><span>재고</span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Result Rows -->
+            <tr ng-repeat="li in modalCtrl.productlists" ng-click="modalCtrl.ok(li);" style="cursor: pointer;">
+              <td><span ng-bind="li.GoodsNo"></span></td>
+              <td><span ng-bind="li.GoodsNm"></span></td>
+              <td class="text-none"><span comma-bind ng-bind="li.GoodsPrice"></span></td>
+              <td class="text-center"><span ng-bind="li.TotalStock"  ng-class="{total_stock_red: li.TotalStock == 0}"></span></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div><!-- /row -->
+
+    <div class="paging">
+      <ul uib-pagination data-ng-if="modalCtrl.totalItems" total-items="modalCtrl.totalItems" items-per-page="modalCtrl.srch.viewSize"
+          ng-model="modalCtrl.currentPage" ng-change="modalCtrl.pageChanged()" max-size="modalCtrl.maxSize" boundary-links="true"
+          num-pages="modalCtrl.numPages" template-url="app/template/pagination.html"></ul>
+    </div>
+  </div><!-- //modal-body -->
+
+  <div class="modal-footer ng-scope">
+    <button class="btn btn-primary mb-10" ng-click="modalCtrl.ok()"><i
+      class="fa fa-check"></i>{{ 'Menu.CHOOSE' | translate }}</button>
+    <button class="btn btn-default btn-ef btn-ef-6 btn-ef-6a mb-10" ng-click="modalCtrl.cancel()"><i
+      class="fa fa-times"></i>{{ 'Menu.CANCEL' | translate }}</button>
+  </div>
+</div>

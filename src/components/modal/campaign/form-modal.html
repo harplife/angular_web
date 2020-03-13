@@ -1,0 +1,74 @@
+<div class="modal-content">
+  <div class="modal-header ng-scope">
+    <h3 class="page-header">서식 {{ 'Menu.SEARCH' | translate }}</h3>
+  </div>
+
+  <div class="modal-body ng-scope">
+    <form ui-keypress="{13:'modalCtrl.getFormList()'}">
+      <div class="row">
+        <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5 col-xl-5">
+          <div class="form-group form-inline">
+            <label>{{modalCtrl.columnMap['FormNm'].ColumnLogicalNm | translate}}</label>
+            <input type="text" class="form-control" ng-model="modalCtrl.FormNm" placeholder="{{modalCtrl.columnMap['FormNm'].ColumnLogicalNm | translate}}" />
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+          <div class="form-group form-inline">
+            <label>{{modalCtrl.columnMap['FormType'].ColumnLogicalNm | translate }}</label>
+            <common-code-custom code-list="modalCtrl.columnMap['FormType'].CodeList" code-model="modalCtrl.FormType" is-disabled = "true"></common-code-custom>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+          <div class="form-group pull-right">
+            <button class="btn btn-default btn-ef btn-ef-1 btn-ef-1a" ng-click="modalCtrl.getFormList()">
+              <i class="fa fa-search"></i> 검색
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <table id="searchTextResults" data-filter="#filter" data-page-size="10" class="table table-hover">
+            <!-- Header -->
+            <thead>
+              <tr>
+                <th data-toggle="true" class="text-center">{{modalCtrl.columnMap['FormNm'].ColumnLogicalNm | translate }}</th>
+                <th data-toggle="true" class="text-center">{{modalCtrl.columnMap['FormType'].ColumnLogicalNm | translate }}</th>
+                <th data-toggle="true" class="text-center">{{modalCtrl.columnMap['RegDate'].ColumnLogicalNm | translate }}</th>
+                <th data-toggle="true" class="text-center" >{{modalCtrl.columnMap['RegUser'].ColumnLogicalNm | translate }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Result Rows -->
+              <tr ng-repeat="li in modalCtrl.FormList" ng-click="modalCtrl.ok(li);" style="cursor: pointer;">
+                <td class="text-center"><span ng-bind="li.FormNm"></span></td>
+                <td class="text-center"><span ng-bind="li.FormType"></span></td>
+                <td class="text-center"><span ng-bind="li.RegDate | date:'yyyy-MM-dd':'UTC'"></span></td>
+                <td class="text-center"><span ng-bind="li.RegUser"></span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- /row -->
+        <div class="paging">
+          <ul uib-pagination data-ng-if="modalCtrl.totalCount" total-items="modalCtrl.totalCount" items-per-page="modalCtrl.viewSizePerPage"
+            ng-model="modalCtrl.currentPageNum" ng-change="modalCtrl.getFormList()" max-size="modalCtrl.maxSize" boundary-links="true"
+            num-pages="modalCtrl.numPages" template-url="app/template/pagination.html"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- //modal-body -->
+
+  <div class="modal-footer ng-scope">
+    <button class="btn btn-primary mb-10" ng-click="modalCtrl.ok()">
+      <i class="fa fa-check"></i>{{ 'Menu.CHOOSE' | translate }}
+    </button>
+    <button class="btn btn-default mb-10" ng-click="modalCtrl.cancel()">
+      <i class="fa fa-times"></i>{{ 'Menu.CANCEL' | translate }}
+    </button>
+  </div>
+</div>

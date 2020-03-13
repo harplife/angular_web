@@ -1,0 +1,39 @@
+<div class="modal-content wd80p">
+  <div class="modal-header ng-scope">
+    <h3 class="page-header">영역별 점수</h3>
+  </div>
+
+
+  <form id="form1" name="form1">
+    <div class="modal-body ng-scope">
+
+      <table id="searchTextResults" data-filter="#filter" class="table table-striped table-bordered table-hover data_table table-custom"
+      data-page-size="100" width="100%">
+        <!-- Header -->
+        <thead>
+          <tr>
+            <th class="text-center">문항영역명</th>
+            <th class="text-center">점수</th>
+            <th class="text-center">진단결과</th>
+          </tr>
+        </thead>
+        <!-- /Header -->
+        <!-- Result Rows -->
+        <tr ng-repeat="li in vc.lists" my-directive>
+          <!-- Result Items -->
+          <td>{{li.QstSecNm}}</td>
+          <td>{{li.Score}}</td>
+          <td>{{li.Lv}}</td>
+        </tr>
+      </table>
+
+    </div>
+
+    <div class="modal-footer ng-scope">
+      <button class="btn btn-default mb-10" ng-click="vc.closeWin()">
+        <i class="fa fa-times"></i> 닫기
+      </button>
+    </div>
+
+  </form>
+</div>

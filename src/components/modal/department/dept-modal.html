@@ -1,0 +1,32 @@
+<div class="modal-content">
+  <div class="dataloader" ng-show="vc.dataloader"></div>
+  <div class="modal-header ng-scope">
+    <div class="page-header">{{ 'Menu.DEPARTMENT' |
+      translate }}{{ 'Menu.CHOOSE' | translate }}</div>
+  </div>
+
+  <div class="modal-body ng-scope">
+    <div class="row">
+      <div class="tile">
+        <span ng-if="doing_async">...loading...</span>
+        <div class="b-a bg-default lter">
+          <md-content layout-padding-sm>
+          <abn-tree tree-data="my_data" tree-control="my_tree"
+            on-select="dept_tree_handler(branch)" expand-level="2"
+            icon-leaf="fa fa-file-o" icon-expand="fa fa-plus"
+            icon-collapse="fa fa-minus"></abn-tree>
+          </md-content>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer ng-scope">
+    <button class="btn btn-primary mb-10" ng-click="vc.ok()">
+      <i class="fa fa-check"></i>{{ 'Menu.CHOOSE' | translate }}
+    </button>
+    <button class="btn btn-default btn-ef btn-ef-6 btn-ef-6a mb-10"
+      ng-click="vc.cancel()">
+      <i class="fa fa-times"></i>{{ 'Menu.CANCEL' | translate }}
+    </button>
+  </div>
+</div>

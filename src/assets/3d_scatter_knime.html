@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+    html, body, #ScatterPlotParent {
+        height: 100%;
+        min-height: 100%;
+        width: 100%;
+        min-width: 100%;
+    }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.theme.min.css">
+<link rel="stylesheet" href="https://dexjs.net/js/dex-jquery.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css"/>
+<link rel="stylesheet" href="https://dexjs.net/js/dex-bootstrap.css">
+<link rel="stylesheet" href="https://dexjs.net/js/dex.css"><div id="ScatterPlotParent"></div>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r71/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://dexjs.net/js/dex-jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://dexjs.net/js/dex-bootstrap.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+<script src="https://dexjs.net/js/dex-libs.js"></script>
+<script src="https://dexjs.net/js/elegans.min.js"></script>
+<script src="https://dexjs.net/js/dex.js"></script>
+
+
+<script>
+  var csv = new dex.csv(['x', 'y', 'a', 'b', 'c', 'd'],
+    dex.datagen.randomMatrix({
+      rows: 100, columns: 6, min: 0, max: 1000
+    }));
+
+  var scatterplot = dex.charts.elegans.ScatterPlot({
+      'parent': '#ScatterPlotParent',
+      'color': d3.scale.category10(),
+      'csv': csv,
+      'series': [
+        {
+          'name': 'series-a',
+          'coordinates': {'x': 'x', 'y': 'y', 'z': 'a'},
+          'shape': 'circle',
+          'size': 1
+        },
+        {
+          'name': 'series-b',
+          'coordinates': {'x': 'x', 'y': 'y', 'z': 'b'},
+          'shape': 'rect',
+          'size': 1
+        },
+        {
+          'name': 'series-c',
+          'coordinates': {'x': 'x', 'y': 'y', 'z': 'c'},
+          'shape': 'cross',
+          'size': 1
+        },
+        {
+          'name': 'series-d',
+          'coordinates': {'x': 'x', 'y': 'y', 'z': 'd'},
+          'shape': 'diamond',
+          'size': 1
+        }
+      ]
+    }
+  ).render();
+
+</script>

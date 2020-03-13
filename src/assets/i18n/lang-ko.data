@@ -1,0 +1,42 @@
+{
+  "PRODUCT": {
+    "TITLE": "셀비스4"
+  },
+  "Menu": {
+    "MENU_PRODUCTS" : "제품",
+    "MENU_MOBILECOMPUTERS" : "모바일 컴퓨터",
+    "MENU_MOBILECOMPUTER" : "모바일 컴퓨터",
+    "MENU_RUGGEDSMARTPHONE" : "견고한 스마트폰",
+    "MENU_HANHELDTERMINAL" : "핸드헬드 터미널",
+    "MENU_RFIDSOLUTION" : "RFID 리더기",
+    "MENU_BLUETOOTHSCANNER" : "블루투스 스캐너",
+    "MENU_POS" : "POS",
+    "MENU_BUSINESSSOLUTIONS" : "기업 솔루션",
+    "MENU_SOLUTIONS" : "산업",
+    "MENU_RETAIL" : "소매",
+    "MENU_MANUFACTURINGWMS" : "제조 및 창고관리",
+    "MENU_TRANSPORTATIONLOGISTICS" : "운송 및 물류",
+    "MENU_HEALTHCARE" : "헬스케어",
+    "MENU_GOVERNMENT" : "정부",
+    "MENU_ENTERPRISESERVICES" : "전문 서비스",
+    "MENU_PARTNERS" : "파트너",
+    "MENU_ALLIANCE" : "파트너 소개",
+    "MENU_TECHNICALSUPPORT" : "기술지원",
+    "MENU_SERVICEPORTAL" : "서비스 포털",
+    "MENU_ABOUTUS" : "포인트모바일",
+    "MENU_POINTMOBILE" : "포인트모바일 소개",
+    "MENU_ENVIRONMENTALCOMPLIANCE" : "환경 정책",
+    "MENU_EVENTS" : "전시회",
+    "MENU_NEWS" : "뉴스룸",
+    "MENU_CONTACTUS" : "문의하기",
+    "ADDR_KO" : "소프트자이온"
+  },
+  "MSG": {
+    "MAINPAGE": "메인페이지",
+    "PRODUCTS_MESSAGE": "제품",
+    "PRODUCTS_MESSAGE1": "모바일 컴퓨터",
+    "PRODUCTS_MESSAGE2": "견고한 스마트폰",
+    "PRODUCTS_MESSAGE3": "메시지 3"
+  }
+}
+

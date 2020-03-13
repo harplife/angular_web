@@ -1,0 +1,22 @@
+<div class="modal-header">
+  <h3 class="modal-title custom-font">필드이름 규칙</h3>
+</div>
+<div class="modal-body">
+  <div class="tile">
+    <span ng-if="doing_async">...loading...</span>
+    <div class="b-a bg-default lter">
+      <ol>
+        <li>Varchar형 : ExtVarchar01 ~ ExtVarchar10</li>
+        <li>Integer형 : ExtInt01 ~ ExtInt10</li>
+        <li>Datetime형 : ExtDate01 ~ ExtDate10</li>
+      </ol>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+   <button class="btn btn-default btn-ef btn-ef-6 btn-ef-6a mb-10"
+    ng-click="reorderCtrl.onClose()">
+    <i  class="fa fa-times"></i> {{ 'Menu.CLOSE' | translate }}
+  </button>
+</div>
+

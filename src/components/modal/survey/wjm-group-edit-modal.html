@@ -1,0 +1,53 @@
+<div class="modal-content wd80p">
+  <div class="modal-header ng-scope">
+    <h3 class="page-header">수신인 추가/수정</h3>
+  </div>
+
+
+  <form id="form1" name="form1">
+    <div class="modal-body ng-scope">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="form-group form-inline">
+            <label>수신인</label>
+            <input type="text" class="form-control form-right" ng-model="vc.srch.GrpNm" readonly>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+          <div class="form-group form-inline">
+            <label>이름</label>
+            <input type="text" class="form-control form-right" ng-model="vc.data.CustNm" maxlength="100" >
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+          <div class="form-group form-inline">
+            <label>휴대폰</label>
+            <input type="text" class="form-control form-right" ng-model="vc.data.Mobile" ng-change="vc.getIsDup('M')" maxlength="255" >
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="form-group form-inline">
+            <label>이메일</label>
+            <input type="text" class="form-control form-right" ng-model="vc.data.Email" ng-change="vc.getIsDup('E')" maxlength="255" >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer ng-scope">
+      <button class="btn btn-primary mb-10" ng-click="vc.setData()">
+        <i class="fa fa-check"></i> 저장
+      </button>
+      <button class="btn btn-default mb-10" ng-click="vc.closeWin()">
+        <i class="fa fa-times"></i> 닫기
+      </button>
+    </div>
+
+  </form>
+</div>

@@ -1,0 +1,38 @@
+<div class="modal-content">
+  <div class="modal-header ng-scope">
+    <div class="page-header">이동 설정</div>
+  </div>
+
+  <div class="modal-body ng-scope">
+    <div>
+      <div class="row" style="padding-bottom:10px;">
+        <div class="col-lg-12">
+          <span class="form-control" readonly="">{{vc.qt.QstNo}}. {{vc.qt.QstSubject}}</span>
+        </div>
+      </div>
+      <div class="row" style="padding-bottom:10px;">
+        <div class="col-lg-8">
+          <select class="form-control" ng-model="vc.data.moveQtId" ng-options="li.qtId as li.moveTxt for li in vc.moveList" ng-change="vc.chgQstMoveList()">
+            <option value="">--이동기준 문항 선택--</option>
+          </select>
+        </div>
+        <div class="col-lg-4">
+          <div style="line-height: 25px !Important;">
+            <input type="radio" ng-model="vc.data.moveOrder" value="BEFORE" ng-checked="true" style="width:25px !Important; margin:0 !Important;">이전
+            &nbsp;&nbsp;
+            <input type="radio" ng-model="vc.data.moveOrder" value="AFTER" style="width:15px !Important; margin:0 !Important;"> 이후
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer ng-scope">
+    <button class="btn btn-primary mb-10" ng-click="vc.apply()">
+      <i class="fa fa-save"></i> 적용
+    </button>
+    <button class="btn btn-default btn-ef btn-ef-6 btn-ef-6a mb-10" ng-click="vc.close()"><i
+      class="fa fa-times"></i>{{ 'Menu.CLOSE' | translate }}
+    </button>
+  </div>
+</div>

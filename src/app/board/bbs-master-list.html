@@ -1,0 +1,179 @@
+<div class="page page-footable" ng-controller="BbsMasterListCtrl as vc">
+  <!-- page header -->
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="page-header">게시판 관리
+        <div class="pull-right dock-header-tx list-split">
+          <span ng-click="vc.changeLayout('N')"><img src="assets/images/icon-sp-list.png" alt=""></span>
+          <span ng-click="vc.changeLayout('V')"><img src="assets/images/icon-sp-rl.png" alt=""></span>
+          <span ng-click="vc.changeLayout('H')"><img src="assets/images/icon-sp-tb.png" alt=""></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- page content -->
+  <div class="row">
+    <div class="pagecontent fa-pane-wrap" pane-wrap-anchor="{{vc.anchor}}">
+      <div fa-pane="" class="pane-root">
+        <div fa-pane fa-pane pane-anchor="{{vc.anchor}}" pane-size="40% + 2px" pane-min="{{vc.paneMin}}" pane-max="80% + 2px" pane-handle="4">
+          <div class="dataloader" ng-show="vc.dataloader"></div>
+          <form ui-keypress="{13:'vc.getSearch()'}">
+            <!-- 검색영역 -->
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-xg-6 col-xl-6 sz-search mb-0">
+                <input class="mb5" ng-model="vc.srch.BbsNm" placeholder="게시판명 검색" type="text">
+                <div class="search_action mb-5" ng-click="vc.getSearch()">
+                  <span class="cursor"><i class="fa fa-search"></i></span>
+                </div>
+                <div class="search_layer mb-5" onclick="return fnOpenLayer();">
+                  <span class="cursor" id="btn_layer_detail_search_open">상세<i class="fa fa-caret-down"></i></span>
+                </div>
+                <span class="search-condition-str" ng-bind-html="vc.SearchConditionStr"></span>
+
+                <!-- 상세검색 창 -->
+                <div class="search-detail-wrap" style="display: none;">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">상세검색
+                      <button activate-button="" class="btn btn-default mt-2 mr--2 pull-right"
+                              onclick="return fnCloseLayer();">
+                        <i class="fa fa-times"></i>
+                      </button>
+                    </div>
+                    <div class="panel-body">
+                      <div class="row">
+                        <!-- 검색 대상 컬럼  -->
+
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-xg-12 col-xl-12">
+                          <div class="form-group form-inner-label">
+                            <input class="form-control form-right" ng-model="vc.srch.BbsNm" type="text">
+                            <label>게시판명</label>
+                          </div>
+                        </div>
+
+                        <!-- 사용자정의 컬럼 검색 대상 컬럼  -->
+                        <udc-search meta-list="vc.listColumns" meta-model="vc.srch"></udc-search>
+
+                        <!-- 검색 대상 컬럼  -->
+                      </div>
+                      <!-- /row -->
+                      <div class="row">
+                        <!-- 검색 버튼   -->
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mt-20 mb-10">
+                          <button activate-button class="btn btn-info" ng-click="vc.getSearch()">
+                            <i class="glyphicon glyphicon-search"></i> {{ :: 'Menu.SEARCH' | translate }}
+                          </button>
+                          <button class="btn btn-default" ng-click="vc.resetSearch()">
+                            <i class="fa fa-refresh"></i> {{ :: 'Menu.RESETSEARCH' | translate }}
+                          </button>
+                          <button activate-button="" class="btn btn-default ng-binding pull-right"
+                                  onclick="return fnCloseLayer();">
+                            <i class="fa fa-times"></i> {{ :: 'Menu.CLOSE' | translate }}
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- /panel-body -->
+                  </div>
+                  <!-- /panel -->
+                </div>
+                <!-- 상세검색 창 -->
+              </div>
+              <!-- /col -->
+
+              <!-- 버튼 그룹 -->
+              <div class="col-xs-6 col-sm-6 col-md-6 col-xg-6 col-xl-6">
+                <div class="pull-right">
+                  <button class="btn btn-default" activate-button ng-click="vc.getExcel()">
+                    <i class="fa fa-file-excel-o"></i> {{ :: 'Menu.EXCEL' | translate }}
+                  </button>
+                  <button class="btn btn-primary" ng-click="vc.goEdit()">
+                    <i class="fa fa-edit"></i> {{ :: 'Menu.ADD' | translate }}
+                  </button>
+                </div>
+              </div>
+            <!-- 버튼 그룹 -->
+            </div>
+          <!-- 검색영역 -->
+          </form>
+
+          <!-- row -->
+          <div class="row">
+            <!-- col -->
+            <div class="col-md-12">
+              <!-- tile -->
+              <div class="panel panel-default tile">
+                <!-- tile header -->
+                <div class="panel-heading tile-header">
+                  <strong>{{ :: 'Menu.EM630' | translate }}</strong>
+                  <div class="pull-right">
+                    <a ng-href tile-control-toggle> <i class="fa fa-minus fa-lg"></i>
+                    </a>
+                  </div>
+                </div>
+                <!-- /tile header -->
+
+                <!-- tile body -->
+                <div class="panel-body collapse in">
+                  <!-- Search Result -->
+                  <table id="searchTextResults" data-filter="#filter" class="table table-striped table-bordered table-hover data_table table-custom" data-page-size="100" width="100%">
+                    <!-- Header -->
+                    <thead>
+                      <tr>
+                        <th ng-click="vc.tablesort('X.BbsMasterId')" data-toggle="true" class="text-center">마스터아이디  <span class="{{vc.sortClass('X.BbsMasterId')}}"></span></th>
+                        <th ng-click="vc.tablesort('X.BbsNm')" data-toggle="true" class="text-center">게시판명  <span class="{{vc.sortClass('X.BbsNm')}}"></span></th>
+                        <th ng-click="vc.tablesort('X.RegUserNm')" data-toggle="true" class="text-center">{{ 'Menu.EM630DC03' | translate }}  <span class="{{vc.sortClass('X.RegUserNm')}}"></span></th>
+                        <th ng-click="vc.tablesort('X.RegDate')" data-toggle="true" class="text-center">{{ 'Menu.EM630DC04' | translate }}  <span class="{{vc.sortClass('X.RegDate')}}"></span></th>
+                      </tr>
+                    </thead>
+                    <!-- /Header -->
+                    <!-- Result Rows -->
+                    <tr ng-repeat="li in vc.lists" ng-click="vc.goDetail(li.BbsMasterId)" style="cursor: pointer;" my-directive ng-class="{'bg-lightyellow':vc.keyId == li.BbsMasterId}">
+                      <!-- Result Items -->
+                      <td class="text-center"><span ng-bind="li.BbsMasterId"></span></td>
+                      <td class="text-center"><span ng-bind="li.BbsNm"></span></td>
+                      <td class="text-center"><span ng-bind="li.RegUserNm"></span></td>
+                      <td class="text-center"><span>{{li.RegDate | utcToLocal:'yyyy-MM-dd h:mm a'}}</span></td>
+                    </tr>
+
+                  </table>
+                  <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-hidden col-xs-hidden  paging_pad">
+                      <div class="form-group form-inline select-size-list">
+                        <label> {{ :: 'Menu.LIST' | translate }} </label>
+                        <select name="DataTables_Table_0_length" aria-controls="DataTables_Table_0" ng-model="vc.srch.viewSize" ng-change="vc.changeViewSize()" ng-options="c for c in vc.listSize" class="input-sm">
+                        </select>
+                      </div>
+                    </div>
+                    <!-- Paging Bar -->
+                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12 paging_pad">
+                      <div class="paging dataTables_paginate pull-right">
+                        <ul uib-pagination name="pagination" data-ng-if="vc.totalItems" ng-model="vc.currentPage" total-items="vc.totalItems" previous-text="{{'BTN.PAGINATION.PREV'|translate}}" next-text="{{'BTN.PAGINATION.NEXT'|translate}}" first-text="{{'BTN.PAGINATION.FIRST'|translate}}" last-text="{{'BTN.PAGINATION.LAST'|translate}}" ng-change="vc.pageChanged()" direction-links="true"
+                          boundary-links="true" num-pages="vc.numPages" template-url="app/template/pagination.html" rotate="false" max-size="vc.maxSize" items-per-page="vc.viewSize"></ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- /tile body -->
+              </div>
+              <!-- /tile -->
+            </div>
+            <!-- /col -->
+          </div>
+          <!-- /row -->
+        </div>
+        <div fa-pane pane-min="600px" ng-if="vc.layout != 'N'" style="min-width: 600px">
+          <ui-view>
+            <div class="boardNothing">
+              <div class="inner">
+                <img src="assets/images/icon-write-line.svg" alt="" style="width: 70px; height:70px; text-align:center;">
+                <p>목록에서 해당 제목을 선택하시면 내용을 보실 수 있습니다.</p>
+              </div>
+            </div>
+          </ui-view>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /page content -->
+</div>

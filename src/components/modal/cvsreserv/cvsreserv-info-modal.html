@@ -1,0 +1,131 @@
+<div class="modal-content wd80p">
+  <div class="modal-header ng-scope">
+    <h3 class="page-header">예약정보</h3>
+  </div>
+
+  <div class="modal-body ng-scope">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+        <div class="form-group form-inline">
+          <label>{{vc.columnMap['CustId'].ColumnLogicalNm | translate}}</label>
+          <div class="input-group">
+            <input type="text" class="form-control form-right" ng-model="vc.data.CustNm" placeholder="{{vc.columnMap['CustNm'].ColumnLogicalNm | translate}}" readonly>
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button" ng-click="vc.srchCustomerModal();">
+                <i class="fa fa-search"></i>
+              </button>
+              <button class="btn btn-default" type="button" ng-click="vc.eraseCustomer();">
+                <i class="fa fa-eraser"></i>
+              </button>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+        <div class="form-group form-inline">
+          <label>{{vc.columnMap['Manager'].ColumnLogicalNm | translate}}</label>
+          <div class="input-group custom-search-form">
+            <input type="text" class="form-control" ng-model="vc.data.ManagerNm" placeholder="{{vc.columnMap['ManagerNm'].ColumnLogicalNm | translate}}" readonly />
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button" ng-click="vc.srchUserModal()">
+                <i class="fa fa-search"></i>
+              </button>
+              <button class="btn btn-default" type="button" ng-click="vc.eraseUser()">
+                <i class="fa fa-eraser"></i>
+              </button>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+        <div class="form-group form-inline">
+          <label>{{vc.columnMap['ReservDate'].ColumnLogicalNm | translate }}</label>
+          <div class="input-group" ng-controller="DatepickerDemoCtrl">
+            <input class="form-control" clear-text="취소" close-text="닫기"
+                    current-text="오늘"
+                    datepicker-options="dateOptions"
+                    is-open="opened"
+                    ng-change="vc.data.ReservDate = (vc.chkDate | date: 'yyyy-MM-dd')"
+                    ng-model="vc.chkDate"
+                    ng-required="false" placeholder="yyyy-mm-dd" type="text"
+                    uib-datepicker-popup="{{ :: format}}"/>
+            <span class="input-group-btn">
+              <button class="btn btn-default" ng-click="open($event)" type="button">
+                <i class="glyphicon glyphicon-calendar"></i>
+              </button>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+        <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+          <div class="form-group form-inline">
+            <label>예약시간</label>
+              <common-code-custom code-list="vc.columnMap['ReservTime'].CodeList" code-model="vc.data.ReservHour"></common-code-custom>
+          </div>
+        </div>
+        <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+          <div class="form-group">
+              <select ng-model="vc.data.ReservMin" ng-change="vc.changeViewSize()" class="form-control" ng-options="c for c in vc.ReservMinCodeList">
+                  <option value="">--선택--</option>
+              </select>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+        <div class="form-group form-inline">
+          <label> {{ vc.columnMap['ReservReason'].ColumnLogicalNm | translate }}</label>
+          <common-code-custom code-list="vc.columnMap['ReservReason'].CodeList" code-model="vc.data.ReservReason"></common-code-custom>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+        <div class="form-group form-inline">
+          <label>{{vc.columnMap['CareTktId'].ColumnLogicalNm | translate }}</label>
+          <div class="input-group custom-search-form">
+            <input type="text" class="form-control" ng-model="vc.data.CareTktNm" placeholder="{{vc.columnMap['CareTktNm'].ColumnLogicalNm | translate }}" readonly /> <span class="input-group-btn">
+              <button class="btn btn-default" type="button" ng-click="vc.srchCareTktModal()">
+                <i class="fa fa-search"></i>
+              </button>
+              <button class="btn btn-default" type="button" ng-click="vc.eraseCareTkt()">
+                <i class="fa fa-eraser"></i>
+              </button>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+          <div class="form-group form-inline">
+            <label>{{vc.columnMap['MngCnt'].ColumnLogicalNm | translate }}</label>
+            <input type="text" class="form-control form-right" maxlength="20" numbers-hyphen ng-model="vc.data.MngCnt">
+          </div>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+          <div class="form-group">
+            <input type="text" class="form-control form-right" maxlength="20" numbers-hyphen ng-model="vc.data.TotMngCnt" readonly />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- //modal-body -->
+
+  <div class="modal-footer ng-scope">
+    <button class="btn btn-danger mb-10" ng-click="vc.setDelData()">
+      <i class="fa fa-check"></i> 삭제
+    </button>
+    <button class="btn btn-primary mb-10" ng-click="vc.setData()">
+      <i class="fa fa-check"></i> 저장
+    </button>
+    <button class="btn btn-default mb-10" ng-click="vc.cancel()">
+      <i class="fa fa-times"></i> 닫기
+    </button>
+  </div>
+</div>

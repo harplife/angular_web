@@ -1,0 +1,242 @@
+<div class="navbar-default sidebar side_wrapper" role="navigation"
+  id="navigationListWrap" data-mcs-theme="light-thick">
+    <div class="sidebar-nav navbar-collapse">
+        <ul class="nav in" id="side-menu">
+          <li ng-repeat="item in sidebar.menuList" ng-class="{active: sidebar.collapseVar==item.idx}">
+            <a ui-sref='{{item.pageUrl}}{{item.pageUrlParam}}' ui-sref-opts="{reload:'{{item.pageUrl}}'}" ng-if="item.child.length == 0" ng-click="sidebar.check(item.idx)">
+              <i class="fa {{item.icon}} fa-fw"></i> <span class="menuTx">{{item.name}}</span>
+            </a>
+            <a ng-if="item.child.length > 0" ng-click="sidebar.check(item.idx)">
+                <i class="fa {{item.icon}} fa-fw"></i> <span class="menuTx">{{item.name}}</span>
+                <span class="fa arrow"></span>
+            </a>
+
+            <ul ng-if="item.child.length > 0" class="nav nav-second-level" uib-collapse="sidebar.collapseVar!={{item.idx}}">
+              <li ng-repeat="item2 in item.child" ng-class="{active: sidebar.secondCollapseVar==item2.idx}">
+                <a ui-sref="{{item2.pageUrl}}{{ item2.pageUrlParam }}" ui-sref-opts="{reload:'{{item2.pageUrl}}'}" ng-if="item2.child.length == 0" ng-click="sidebar.secondCheck(item2.idx)">
+                  <i class="fa {{item2.icon}}"></i> <span class="menuTx"></span>{{item2.name}}</span>
+                </a>
+                <a ng-if="item2.child.length > 0" ng-click="sidebar.secondCheck(item2.idx)">
+                    <i class="fa {{item2.icon}}"></i> <span class="menuTx">{{item2.name}}</span>
+                    <span class="fa arrow"></span>
+                </a>
+
+                <ul ng-if="item2.child.length > 0" class="nav nav-third-level" uib-collapse="sidebar.secondCollapseVar!={{item2.idx}}">
+                    <li ng-repeat="item3 in item2.child"  ng-class="{active: sidebar.threeCollapseVar==item3.idx}">
+                        <a ui-sref="{{item3.pageUrl}}{{item3.pageUrlParam}}" ui-sref-opts="{reload:'{{item3.pageUrl}}'}" ng-click="sidebar.threeCheck(item3.idx)">
+                          <i class="fa {{item3.icon}}"></i> <span class="menuTx">{{item3.name}}</span>
+                        </a>
+                    </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+
+            <!-- <sidebar-search></sidebar-search> -->
+ <!--
+          <li ng-class="{active: sidebar.collapseVar==2}">
+            <a href="" ng-click="sidebar.check(2)">
+                <i class="fa fa-sitemap fa-fw"></i> <span class="menuTx">Multi-Level Dropdown</span>
+                <span class="fa arrow"></span>
+            </a>
+            <ul class="nav nav-second-level" uib-collapse="sidebar.collapseVar!=2">
+                <li>
+                    <a href=""><span class="menuTx">Second Level Item</span></a>
+                </li>
+                <li>
+                    <a href=""><span class="menuTx">Second Level Item</span></a>
+                </li>
+                <li ng-init="third=!third" ng-class="{active: sidebar.multiCollapseVar==3}">
+                    <a href="" ng-click="sidebar.multiCheck(3)"><span class="menuTx">Third Level</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-third-level" uib-collapse="sidebar.multiCollapseVar!=3">
+                        <li>
+                            <a href=""><span class="menuTx">Third Level Item</span></a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+          </li>
+
+            <li ui-sref-active="active">
+                <a ui-sref="app.dashboard">
+                  <i class="fa fa-dashboard fa-fw"></i> <span class="menuTx">Dashboard</span>
+                </a>
+            </li>
+
+            <li ui-sref-active="active">
+              <a ui-sref="app.system.menumanage-list">
+                <i class="fa fa-dashboard fa-fw"></i> <span class="menuTx">메뉴관리</span>
+              </a>
+          </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.chart">
+                  <i class="fa fa-bar-chart-o fa-fw"></i> <span class="menuTx">Charts</span>
+                </a>
+            </li>
+            <li ng-class="{active: sidebar.collapseVar==1}">
+              <a href="" ng-click="sidebar.check(1)">
+                  <i class="fa fa-table fa-fw"></i> <span class="menuTx">Tables</span>
+                    <span class="fa arrow"></span>
+              </a>
+              <ul class="nav nav-second-level" uib-collapse="sidebar.collapseVar!=1">
+                  <li ui-sref-active="active">
+                      <a ui-sref="app.bbspost.h0102-list({BbsMasterId:'1',srch:''})" >{{'Menu.h0102' | translate }}</a>
+                  </li>
+                  <li ui-sref-active="active">
+                      <a ui-sref="app.panelsWells"><span class="menuTx">Panels and Wells</span></a>
+                  </li>
+                  <li ui-sref-active="active">
+                      <a ui-sref="app.buttons"><span class="menuTx">Buttons</span></a>
+                  </li>
+                  <li ui-sref-active="active">
+                      <a ui-sref="dashboard.notifications"><span class="menuTx">Notifications</span></a>
+                  </li>
+                  <li ui-sref-active="active">
+                      <a ui-sref="dashboard.typography"><span class="menuTx">Typography</span></a>
+                  </li>
+                  <li ui-sref-active="active">
+                      <a ui-sref="dashboard.icons"><span class="menuTx">Icons</span></a>
+                  </li>
+                  <li ui-sref-active="active">
+                      <a ui-sref="dashboard.grid"><span class="menuTx">Grid</span></a>
+                  </li>
+              </ul>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="dashboard.form">
+                    <i class="fa fa-edit fa-fw"></i><span class="menuTx">Forms</span></a>
+            </li>
+            <li ng-class="{active: sidebar.collapseVar==1}">
+                <a href="" ng-click="sidebar.check(1)">
+                    <i class="fa fa-wrench fa-fw"></i><span class="menuTx">UI Elements</span>
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level" uib-collapse="sidebar.collapseVar!=1">
+                    <li ui-sref-active="active">
+                        <a ui-sref="app.panelsWells"><span class="menuTx">Panels and Wells</span></a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a ui-sref="app.buttons"><span class="menuTx">Buttons</span></a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a ui-sref="dashboard.notifications"><span class="menuTx">Notifications</span></a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a ui-sref="dashboard.typography"><span class="menuTx">Typography</span></a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a ui-sref="dashboard.icons"> <span class="menuTx">Icons</span></a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a ui-sref="dashboard.grid"><span class="menuTx">Grid</span></a>
+                    </li>
+                </ul>
+
+            </li>
+
+            <li ng-class="{active:sidebar.collapseVar==4}">
+                <a href="" ng-click="sidebar.check(4)">
+                    <i class="fa fa-files-o fa-fw"></i> <span class="menuTx">Sample Pages</span>
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level" uib-collapse="sidebar.collapseVar!=4">
+                    <li ng-class="{active: sidebar.selectedMenu=='blank'}">
+                        <a ui-sref="dashboard.blank" ng-click="sidebar.selectedMenu='blank'"><span class="menuTx">Blank Page</span></a>
+                    </li>
+                    <li>
+                        <a ui-sref="login"><span class="menuTx">Login Page</span></a>
+                    </li>
+                </ul>
+
+            </li>
+            <li ng-class="{active:sidebar.collapseVar==5}">
+              <a href="" ng-click="sidebar.check(5)">
+                  <i class="fa fa-files-o fa-fw"></i> <span class="menuTx">시스템 관리</span>
+                  <span class="fa arrow"></span>
+              </a>
+              <ul class="nav nav-second-level" uib-collapse="sidebar.collapseVar!=5">
+                <li ui-sref-active="active">
+                  <a ui-sref="app.system.user-list({srch:''})"><span class="menuTx">사용자 관리</span></a>
+                </li>
+                <li ui-sref-active="active">
+                  <a ui-sref="app.system.department-list"><span class="menuTx">부서 관리</span></a>
+                </li>
+                <li ui-sref-active="active">
+                  <a ui-sref="app.system.company-list"><span class="menuTx">역활 관리</span></a>
+                </li>
+                <li ui-sref-active="active">
+                  <a ui-sref="app.system.screen-list"><span class="menuTx">메뉴 관리</span></a>
+                </li>
+                <li ui-sref-active="active">
+                  <a ui-sref="app.system.role-list"><span class="menuTx">메뉴 권한 관리</span></a>
+                </li>
+                <li ui-sref-active="active">
+                  <a ui-sref="app.system.commoncode-list"><span class="menuTx">공통코드 관리</span></a>
+                </li>
+                <li ui-sref-active="active">
+                  <a ui-sref="app.system.rolescreen-list"><span class="menuTx">회사 관리</span></a>
+                </li>
+              </ul>
+
+          </li>
+          <li ng-class="{active:sidebar.collapseVar==6}">
+            <a href="" ng-click="sidebar.check(6)">
+                <i class="fa fa-files-o fa-fw"></i> <span class="menuTx">{{'Menu.EM700' | translate }}</span>
+                <span class="fa arrow"></span>
+            </a>
+            <ul class="nav nav-second-level" uib-collapse="sidebar.collapseVar!=6">
+              <li ui-sref-active="active">
+                <a ui-sref="app.boardmng.list" ui-sref-opts="{reload:'app.boardmng.list'}">
+                  <span class="menuTx">{{'Menu.EM710' | translate }}</span></a>
+              </li>
+            </ul>
+
+          </li>
+          <li ng-class="{active: sidebar.collapseVar==2}">
+              <a href="" ng-click="sidebar.check(2)">
+                  <i class="fa fa-sitemap fa-fw"></i> <span class="menuTx">Multi-Level Dropdown</span>
+                  <span class="fa arrow"></span>
+              </a>
+              <ul class="nav nav-second-level" uib-collapse="sidebar.collapseVar!=2">
+                  <li>
+                      <a href=""><span class="menuTx">Second Level Item</span></a>
+                  </li>
+                  <li>
+                      <a href=""><span class="menuTx">Second Level Item</span></a>
+                  </li>
+                  <li ng-init="third=!third" ng-class="{active: sidebar.multiCollapseVar==3}">
+                      <a href="" ng-click="sidebar.multiCheck(3)"><span class="menuTx">Third Level</span>
+                          <span class="fa arrow"></span>
+                      </a>
+                      <ul class="nav nav-third-level" uib-collapse="sidebar.multiCollapseVar!=3">
+                          <li>
+                              <a href=""><span class="menuTx">Third Level Item</span></a>
+                          </li>
+                          <li>
+                              <a href=""><span class="menuTx">Third Level Item</span></a>
+                          </li>
+                          <li>
+                              <a href=""><span class="menuTx">Third Level Item</span></a>
+                          </li>
+                          <li>
+                              <a href=""><span class="menuTx">Third Level Item</span></a>
+                          </li>
+
+                      </ul>
+
+                  </li>
+              </ul>
+
+          </li>
+          <li>
+                <a href="http://www.strapui.com/">
+                  <span class="menuTx">Premium Angular Themes</span></a>
+            </li>
+          -->
+        </ul>
+    </div>
+  <!-- /.sidebar-collapse -->
+</div>

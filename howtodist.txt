@@ -1,0 +1,27 @@
+서버폴더 /usr/local/tomcat/apache-tomcat-8.5.47
+
+:::: 배포방법 ::::
+
+프론트엔드 : gulp serve:dist 를 한 후 dist 폴더에 생기는 폴더중
+1. dist\assets\app, dist\assets\css, dist\assets\images 폴더 /usr/local/tomcat/apache-tomcat-8.5.47/webapps/civasan/assets 로 배포
+(i18n 폴더는 PRODUCT.COMPANY 명칭등이 서버에 변경되어 있기 때문에 엎어쓰지 마세요.)
+2. dist\maps, dist\scripts, dist\styles 폴더 /usr/local/tomcat/apache-tomcat-8.5.47/webapps/civasan 로 배포
+3. 배포시 dist/index.html 도 /usr/local/tomcat/apache-tomcat-8.5.47/webapps/civasan 로 배포해야 됩니다.
+index.html 안에 js 파일과 css 파일의 경로가 바뀌기 때문입니다.
+
+백엔드 : maven build 한 후 target 폴더에 생기는 target\salevis4-was-1.0.0\WEB-INF\classes\egovframework 하위 폴더 common ~ sqlmap 을 /usr/local/tomcat/apache-tomcat-8.5.47/webapps/civasan/WEB-INF/classes/egovframework 로 배포
+
+:::: 서버 재 실행 방법 :::: 
+
+종료 : 
+]# /usr/local/tomcat/apache-tomcat-8.5.47/bin/shutdown.sh
+종료해도 프로세스가 안 죽기 때문에,
+]# ps -ef | grep tomcat
+을 하면
+root  9901  1  15 08:39
+가 출력이 되는데 여기서 9901 이 process id 임
+]# kill -9 9901
+로 process kill 시킴
+다시 서버 재실행
+]# /usr/local/tomcat/apache-tomcat-8.5.47/bin/startup.sh
+
